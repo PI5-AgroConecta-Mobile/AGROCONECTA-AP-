@@ -11,7 +11,7 @@ export class DeleteProduct {
             const {productId} = req.params
 
 
-            const DeleteProduct = await prisma.PRODUCT.delete({
+            const DeleteProduct = await prisma.pRODUCT.delete({
                 where:{
                     id: productId,
                     ownerId: req.userId

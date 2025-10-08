@@ -7,7 +7,7 @@ export class UpdateProduct {
         try{
             const { id, name, quantity, price, unityType, harvestId, imgUrl} = req.body
 
-            const verifyProduct = await prisma.PRODUCT.findUnique({
+            const verifyProduct = await prisma.pRODUCT.findUnique({
                 where: {
                     id
                 }
@@ -17,7 +17,7 @@ export class UpdateProduct {
                 return res.status(400).send({err: "Error updating the product"})
             }
 
-            const updateProduct = await prisma.PRODUCT.update({
+            const updateProduct = await prisma.pRODUCT.update({
                 where:{
                     id: verifyProduct.id
                 },
@@ -26,7 +26,7 @@ export class UpdateProduct {
                     quantity: quantity? quantity : verifyProduct.quantity,
                     price: price? price : verifyProduct.price,
                     unityType: unityType? unityType : verifyProduct.unityType,
-                    harvestId: harvestId? harvestId : verifyProduct.harvestId,
+                    harvest: harvestId? harvestId : verifyProduct.harvest,
                     imgUrl: imgUrl? imgUrl : verifyProduct
                 }
             })

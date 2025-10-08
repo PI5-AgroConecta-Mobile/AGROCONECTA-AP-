@@ -7,19 +7,23 @@ export class GetProductById {
         try{
             const {productId} = req.params
 
-            const product = prisma.PRODUCT.findUnique({
+            const product = await prisma.pRODUCT.findUnique({
                 where:{
                     id: productId
                 }
             })
             
-            logger.info(`Product retrieved: ${req.params.productId}`);
+            if (!product) {
+                logger.warn(`Product not found: ${productId}`);
+                return res.status(404).json({ error: "Product not found" });
+            }
+
+            logger.info(`Product retrieved: ${productId}`);
             return res.status(200).json(product)
 
-        }catch{
-            logger.error(`Error getting the product: ${req.params.productId}`);
-            return res.status(500).send({err: "Error get the product"})
-            
+        }catch(error){
+            logger.error(`Error getting the product: ${req.params.productId} - ${error}`);
+            return res.status(500).send({err: "Error getting the product"})
         }
     }
 }

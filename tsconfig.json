@@ -2,20 +2,18 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-    // "rootDir": "./src",
+    "rootDir": "./src",
     // "outDir": "./dist",
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "commonjs",
-    "target": "esnext",
+    "target": "es2016",
     "types": [],
     "typeRoots": [
-      "./src/@types",
-      "./custom_typings",
-      "./@types",
-      "./node_modules/@types"
-    ],   
+      "./node_modules/@types",
+      "./src/@types"
+    ],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],

@@ -5,9 +5,11 @@ import logger from '../../utils/logger'
 export class GetUser {
     async handle(req: Request, res: Response){
         try{
+            const userId = (req as any).userId; // Type assertion for userId
+
             const getUser = await prisma.user.findUnique({
                 where: {
-                    id: req.userId
+                    id: userId
                 }
             })
 
@@ -15,10 +17,10 @@ export class GetUser {
                 return res.status(400).send({err: "Error user not found"})
             }
             
-            logger.info(`User data retrieved for user ID: ${req.userId}`);
+            logger.info(`User data retrieved for user ID: ${userId}`);
             return res.status(200).json(getUser)
         }catch{
-            logger.error(`Error retrieving user data for user ID: ${req.userId}`);
+            logger.error(`Error retrieving user data for user ID: ${(req as any).userId}`);
             return res.status(500).send({err: "Error user not found"})
         }
     }

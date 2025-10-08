@@ -5,7 +5,7 @@ import logger from '../../utils/logger'
 export class ListProducts {
     async handle (req: Request, res: Response){
         try{
-            const listAllProducts = await prisma.PRODUCT.findMany()
+            const listAllProducts = await prisma.pRODUCT.findMany()
             
             logger.info(`All products listed by user: ${req.userId}`);
             return res.status(200).json(listAllProducts)

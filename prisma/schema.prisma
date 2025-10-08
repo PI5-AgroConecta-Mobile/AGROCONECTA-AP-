@@ -17,11 +17,11 @@ datasource db {
 model user {
   id        String      @id @default(uuid())
   name      String
-  cpfcpnj   String
+  cpfcnpj   String
   email     String      @unique
   password  String
   userType  Int
-  createDate DateTime
+  createDate DateTime @default(now())
   sellings  Int
   rate      Float
   imgUrl    String

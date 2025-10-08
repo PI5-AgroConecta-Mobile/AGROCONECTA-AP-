@@ -8,18 +8,22 @@ export class createProduct {
     async handle(req: Request, res: Response){
         try{
             
-        	const {name, quantity, price, unityType, harvestId, imgUrl} = req.body
+        	const {name, quantity, price, unityType, harvest, imgUrl, type, harvestDate, harvestType, productState} = req.body
         	
-        		const newProduct = await prisma.product.create({
+        		const newProduct = await prisma.pRODUCT.create({
         			data:{
-        				name,
-        				quantity,
-        				price,
-        				unityType,
-        				ownerId: req.userId,
-        				harvestId,
-        				imgUrl
-        			}
+                    name,
+                    quantity,
+                    price,
+                    unityType,
+                    ownerId: req.userId,
+                    harvest,
+                    imgUrl,
+                    type,
+                    harvestDate: new Date(harvestDate),
+                    harvestType,
+                    productState
+                }
         		})
         	
 			logger.info(`Product created: ${req.params.productId}`);
