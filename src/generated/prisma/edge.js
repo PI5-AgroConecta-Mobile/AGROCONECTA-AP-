@@ -183,7 +183,8 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.16.2",
@@ -192,7 +193,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -203,7 +203,7 @@ const config = {
   },
   "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel user {\n  id          String   @id @default(uuid())\n  name        String\n  cpfcpnj     String\n  email       String   @unique\n  password    String\n  userType    Int\n  createDate  DateTime\n  sellings    Int\n  rate        Float\n  imgUrl      String\n  contact     String\n  contactType Int\n}\n\nmodel HARVEST {\n  id          String   @id @default(uuid())\n  ownerId     String\n  name        String\n  description String\n  harvestDate DateTime\n}\n\nmodel ADDRESS {\n  id     String @id @default(uuid())\n  userId String\n  cep    String\n  city   String\n}\n\nmodel PRODUCT {\n  id           String   @id @default(uuid())\n  name         String\n  price        Float\n  imgUrl       String\n  quantity     Int\n  ownerId      String\n  type         Int\n  harvestDate  DateTime\n  harvestType  Int\n  productState Boolean\n  harvest      String\n  unityType    Int\n}\n",
   "inlineSchemaHash": "94fa40ec67b1ae7c28523c8a169ab1bbae4276195f4a75c1d79f89bf452df385",
-  "copyEngine": true
+  "copyEngine": false
 }
 config.dirname = '/'
 

@@ -1,5 +1,6 @@
 import {Request, Response} from 'express'
 import { prisma } from '../../database/index'
+import logger from '../../utils/logger'
 
 export class UpdateUser {
     async handle(req: Request, res: Response){
@@ -30,7 +31,10 @@ export class UpdateUser {
                     contactType: contactType? contactType : userVerify.contactType
                 }
             })
+            logger.info(`User updated: ${req.userId}`);
+            return res.status(200).json(updateUser)
         }catch{
+            logger.error(`Error updating user: ${req.userId}`)
             return res.status(500).send({err: "Error updating user"})
         }
     }

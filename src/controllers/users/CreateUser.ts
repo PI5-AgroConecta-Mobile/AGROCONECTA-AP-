@@ -2,6 +2,7 @@ import {Request, Response} from 'express'
 import { prisma } from '../../database/index'
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken';
+import logger from '../../utils/logger'
 
 export class CreateUser {
     async handle(req: Request, res: Response){
@@ -30,9 +31,13 @@ export class CreateUser {
         				contact
         			}
         		})
+
+			
+			logger.info(`New user created with the email: ${email}`);
             return res.status(200).send({ newUser });
 
         }catch{
+			logger.error(`Error creating user: ${req.body.email}`);
             return res.status(500).send({err: "Error creating the user"})
         }
     }
