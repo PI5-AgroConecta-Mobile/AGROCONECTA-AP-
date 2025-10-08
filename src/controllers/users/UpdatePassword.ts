@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { prisma } from "../../database";
+import logger from '../../utils/logger'
 
 export class UpdatePassword {
     async handle(req: Request, res: Response){
@@ -25,8 +26,10 @@ export class UpdatePassword {
                 }
             })
 
+            logger.info(`Password updated for user with email: ${email}`);
             return res.status(200).json(updatePassword)
         }catch{
+            logger.error(`Error updating password for user with email: ${req.body.email}`);
             return res.status(400).send({err: "Error! Could not change password"})
         }
     }

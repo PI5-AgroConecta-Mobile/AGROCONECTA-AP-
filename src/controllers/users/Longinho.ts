@@ -2,6 +2,7 @@ import {Request, Response} from 'express'
 import { prisma } from '../../database/index'
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken';
+import logger from '../../utils/logger'
 
 export class Login {
     async handle(req: Request, res: Response){
@@ -32,9 +33,11 @@ export class Login {
                 { expiresIn: '1d' }
             );
 
+            logger.info(`User logged in: ${email}`);
             return res.status(200).send({ token, getUser});
 
         }catch{
+            logger.error(`Error during login attempt for email: ${req.body.email}`);
             return res.status(500).send({err: "Falha! Por favor tente novamente mais tarde."})
         }
     }

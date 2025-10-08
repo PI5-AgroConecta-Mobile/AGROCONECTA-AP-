@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { prisma } from "../../database";
+import logger from '../../utils/logger'
 
 export class ConfirmEmail {
     async handle(req: Request, res: Response){
@@ -15,10 +16,12 @@ export class ConfirmEmail {
             if(!userExists){
                 return res.status(400).send({err: "Error! User not found"})
             }
-
-            return res.status(200).json(userExists)
+            
+            logger.info(`Email confirmed for user: ${email}`);
+            return res.status(200).json(true)
 
         }catch{
+            logger.error(`Error confirming email for user: ${req.body.email}`);
             return res.status(400).send({err: "Error! User not found"})
         }
     }

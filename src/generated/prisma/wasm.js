@@ -183,7 +183,8 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.16.2",
@@ -192,7 +193,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -203,20 +203,13 @@ const config = {
   },
   "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel user {\n  id          String   @id @default(uuid())\n  name        String\n  cpfcpnj     String\n  email       String   @unique\n  password    String\n  userType    Int\n  createDate  DateTime\n  sellings    Int\n  rate        Float\n  imgUrl      String\n  contact     String\n  contactType Int\n}\n\nmodel HARVEST {\n  id          String   @id @default(uuid())\n  ownerId     String\n  name        String\n  description String\n  harvestDate DateTime\n}\n\nmodel ADDRESS {\n  id     String @id @default(uuid())\n  userId String\n  cep    String\n  city   String\n}\n\nmodel PRODUCT {\n  id           String   @id @default(uuid())\n  name         String\n  price        Float\n  imgUrl       String\n  quantity     Int\n  ownerId      String\n  type         Int\n  harvestDate  DateTime\n  harvestType  Int\n  productState Boolean\n  harvest      String\n  unityType    Int\n}\n",
   "inlineSchemaHash": "94fa40ec67b1ae7c28523c8a169ab1bbae4276195f4a75c1d79f89bf452df385",
-  "copyEngine": true
+  "copyEngine": false
 }
 config.dirname = '/'
 
 config.runtimeDataModel = JSON.parse("{\"models\":{\"user\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cpfcpnj\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userType\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"sellings\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"rate\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"imgUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contact\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contactType\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"HARVEST\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"harvestDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"ADDRESS\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cep\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"city\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"PRODUCT\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"imgUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"quantity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"harvestDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"harvestType\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"productState\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"harvest\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"unityType\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
-config.engineWasm = {
-  getRuntime: async () => require('./query_engine_bg.js'),
-  getQueryEngineWasmModule: async () => {
-    const loader = (await import('#wasm-engine-loader')).default
-    const engine = (await loader).default
-    return engine
-  }
-}
+config.engineWasm = undefined
 config.compilerWasm = undefined
 
 config.injectableEdgeEnv = () => ({
