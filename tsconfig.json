@@ -9,10 +9,12 @@
     // See also https://aka.ms/tsconfig/module
     "module": "commonjs",
     "target": "es2016",
-    "types": [],
+    "types": ["node", "express"],
     "typeRoots": [
-      "./node_modules/@types",
-      "./src/@types"
+      "./src/@types",
+      "./custom_typings",
+      "./@types",
+      "./node_modules/@types"
     ],
     // For nodejs:
     // "lib": ["esnext"],

@@ -4,15 +4,23 @@ import { prisma } from "../database";
 type jwtPayload = {
     id: string
 }
-export default async function midAthorization(request: Request, response: Response, next: NextFunction){
+export default async function midAthorization(req: Request, response: Response, next: NextFunction){
     try{
-        const { authorization } = request.headers;
+        const { authorization } = req.headers;
         if (!authorization) {
             return response.status(500).send({ err: "Autorização inválida" });
         }
         const token = authorization.split(' ')[1];
     
+        if (!token){
+            return response.status(500).send({ err: "Usuário não existe no banco" });
+        }
+
         const {id} = jwt.verify(token as string, process.env.SECRET_TOKEN as string) as jwtPayload
+
+        if (!id){
+            return response.status(500).send({ err: "Usuário não existe no banco" });
+        }
     
         const user = await prisma.user.findUnique({where:{id}});
     
@@ -20,7 +28,7 @@ export default async function midAthorization(request: Request, response: Respon
             return response.status(500).send({ err: "Usuário não existe no banco" });
         }
 
-        request.userId = id;
+        req.userId = id;
     
         return next();
     } catch{
