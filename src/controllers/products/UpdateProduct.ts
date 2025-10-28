@@ -1,42 +1,63 @@
-import {Request, Response} from 'express'
+import { Request, Response } from 'express'
 import { prisma } from '../../database/index'
 import logger from '../../utils/logger'
 
 export class UpdateProduct {
-    async handle(req: Request, res: Response){
-        try{
-            const { id, name, quantity, price, unityType, harvestId, imgUrl} = req.body
+    async handle(req: Request, res: Response) {
+        const userId = req.userId;
+        
+        const { 
+            productId, 
+            name, 
+            price, 
+            quantity, 
+            type, 
+            harvestDate, 
+            harvestType, 
+            unityType, 
+            imgUrl 
+        } = req.body;
 
-            const verifyProduct = await prisma.pRODUCT.findUnique({
-                where: {
-                    id
-                }
-            })
+        if (!productId) {
+            return res.status(400).json({ err: "O ID do produto é obrigatório." });
+        }
 
-            if(!verifyProduct){
-                return res.status(400).send({err: "Error updating the product"})
+        try {
+             const product = await prisma.pRODUCT.findUnique({
+                where: { id: productId }
+            });
+
+            if (!product) {
+                return res.status(404).json({ err: "Produto não encontrado." });
             }
 
-            const updateProduct = await prisma.pRODUCT.update({
-                where:{
-                    id: verifyProduct.id
-                },
-                data:{
-                    name: name? name : verifyProduct.name,
-                    quantity: quantity? quantity : verifyProduct.quantity,
-                    price: price? price : verifyProduct.price,
-                    unityType: unityType? unityType : verifyProduct.unityType,
-                    harvest: harvestId? harvestId : verifyProduct.harvest,
-                    imgUrl: imgUrl? imgUrl : verifyProduct
-                }
-            })
+            if (product.ownerId !== userId) {
+                logger.warn(`User ${userId} attempted to update product ${productId} owned by ${product.ownerId}`);
+                return res.status(403).json({ err: "Acesso negado. Você não é o dono deste produto." });
+            }
 
-            logger.info(`Product updated: ${id}`);
-            return res.status(200).json(updateProduct)
+            const updateData = {
+                ...(name && { name }),
+                ...(price !== undefined && { price }),
+                ...(quantity !== undefined && { quantity }),
+                ...(type !== undefined && { type }),
+                ...(harvestDate && { harvestDate: new Date(harvestDate) }),
+                ...(harvestType !== undefined && { harvestType }),
+                ...(unityType !== undefined && { unityType }),
+                ...(imgUrl && { imgUrl }),
+            };
 
-        }catch{
-            logger.error(`Error updating the product: ${req.body.id}`);
-            return res.status(500).send({err: "Error updating the product"})
+            const updatedProduct = await prisma.pRODUCT.update({
+                where: { id: productId },
+                data: updateData
+            });
+
+            logger.info(`Product ${productId} updated by user ${userId}`);
+            return res.status(200).json(updatedProduct);
+
+        } catch (e: any) {
+            logger.error(`Error updating product ${productId} for user ${userId}: ${e.message}`);
+            return res.status(500).json({ err: "Erro ao atualizar o produto." });
         }
     }
 }

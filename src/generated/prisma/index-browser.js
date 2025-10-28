@@ -165,6 +165,18 @@ exports.Prisma.PRODUCTScalarFieldEnum = {
   unityType: 'unityType'
 };
 
+exports.Prisma.AGENDAMENTOScalarFieldEnum = {
+  id: 'id',
+  clientId: 'clientId',
+  farmerId: 'farmerId',
+  productId: 'productId',
+  quantity: 'quantity',
+  totalPrice: 'totalPrice',
+  status: 'status',
+  scheduledFor: 'scheduledFor',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -180,7 +192,8 @@ exports.Prisma.ModelName = {
   user: 'user',
   HARVEST: 'HARVEST',
   ADDRESS: 'ADDRESS',
-  PRODUCT: 'PRODUCT'
+  PRODUCT: 'PRODUCT',
+  AGENDAMENTO: 'AGENDAMENTO'
 };
 
 /**

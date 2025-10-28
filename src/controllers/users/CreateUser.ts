@@ -1,49 +1,53 @@
-import {Request, Response} from 'express'
-import { prisma } from '../../database/index'
-import bcryptjs from 'bcryptjs'
-import jwt from 'jsonwebtoken';
+import { Request, Response } from 'express'
+import { prisma } from '../../database'
+import { hash } from 'bcryptjs'
 import logger from '../../utils/logger'
 
 export class CreateUser {
-    async handle(req: Request, res: Response){
-        try{
-            
-        		const {name, cpfcnpj, email, password, userType, contact} = req.body
+    async handle(req: Request, res: Response) {
+        try {
+            const { name, email, password, cpfcnpj, userType } = req.body
+            if (!name || !email || !password || !cpfcnpj || userType === undefined) {
+                return res.status(400).json({ err: "Por favor, preencha todos os campos." })
+            }
 
-        		const userExists = await prisma.user.findUnique({
-        			where: {
-        				email
-        			}
-        		})
+            const userAlreadyExists = await prisma.user.findUnique({
+                where: { email: email }
+            })
 
-        		if(userExists){
-        			return res.status(409).send({error: 'Email already in user'})
-        		}
-
-        		const passwordHash = bcryptjs.hashSync(password, 8);
-        		const newUser = await prisma.user.create({
-        			data:{
-                    name: `@${name}`,
+            if (userAlreadyExists) {
+                logger.warn(`Attempt to create user with existing email: ${email}`);
+                return res.status(400).json({ err: "Este email já está em uso." })
+            }
+            const passwordHashed = await hash(password, 8)
+            const user = await prisma.user.create({
+                data: {
+                    name,
                     email,
+                    password: passwordHashed,
                     cpfcnpj,
-                    password: passwordHash,
-                    userType,
-                    contact,
-                    contactType : 0,
-                    createDate: new Date(),
+                    userType, 
                     sellings: 0,
                     rate: 0,
-                    imgUrl: ''
+                    imgUrl: '', 
+                    contact: '', 
+                    contactType: 0
                 }
-        		})
+            })
 
-			
-			logger.info(`New user created with the email: ${email}`);
-            return res.status(200).send({ newUser });
+            logger.info(`New user created: ${user.id} - ${user.email}`);
+            const userResponse = {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                userType: user.userType
+            }
+            
+            return res.status(201).json(userResponse)
 
-        }catch{
-			logger.error(`Error creating user: ${req.body.email}`);
-            return res.status(500).send({err: "Error creating the user"})
+        } catch (e: any) {
+            logger.error(`Error creating user: ${e.message}`);
+            return res.status(500).json({ err: "Erro interno ao criar usuário." })
         }
     }
 }

@@ -33,6 +33,11 @@ export type ADDRESS = $Result.DefaultSelection<Prisma.$ADDRESSPayload>
  * 
  */
 export type PRODUCT = $Result.DefaultSelection<Prisma.$PRODUCTPayload>
+/**
+ * Model AGENDAMENTO
+ * 
+ */
+export type AGENDAMENTO = $Result.DefaultSelection<Prisma.$AGENDAMENTOPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -191,6 +196,16 @@ export class PrismaClient<
     * ```
     */
   get pRODUCT(): Prisma.PRODUCTDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.aGENDAMENTO`: Exposes CRUD operations for the **AGENDAMENTO** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AGENDAMENTOS
+    * const aGENDAMENTOS = await prisma.aGENDAMENTO.findMany()
+    * ```
+    */
+  get aGENDAMENTO(): Prisma.AGENDAMENTODelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -634,7 +649,8 @@ export namespace Prisma {
     user: 'user',
     HARVEST: 'HARVEST',
     ADDRESS: 'ADDRESS',
-    PRODUCT: 'PRODUCT'
+    PRODUCT: 'PRODUCT',
+    AGENDAMENTO: 'AGENDAMENTO'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -653,7 +669,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "hARVEST" | "aDDRESS" | "pRODUCT"
+      modelProps: "user" | "hARVEST" | "aDDRESS" | "pRODUCT" | "aGENDAMENTO"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -953,6 +969,80 @@ export namespace Prisma {
           }
         }
       }
+      AGENDAMENTO: {
+        payload: Prisma.$AGENDAMENTOPayload<ExtArgs>
+        fields: Prisma.AGENDAMENTOFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AGENDAMENTOFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AGENDAMENTOFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload>
+          }
+          findFirst: {
+            args: Prisma.AGENDAMENTOFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AGENDAMENTOFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload>
+          }
+          findMany: {
+            args: Prisma.AGENDAMENTOFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload>[]
+          }
+          create: {
+            args: Prisma.AGENDAMENTOCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload>
+          }
+          createMany: {
+            args: Prisma.AGENDAMENTOCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AGENDAMENTOCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload>[]
+          }
+          delete: {
+            args: Prisma.AGENDAMENTODeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload>
+          }
+          update: {
+            args: Prisma.AGENDAMENTOUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload>
+          }
+          deleteMany: {
+            args: Prisma.AGENDAMENTODeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AGENDAMENTOUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AGENDAMENTOUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload>[]
+          }
+          upsert: {
+            args: Prisma.AGENDAMENTOUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AGENDAMENTOPayload>
+          }
+          aggregate: {
+            args: Prisma.AGENDAMENTOAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAGENDAMENTO>
+          }
+          groupBy: {
+            args: Prisma.AGENDAMENTOGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AGENDAMENTOGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AGENDAMENTOCountArgs<ExtArgs>
+            result: $Utils.Optional<AGENDAMENTOCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1053,6 +1143,7 @@ export namespace Prisma {
     hARVEST?: HARVESTOmit
     aDDRESS?: ADDRESSOmit
     pRODUCT?: PRODUCTOmit
+    aGENDAMENTO?: AGENDAMENTOOmit
   }
 
   /* Types for Logging */
@@ -1127,6 +1218,85 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    products: number
+    agendamentosCliente: number
+    agendamentosAgricultor: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | UserCountOutputTypeCountProductsArgs
+    agendamentosCliente?: boolean | UserCountOutputTypeCountAgendamentosClienteArgs
+    agendamentosAgricultor?: boolean | UserCountOutputTypeCountAgendamentosAgricultorArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PRODUCTWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAgendamentosClienteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AGENDAMENTOWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAgendamentosAgricultorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AGENDAMENTOWhereInput
+  }
+
+
+  /**
+   * Count Type PRODUCTCountOutputType
+   */
+
+  export type PRODUCTCountOutputType = {
+    agendamentos: number
+  }
+
+  export type PRODUCTCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    agendamentos?: boolean | PRODUCTCountOutputTypeCountAgendamentosArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PRODUCTCountOutputType without action
+   */
+  export type PRODUCTCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PRODUCTCountOutputType
+     */
+    select?: PRODUCTCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PRODUCTCountOutputType without action
+   */
+  export type PRODUCTCountOutputTypeCountAgendamentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AGENDAMENTOWhereInput
+  }
 
 
   /**
@@ -1399,6 +1569,10 @@ export namespace Prisma {
     imgUrl?: boolean
     contact?: boolean
     contactType?: boolean
+    products?: boolean | user$productsArgs<ExtArgs>
+    agendamentosCliente?: boolean | user$agendamentosClienteArgs<ExtArgs>
+    agendamentosAgricultor?: boolean | user$agendamentosAgricultorArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type userSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1447,10 +1621,22 @@ export namespace Prisma {
   }
 
   export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "cpfcnpj" | "email" | "password" | "userType" | "createDate" | "sellings" | "rate" | "imgUrl" | "contact" | "contactType", ExtArgs["result"]["user"]>
+  export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | user$productsArgs<ExtArgs>
+    agendamentosCliente?: boolean | user$agendamentosClienteArgs<ExtArgs>
+    agendamentosAgricultor?: boolean | user$agendamentosAgricultorArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type userIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type userIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $userPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "user"
-    objects: {}
+    objects: {
+      products: Prisma.$PRODUCTPayload<ExtArgs>[]
+      agendamentosCliente: Prisma.$AGENDAMENTOPayload<ExtArgs>[]
+      agendamentosAgricultor: Prisma.$AGENDAMENTOPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -1858,6 +2044,9 @@ export namespace Prisma {
    */
   export interface Prisma__userClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    products<T extends user$productsArgs<ExtArgs> = {}>(args?: Subset<T, user$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PRODUCTPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    agendamentosCliente<T extends user$agendamentosClienteArgs<ExtArgs> = {}>(args?: Subset<T, user$agendamentosClienteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    agendamentosAgricultor<T extends user$agendamentosAgricultorArgs<ExtArgs> = {}>(args?: Subset<T, user$agendamentosAgricultorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1916,6 +2105,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * Filter, which user to fetch.
      */
     where: userWhereUniqueInput
@@ -1934,6 +2127,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * Filter, which user to fetch.
      */
     where: userWhereUniqueInput
@@ -1951,6 +2148,10 @@ export namespace Prisma {
      * Omit specific fields from the user
      */
     omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
     /**
      * Filter, which user to fetch.
      */
@@ -2000,6 +2201,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * Filter, which user to fetch.
      */
     where?: userWhereInput
@@ -2048,6 +2253,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * Filter, which users to fetch.
      */
     where?: userWhereInput
@@ -2090,6 +2299,10 @@ export namespace Prisma {
      * Omit specific fields from the user
      */
     omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
     /**
      * The data needed to create a user.
      */
@@ -2138,6 +2351,10 @@ export namespace Prisma {
      * Omit specific fields from the user
      */
     omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
     /**
      * The data needed to update a user.
      */
@@ -2205,6 +2422,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * The filter to search for the user to update in case it exists.
      */
     where: userWhereUniqueInput
@@ -2231,6 +2452,10 @@ export namespace Prisma {
      */
     omit?: userOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
+    /**
      * Filter which user to delete.
      */
     where: userWhereUniqueInput
@@ -2251,6 +2476,78 @@ export namespace Prisma {
   }
 
   /**
+   * user.products
+   */
+  export type user$productsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PRODUCT
+     */
+    select?: PRODUCTSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PRODUCT
+     */
+    omit?: PRODUCTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
+    where?: PRODUCTWhereInput
+    orderBy?: PRODUCTOrderByWithRelationInput | PRODUCTOrderByWithRelationInput[]
+    cursor?: PRODUCTWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PRODUCTScalarFieldEnum | PRODUCTScalarFieldEnum[]
+  }
+
+  /**
+   * user.agendamentosCliente
+   */
+  export type user$agendamentosClienteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    where?: AGENDAMENTOWhereInput
+    orderBy?: AGENDAMENTOOrderByWithRelationInput | AGENDAMENTOOrderByWithRelationInput[]
+    cursor?: AGENDAMENTOWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AGENDAMENTOScalarFieldEnum | AGENDAMENTOScalarFieldEnum[]
+  }
+
+  /**
+   * user.agendamentosAgricultor
+   */
+  export type user$agendamentosAgricultorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    where?: AGENDAMENTOWhereInput
+    orderBy?: AGENDAMENTOOrderByWithRelationInput | AGENDAMENTOOrderByWithRelationInput[]
+    cursor?: AGENDAMENTOWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AGENDAMENTOScalarFieldEnum | AGENDAMENTOScalarFieldEnum[]
+  }
+
+  /**
    * user without action
    */
   export type userDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2262,6 +2559,10 @@ export namespace Prisma {
      * Omit specific fields from the user
      */
     omit?: userOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userInclude<ExtArgs> | null
   }
 
 
@@ -4512,6 +4813,9 @@ export namespace Prisma {
     productState?: boolean
     harvest?: boolean
     unityType?: boolean
+    owner?: boolean | userDefaultArgs<ExtArgs>
+    agendamentos?: boolean | PRODUCT$agendamentosArgs<ExtArgs>
+    _count?: boolean | PRODUCTCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pRODUCT"]>
 
   export type PRODUCTSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4527,6 +4831,7 @@ export namespace Prisma {
     productState?: boolean
     harvest?: boolean
     unityType?: boolean
+    owner?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pRODUCT"]>
 
   export type PRODUCTSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4542,6 +4847,7 @@ export namespace Prisma {
     productState?: boolean
     harvest?: boolean
     unityType?: boolean
+    owner?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pRODUCT"]>
 
   export type PRODUCTSelectScalar = {
@@ -4560,10 +4866,24 @@ export namespace Prisma {
   }
 
   export type PRODUCTOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "imgUrl" | "quantity" | "ownerId" | "type" | "harvestDate" | "harvestType" | "productState" | "harvest" | "unityType", ExtArgs["result"]["pRODUCT"]>
+  export type PRODUCTInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | userDefaultArgs<ExtArgs>
+    agendamentos?: boolean | PRODUCT$agendamentosArgs<ExtArgs>
+    _count?: boolean | PRODUCTCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PRODUCTIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type PRODUCTIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | userDefaultArgs<ExtArgs>
+  }
 
   export type $PRODUCTPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PRODUCT"
-    objects: {}
+    objects: {
+      owner: Prisma.$userPayload<ExtArgs>
+      agendamentos: Prisma.$AGENDAMENTOPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -4971,6 +5291,8 @@ export namespace Prisma {
    */
   export interface Prisma__PRODUCTClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    owner<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    agendamentos<T extends PRODUCT$agendamentosArgs<ExtArgs> = {}>(args?: Subset<T, PRODUCT$agendamentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5029,6 +5351,10 @@ export namespace Prisma {
      */
     omit?: PRODUCTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
+    /**
      * Filter, which PRODUCT to fetch.
      */
     where: PRODUCTWhereUniqueInput
@@ -5047,6 +5373,10 @@ export namespace Prisma {
      */
     omit?: PRODUCTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
+    /**
      * Filter, which PRODUCT to fetch.
      */
     where: PRODUCTWhereUniqueInput
@@ -5064,6 +5394,10 @@ export namespace Prisma {
      * Omit specific fields from the PRODUCT
      */
     omit?: PRODUCTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
     /**
      * Filter, which PRODUCT to fetch.
      */
@@ -5113,6 +5447,10 @@ export namespace Prisma {
      */
     omit?: PRODUCTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
+    /**
      * Filter, which PRODUCT to fetch.
      */
     where?: PRODUCTWhereInput
@@ -5161,6 +5499,10 @@ export namespace Prisma {
      */
     omit?: PRODUCTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
+    /**
      * Filter, which PRODUCTS to fetch.
      */
     where?: PRODUCTWhereInput
@@ -5204,6 +5546,10 @@ export namespace Prisma {
      */
     omit?: PRODUCTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
+    /**
      * The data needed to create a PRODUCT.
      */
     data: XOR<PRODUCTCreateInput, PRODUCTUncheckedCreateInput>
@@ -5237,6 +5583,10 @@ export namespace Prisma {
      */
     data: PRODUCTCreateManyInput | PRODUCTCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5251,6 +5601,10 @@ export namespace Prisma {
      * Omit specific fields from the PRODUCT
      */
     omit?: PRODUCTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
     /**
      * The data needed to update a PRODUCT.
      */
@@ -5303,6 +5657,10 @@ export namespace Prisma {
      * Limit how many PRODUCTS to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5317,6 +5675,10 @@ export namespace Prisma {
      * Omit specific fields from the PRODUCT
      */
     omit?: PRODUCTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
     /**
      * The filter to search for the PRODUCT to update in case it exists.
      */
@@ -5344,6 +5706,10 @@ export namespace Prisma {
      */
     omit?: PRODUCTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
+    /**
      * Filter which PRODUCT to delete.
      */
     where: PRODUCTWhereUniqueInput
@@ -5364,6 +5730,30 @@ export namespace Prisma {
   }
 
   /**
+   * PRODUCT.agendamentos
+   */
+  export type PRODUCT$agendamentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    where?: AGENDAMENTOWhereInput
+    orderBy?: AGENDAMENTOOrderByWithRelationInput | AGENDAMENTOOrderByWithRelationInput[]
+    cursor?: AGENDAMENTOWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AGENDAMENTOScalarFieldEnum | AGENDAMENTOScalarFieldEnum[]
+  }
+
+  /**
    * PRODUCT without action
    */
   export type PRODUCTDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5375,6 +5765,1178 @@ export namespace Prisma {
      * Omit specific fields from the PRODUCT
      */
     omit?: PRODUCTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PRODUCTInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AGENDAMENTO
+   */
+
+  export type AggregateAGENDAMENTO = {
+    _count: AGENDAMENTOCountAggregateOutputType | null
+    _avg: AGENDAMENTOAvgAggregateOutputType | null
+    _sum: AGENDAMENTOSumAggregateOutputType | null
+    _min: AGENDAMENTOMinAggregateOutputType | null
+    _max: AGENDAMENTOMaxAggregateOutputType | null
+  }
+
+  export type AGENDAMENTOAvgAggregateOutputType = {
+    quantity: number | null
+    totalPrice: number | null
+    status: number | null
+  }
+
+  export type AGENDAMENTOSumAggregateOutputType = {
+    quantity: number | null
+    totalPrice: number | null
+    status: number | null
+  }
+
+  export type AGENDAMENTOMinAggregateOutputType = {
+    id: string | null
+    clientId: string | null
+    farmerId: string | null
+    productId: string | null
+    quantity: number | null
+    totalPrice: number | null
+    status: number | null
+    scheduledFor: Date | null
+    createdAt: Date | null
+  }
+
+  export type AGENDAMENTOMaxAggregateOutputType = {
+    id: string | null
+    clientId: string | null
+    farmerId: string | null
+    productId: string | null
+    quantity: number | null
+    totalPrice: number | null
+    status: number | null
+    scheduledFor: Date | null
+    createdAt: Date | null
+  }
+
+  export type AGENDAMENTOCountAggregateOutputType = {
+    id: number
+    clientId: number
+    farmerId: number
+    productId: number
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type AGENDAMENTOAvgAggregateInputType = {
+    quantity?: true
+    totalPrice?: true
+    status?: true
+  }
+
+  export type AGENDAMENTOSumAggregateInputType = {
+    quantity?: true
+    totalPrice?: true
+    status?: true
+  }
+
+  export type AGENDAMENTOMinAggregateInputType = {
+    id?: true
+    clientId?: true
+    farmerId?: true
+    productId?: true
+    quantity?: true
+    totalPrice?: true
+    status?: true
+    scheduledFor?: true
+    createdAt?: true
+  }
+
+  export type AGENDAMENTOMaxAggregateInputType = {
+    id?: true
+    clientId?: true
+    farmerId?: true
+    productId?: true
+    quantity?: true
+    totalPrice?: true
+    status?: true
+    scheduledFor?: true
+    createdAt?: true
+  }
+
+  export type AGENDAMENTOCountAggregateInputType = {
+    id?: true
+    clientId?: true
+    farmerId?: true
+    productId?: true
+    quantity?: true
+    totalPrice?: true
+    status?: true
+    scheduledFor?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type AGENDAMENTOAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AGENDAMENTO to aggregate.
+     */
+    where?: AGENDAMENTOWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AGENDAMENTOS to fetch.
+     */
+    orderBy?: AGENDAMENTOOrderByWithRelationInput | AGENDAMENTOOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AGENDAMENTOWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AGENDAMENTOS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AGENDAMENTOS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AGENDAMENTOS
+    **/
+    _count?: true | AGENDAMENTOCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AGENDAMENTOAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AGENDAMENTOSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AGENDAMENTOMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AGENDAMENTOMaxAggregateInputType
+  }
+
+  export type GetAGENDAMENTOAggregateType<T extends AGENDAMENTOAggregateArgs> = {
+        [P in keyof T & keyof AggregateAGENDAMENTO]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAGENDAMENTO[P]>
+      : GetScalarType<T[P], AggregateAGENDAMENTO[P]>
+  }
+
+
+
+
+  export type AGENDAMENTOGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AGENDAMENTOWhereInput
+    orderBy?: AGENDAMENTOOrderByWithAggregationInput | AGENDAMENTOOrderByWithAggregationInput[]
+    by: AGENDAMENTOScalarFieldEnum[] | AGENDAMENTOScalarFieldEnum
+    having?: AGENDAMENTOScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AGENDAMENTOCountAggregateInputType | true
+    _avg?: AGENDAMENTOAvgAggregateInputType
+    _sum?: AGENDAMENTOSumAggregateInputType
+    _min?: AGENDAMENTOMinAggregateInputType
+    _max?: AGENDAMENTOMaxAggregateInputType
+  }
+
+  export type AGENDAMENTOGroupByOutputType = {
+    id: string
+    clientId: string
+    farmerId: string
+    productId: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date
+    createdAt: Date
+    _count: AGENDAMENTOCountAggregateOutputType | null
+    _avg: AGENDAMENTOAvgAggregateOutputType | null
+    _sum: AGENDAMENTOSumAggregateOutputType | null
+    _min: AGENDAMENTOMinAggregateOutputType | null
+    _max: AGENDAMENTOMaxAggregateOutputType | null
+  }
+
+  type GetAGENDAMENTOGroupByPayload<T extends AGENDAMENTOGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AGENDAMENTOGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AGENDAMENTOGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AGENDAMENTOGroupByOutputType[P]>
+            : GetScalarType<T[P], AGENDAMENTOGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AGENDAMENTOSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    clientId?: boolean
+    farmerId?: boolean
+    productId?: boolean
+    quantity?: boolean
+    totalPrice?: boolean
+    status?: boolean
+    scheduledFor?: boolean
+    createdAt?: boolean
+    client?: boolean | userDefaultArgs<ExtArgs>
+    farmer?: boolean | userDefaultArgs<ExtArgs>
+    product?: boolean | PRODUCTDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["aGENDAMENTO"]>
+
+  export type AGENDAMENTOSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    clientId?: boolean
+    farmerId?: boolean
+    productId?: boolean
+    quantity?: boolean
+    totalPrice?: boolean
+    status?: boolean
+    scheduledFor?: boolean
+    createdAt?: boolean
+    client?: boolean | userDefaultArgs<ExtArgs>
+    farmer?: boolean | userDefaultArgs<ExtArgs>
+    product?: boolean | PRODUCTDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["aGENDAMENTO"]>
+
+  export type AGENDAMENTOSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    clientId?: boolean
+    farmerId?: boolean
+    productId?: boolean
+    quantity?: boolean
+    totalPrice?: boolean
+    status?: boolean
+    scheduledFor?: boolean
+    createdAt?: boolean
+    client?: boolean | userDefaultArgs<ExtArgs>
+    farmer?: boolean | userDefaultArgs<ExtArgs>
+    product?: boolean | PRODUCTDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["aGENDAMENTO"]>
+
+  export type AGENDAMENTOSelectScalar = {
+    id?: boolean
+    clientId?: boolean
+    farmerId?: boolean
+    productId?: boolean
+    quantity?: boolean
+    totalPrice?: boolean
+    status?: boolean
+    scheduledFor?: boolean
+    createdAt?: boolean
+  }
+
+  export type AGENDAMENTOOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clientId" | "farmerId" | "productId" | "quantity" | "totalPrice" | "status" | "scheduledFor" | "createdAt", ExtArgs["result"]["aGENDAMENTO"]>
+  export type AGENDAMENTOInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | userDefaultArgs<ExtArgs>
+    farmer?: boolean | userDefaultArgs<ExtArgs>
+    product?: boolean | PRODUCTDefaultArgs<ExtArgs>
+  }
+  export type AGENDAMENTOIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | userDefaultArgs<ExtArgs>
+    farmer?: boolean | userDefaultArgs<ExtArgs>
+    product?: boolean | PRODUCTDefaultArgs<ExtArgs>
+  }
+  export type AGENDAMENTOIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | userDefaultArgs<ExtArgs>
+    farmer?: boolean | userDefaultArgs<ExtArgs>
+    product?: boolean | PRODUCTDefaultArgs<ExtArgs>
+  }
+
+  export type $AGENDAMENTOPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AGENDAMENTO"
+    objects: {
+      client: Prisma.$userPayload<ExtArgs>
+      farmer: Prisma.$userPayload<ExtArgs>
+      product: Prisma.$PRODUCTPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      clientId: string
+      farmerId: string
+      productId: string
+      quantity: number
+      totalPrice: number
+      status: number
+      scheduledFor: Date
+      createdAt: Date
+    }, ExtArgs["result"]["aGENDAMENTO"]>
+    composites: {}
+  }
+
+  type AGENDAMENTOGetPayload<S extends boolean | null | undefined | AGENDAMENTODefaultArgs> = $Result.GetResult<Prisma.$AGENDAMENTOPayload, S>
+
+  type AGENDAMENTOCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AGENDAMENTOFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AGENDAMENTOCountAggregateInputType | true
+    }
+
+  export interface AGENDAMENTODelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AGENDAMENTO'], meta: { name: 'AGENDAMENTO' } }
+    /**
+     * Find zero or one AGENDAMENTO that matches the filter.
+     * @param {AGENDAMENTOFindUniqueArgs} args - Arguments to find a AGENDAMENTO
+     * @example
+     * // Get one AGENDAMENTO
+     * const aGENDAMENTO = await prisma.aGENDAMENTO.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AGENDAMENTOFindUniqueArgs>(args: SelectSubset<T, AGENDAMENTOFindUniqueArgs<ExtArgs>>): Prisma__AGENDAMENTOClient<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AGENDAMENTO that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AGENDAMENTOFindUniqueOrThrowArgs} args - Arguments to find a AGENDAMENTO
+     * @example
+     * // Get one AGENDAMENTO
+     * const aGENDAMENTO = await prisma.aGENDAMENTO.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AGENDAMENTOFindUniqueOrThrowArgs>(args: SelectSubset<T, AGENDAMENTOFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AGENDAMENTOClient<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AGENDAMENTO that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AGENDAMENTOFindFirstArgs} args - Arguments to find a AGENDAMENTO
+     * @example
+     * // Get one AGENDAMENTO
+     * const aGENDAMENTO = await prisma.aGENDAMENTO.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AGENDAMENTOFindFirstArgs>(args?: SelectSubset<T, AGENDAMENTOFindFirstArgs<ExtArgs>>): Prisma__AGENDAMENTOClient<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AGENDAMENTO that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AGENDAMENTOFindFirstOrThrowArgs} args - Arguments to find a AGENDAMENTO
+     * @example
+     * // Get one AGENDAMENTO
+     * const aGENDAMENTO = await prisma.aGENDAMENTO.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AGENDAMENTOFindFirstOrThrowArgs>(args?: SelectSubset<T, AGENDAMENTOFindFirstOrThrowArgs<ExtArgs>>): Prisma__AGENDAMENTOClient<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AGENDAMENTOS that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AGENDAMENTOFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AGENDAMENTOS
+     * const aGENDAMENTOS = await prisma.aGENDAMENTO.findMany()
+     * 
+     * // Get first 10 AGENDAMENTOS
+     * const aGENDAMENTOS = await prisma.aGENDAMENTO.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const aGENDAMENTOWithIdOnly = await prisma.aGENDAMENTO.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AGENDAMENTOFindManyArgs>(args?: SelectSubset<T, AGENDAMENTOFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AGENDAMENTO.
+     * @param {AGENDAMENTOCreateArgs} args - Arguments to create a AGENDAMENTO.
+     * @example
+     * // Create one AGENDAMENTO
+     * const AGENDAMENTO = await prisma.aGENDAMENTO.create({
+     *   data: {
+     *     // ... data to create a AGENDAMENTO
+     *   }
+     * })
+     * 
+     */
+    create<T extends AGENDAMENTOCreateArgs>(args: SelectSubset<T, AGENDAMENTOCreateArgs<ExtArgs>>): Prisma__AGENDAMENTOClient<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AGENDAMENTOS.
+     * @param {AGENDAMENTOCreateManyArgs} args - Arguments to create many AGENDAMENTOS.
+     * @example
+     * // Create many AGENDAMENTOS
+     * const aGENDAMENTO = await prisma.aGENDAMENTO.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AGENDAMENTOCreateManyArgs>(args?: SelectSubset<T, AGENDAMENTOCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AGENDAMENTOS and returns the data saved in the database.
+     * @param {AGENDAMENTOCreateManyAndReturnArgs} args - Arguments to create many AGENDAMENTOS.
+     * @example
+     * // Create many AGENDAMENTOS
+     * const aGENDAMENTO = await prisma.aGENDAMENTO.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AGENDAMENTOS and only return the `id`
+     * const aGENDAMENTOWithIdOnly = await prisma.aGENDAMENTO.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AGENDAMENTOCreateManyAndReturnArgs>(args?: SelectSubset<T, AGENDAMENTOCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AGENDAMENTO.
+     * @param {AGENDAMENTODeleteArgs} args - Arguments to delete one AGENDAMENTO.
+     * @example
+     * // Delete one AGENDAMENTO
+     * const AGENDAMENTO = await prisma.aGENDAMENTO.delete({
+     *   where: {
+     *     // ... filter to delete one AGENDAMENTO
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AGENDAMENTODeleteArgs>(args: SelectSubset<T, AGENDAMENTODeleteArgs<ExtArgs>>): Prisma__AGENDAMENTOClient<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AGENDAMENTO.
+     * @param {AGENDAMENTOUpdateArgs} args - Arguments to update one AGENDAMENTO.
+     * @example
+     * // Update one AGENDAMENTO
+     * const aGENDAMENTO = await prisma.aGENDAMENTO.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AGENDAMENTOUpdateArgs>(args: SelectSubset<T, AGENDAMENTOUpdateArgs<ExtArgs>>): Prisma__AGENDAMENTOClient<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AGENDAMENTOS.
+     * @param {AGENDAMENTODeleteManyArgs} args - Arguments to filter AGENDAMENTOS to delete.
+     * @example
+     * // Delete a few AGENDAMENTOS
+     * const { count } = await prisma.aGENDAMENTO.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AGENDAMENTODeleteManyArgs>(args?: SelectSubset<T, AGENDAMENTODeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AGENDAMENTOS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AGENDAMENTOUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AGENDAMENTOS
+     * const aGENDAMENTO = await prisma.aGENDAMENTO.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AGENDAMENTOUpdateManyArgs>(args: SelectSubset<T, AGENDAMENTOUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AGENDAMENTOS and returns the data updated in the database.
+     * @param {AGENDAMENTOUpdateManyAndReturnArgs} args - Arguments to update many AGENDAMENTOS.
+     * @example
+     * // Update many AGENDAMENTOS
+     * const aGENDAMENTO = await prisma.aGENDAMENTO.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AGENDAMENTOS and only return the `id`
+     * const aGENDAMENTOWithIdOnly = await prisma.aGENDAMENTO.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AGENDAMENTOUpdateManyAndReturnArgs>(args: SelectSubset<T, AGENDAMENTOUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AGENDAMENTO.
+     * @param {AGENDAMENTOUpsertArgs} args - Arguments to update or create a AGENDAMENTO.
+     * @example
+     * // Update or create a AGENDAMENTO
+     * const aGENDAMENTO = await prisma.aGENDAMENTO.upsert({
+     *   create: {
+     *     // ... data to create a AGENDAMENTO
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AGENDAMENTO we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AGENDAMENTOUpsertArgs>(args: SelectSubset<T, AGENDAMENTOUpsertArgs<ExtArgs>>): Prisma__AGENDAMENTOClient<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AGENDAMENTOS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AGENDAMENTOCountArgs} args - Arguments to filter AGENDAMENTOS to count.
+     * @example
+     * // Count the number of AGENDAMENTOS
+     * const count = await prisma.aGENDAMENTO.count({
+     *   where: {
+     *     // ... the filter for the AGENDAMENTOS we want to count
+     *   }
+     * })
+    **/
+    count<T extends AGENDAMENTOCountArgs>(
+      args?: Subset<T, AGENDAMENTOCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AGENDAMENTOCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AGENDAMENTO.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AGENDAMENTOAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AGENDAMENTOAggregateArgs>(args: Subset<T, AGENDAMENTOAggregateArgs>): Prisma.PrismaPromise<GetAGENDAMENTOAggregateType<T>>
+
+    /**
+     * Group by AGENDAMENTO.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AGENDAMENTOGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AGENDAMENTOGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AGENDAMENTOGroupByArgs['orderBy'] }
+        : { orderBy?: AGENDAMENTOGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AGENDAMENTOGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAGENDAMENTOGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AGENDAMENTO model
+   */
+  readonly fields: AGENDAMENTOFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AGENDAMENTO.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AGENDAMENTOClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    client<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    farmer<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product<T extends PRODUCTDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PRODUCTDefaultArgs<ExtArgs>>): Prisma__PRODUCTClient<$Result.GetResult<Prisma.$PRODUCTPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AGENDAMENTO model
+   */
+  interface AGENDAMENTOFieldRefs {
+    readonly id: FieldRef<"AGENDAMENTO", 'String'>
+    readonly clientId: FieldRef<"AGENDAMENTO", 'String'>
+    readonly farmerId: FieldRef<"AGENDAMENTO", 'String'>
+    readonly productId: FieldRef<"AGENDAMENTO", 'String'>
+    readonly quantity: FieldRef<"AGENDAMENTO", 'Int'>
+    readonly totalPrice: FieldRef<"AGENDAMENTO", 'Float'>
+    readonly status: FieldRef<"AGENDAMENTO", 'Int'>
+    readonly scheduledFor: FieldRef<"AGENDAMENTO", 'DateTime'>
+    readonly createdAt: FieldRef<"AGENDAMENTO", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AGENDAMENTO findUnique
+   */
+  export type AGENDAMENTOFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    /**
+     * Filter, which AGENDAMENTO to fetch.
+     */
+    where: AGENDAMENTOWhereUniqueInput
+  }
+
+  /**
+   * AGENDAMENTO findUniqueOrThrow
+   */
+  export type AGENDAMENTOFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    /**
+     * Filter, which AGENDAMENTO to fetch.
+     */
+    where: AGENDAMENTOWhereUniqueInput
+  }
+
+  /**
+   * AGENDAMENTO findFirst
+   */
+  export type AGENDAMENTOFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    /**
+     * Filter, which AGENDAMENTO to fetch.
+     */
+    where?: AGENDAMENTOWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AGENDAMENTOS to fetch.
+     */
+    orderBy?: AGENDAMENTOOrderByWithRelationInput | AGENDAMENTOOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AGENDAMENTOS.
+     */
+    cursor?: AGENDAMENTOWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AGENDAMENTOS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AGENDAMENTOS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AGENDAMENTOS.
+     */
+    distinct?: AGENDAMENTOScalarFieldEnum | AGENDAMENTOScalarFieldEnum[]
+  }
+
+  /**
+   * AGENDAMENTO findFirstOrThrow
+   */
+  export type AGENDAMENTOFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    /**
+     * Filter, which AGENDAMENTO to fetch.
+     */
+    where?: AGENDAMENTOWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AGENDAMENTOS to fetch.
+     */
+    orderBy?: AGENDAMENTOOrderByWithRelationInput | AGENDAMENTOOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AGENDAMENTOS.
+     */
+    cursor?: AGENDAMENTOWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AGENDAMENTOS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AGENDAMENTOS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AGENDAMENTOS.
+     */
+    distinct?: AGENDAMENTOScalarFieldEnum | AGENDAMENTOScalarFieldEnum[]
+  }
+
+  /**
+   * AGENDAMENTO findMany
+   */
+  export type AGENDAMENTOFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    /**
+     * Filter, which AGENDAMENTOS to fetch.
+     */
+    where?: AGENDAMENTOWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AGENDAMENTOS to fetch.
+     */
+    orderBy?: AGENDAMENTOOrderByWithRelationInput | AGENDAMENTOOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AGENDAMENTOS.
+     */
+    cursor?: AGENDAMENTOWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AGENDAMENTOS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AGENDAMENTOS.
+     */
+    skip?: number
+    distinct?: AGENDAMENTOScalarFieldEnum | AGENDAMENTOScalarFieldEnum[]
+  }
+
+  /**
+   * AGENDAMENTO create
+   */
+  export type AGENDAMENTOCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AGENDAMENTO.
+     */
+    data: XOR<AGENDAMENTOCreateInput, AGENDAMENTOUncheckedCreateInput>
+  }
+
+  /**
+   * AGENDAMENTO createMany
+   */
+  export type AGENDAMENTOCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AGENDAMENTOS.
+     */
+    data: AGENDAMENTOCreateManyInput | AGENDAMENTOCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AGENDAMENTO createManyAndReturn
+   */
+  export type AGENDAMENTOCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * The data used to create many AGENDAMENTOS.
+     */
+    data: AGENDAMENTOCreateManyInput | AGENDAMENTOCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AGENDAMENTO update
+   */
+  export type AGENDAMENTOUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AGENDAMENTO.
+     */
+    data: XOR<AGENDAMENTOUpdateInput, AGENDAMENTOUncheckedUpdateInput>
+    /**
+     * Choose, which AGENDAMENTO to update.
+     */
+    where: AGENDAMENTOWhereUniqueInput
+  }
+
+  /**
+   * AGENDAMENTO updateMany
+   */
+  export type AGENDAMENTOUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AGENDAMENTOS.
+     */
+    data: XOR<AGENDAMENTOUpdateManyMutationInput, AGENDAMENTOUncheckedUpdateManyInput>
+    /**
+     * Filter which AGENDAMENTOS to update
+     */
+    where?: AGENDAMENTOWhereInput
+    /**
+     * Limit how many AGENDAMENTOS to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AGENDAMENTO updateManyAndReturn
+   */
+  export type AGENDAMENTOUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * The data used to update AGENDAMENTOS.
+     */
+    data: XOR<AGENDAMENTOUpdateManyMutationInput, AGENDAMENTOUncheckedUpdateManyInput>
+    /**
+     * Filter which AGENDAMENTOS to update
+     */
+    where?: AGENDAMENTOWhereInput
+    /**
+     * Limit how many AGENDAMENTOS to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AGENDAMENTO upsert
+   */
+  export type AGENDAMENTOUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AGENDAMENTO to update in case it exists.
+     */
+    where: AGENDAMENTOWhereUniqueInput
+    /**
+     * In case the AGENDAMENTO found by the `where` argument doesn't exist, create a new AGENDAMENTO with this data.
+     */
+    create: XOR<AGENDAMENTOCreateInput, AGENDAMENTOUncheckedCreateInput>
+    /**
+     * In case the AGENDAMENTO was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AGENDAMENTOUpdateInput, AGENDAMENTOUncheckedUpdateInput>
+  }
+
+  /**
+   * AGENDAMENTO delete
+   */
+  export type AGENDAMENTODeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
+    /**
+     * Filter which AGENDAMENTO to delete.
+     */
+    where: AGENDAMENTOWhereUniqueInput
+  }
+
+  /**
+   * AGENDAMENTO deleteMany
+   */
+  export type AGENDAMENTODeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AGENDAMENTOS to delete
+     */
+    where?: AGENDAMENTOWhereInput
+    /**
+     * Limit how many AGENDAMENTOS to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AGENDAMENTO without action
+   */
+  export type AGENDAMENTODefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AGENDAMENTO
+     */
+    select?: AGENDAMENTOSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AGENDAMENTO
+     */
+    omit?: AGENDAMENTOOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AGENDAMENTOInclude<ExtArgs> | null
   }
 
 
@@ -5447,6 +7009,21 @@ export namespace Prisma {
   };
 
   export type PRODUCTScalarFieldEnum = (typeof PRODUCTScalarFieldEnum)[keyof typeof PRODUCTScalarFieldEnum]
+
+
+  export const AGENDAMENTOScalarFieldEnum: {
+    id: 'id',
+    clientId: 'clientId',
+    farmerId: 'farmerId',
+    productId: 'productId',
+    quantity: 'quantity',
+    totalPrice: 'totalPrice',
+    status: 'status',
+    scheduledFor: 'scheduledFor',
+    createdAt: 'createdAt'
+  };
+
+  export type AGENDAMENTOScalarFieldEnum = (typeof AGENDAMENTOScalarFieldEnum)[keyof typeof AGENDAMENTOScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5552,6 +7129,9 @@ export namespace Prisma {
     imgUrl?: StringFilter<"user"> | string
     contact?: StringFilter<"user"> | string
     contactType?: IntFilter<"user"> | number
+    products?: PRODUCTListRelationFilter
+    agendamentosCliente?: AGENDAMENTOListRelationFilter
+    agendamentosAgricultor?: AGENDAMENTOListRelationFilter
   }
 
   export type userOrderByWithRelationInput = {
@@ -5567,6 +7147,9 @@ export namespace Prisma {
     imgUrl?: SortOrder
     contact?: SortOrder
     contactType?: SortOrder
+    products?: PRODUCTOrderByRelationAggregateInput
+    agendamentosCliente?: AGENDAMENTOOrderByRelationAggregateInput
+    agendamentosAgricultor?: AGENDAMENTOOrderByRelationAggregateInput
   }
 
   export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -5585,6 +7168,9 @@ export namespace Prisma {
     imgUrl?: StringFilter<"user"> | string
     contact?: StringFilter<"user"> | string
     contactType?: IntFilter<"user"> | number
+    products?: PRODUCTListRelationFilter
+    agendamentosCliente?: AGENDAMENTOListRelationFilter
+    agendamentosAgricultor?: AGENDAMENTOListRelationFilter
   }, "id" | "email">
 
   export type userOrderByWithAggregationInput = {
@@ -5740,6 +7326,8 @@ export namespace Prisma {
     productState?: BoolFilter<"PRODUCT"> | boolean
     harvest?: StringFilter<"PRODUCT"> | string
     unityType?: IntFilter<"PRODUCT"> | number
+    owner?: XOR<UserScalarRelationFilter, userWhereInput>
+    agendamentos?: AGENDAMENTOListRelationFilter
   }
 
   export type PRODUCTOrderByWithRelationInput = {
@@ -5755,6 +7343,8 @@ export namespace Prisma {
     productState?: SortOrder
     harvest?: SortOrder
     unityType?: SortOrder
+    owner?: userOrderByWithRelationInput
+    agendamentos?: AGENDAMENTOOrderByRelationAggregateInput
   }
 
   export type PRODUCTWhereUniqueInput = Prisma.AtLeast<{
@@ -5773,6 +7363,8 @@ export namespace Prisma {
     productState?: BoolFilter<"PRODUCT"> | boolean
     harvest?: StringFilter<"PRODUCT"> | string
     unityType?: IntFilter<"PRODUCT"> | number
+    owner?: XOR<UserScalarRelationFilter, userWhereInput>
+    agendamentos?: AGENDAMENTOListRelationFilter
   }, "id">
 
   export type PRODUCTOrderByWithAggregationInput = {
@@ -5813,6 +7405,89 @@ export namespace Prisma {
     unityType?: IntWithAggregatesFilter<"PRODUCT"> | number
   }
 
+  export type AGENDAMENTOWhereInput = {
+    AND?: AGENDAMENTOWhereInput | AGENDAMENTOWhereInput[]
+    OR?: AGENDAMENTOWhereInput[]
+    NOT?: AGENDAMENTOWhereInput | AGENDAMENTOWhereInput[]
+    id?: StringFilter<"AGENDAMENTO"> | string
+    clientId?: StringFilter<"AGENDAMENTO"> | string
+    farmerId?: StringFilter<"AGENDAMENTO"> | string
+    productId?: StringFilter<"AGENDAMENTO"> | string
+    quantity?: IntFilter<"AGENDAMENTO"> | number
+    totalPrice?: FloatFilter<"AGENDAMENTO"> | number
+    status?: IntFilter<"AGENDAMENTO"> | number
+    scheduledFor?: DateTimeFilter<"AGENDAMENTO"> | Date | string
+    createdAt?: DateTimeFilter<"AGENDAMENTO"> | Date | string
+    client?: XOR<UserScalarRelationFilter, userWhereInput>
+    farmer?: XOR<UserScalarRelationFilter, userWhereInput>
+    product?: XOR<PRODUCTScalarRelationFilter, PRODUCTWhereInput>
+  }
+
+  export type AGENDAMENTOOrderByWithRelationInput = {
+    id?: SortOrder
+    clientId?: SortOrder
+    farmerId?: SortOrder
+    productId?: SortOrder
+    quantity?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+    scheduledFor?: SortOrder
+    createdAt?: SortOrder
+    client?: userOrderByWithRelationInput
+    farmer?: userOrderByWithRelationInput
+    product?: PRODUCTOrderByWithRelationInput
+  }
+
+  export type AGENDAMENTOWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AGENDAMENTOWhereInput | AGENDAMENTOWhereInput[]
+    OR?: AGENDAMENTOWhereInput[]
+    NOT?: AGENDAMENTOWhereInput | AGENDAMENTOWhereInput[]
+    clientId?: StringFilter<"AGENDAMENTO"> | string
+    farmerId?: StringFilter<"AGENDAMENTO"> | string
+    productId?: StringFilter<"AGENDAMENTO"> | string
+    quantity?: IntFilter<"AGENDAMENTO"> | number
+    totalPrice?: FloatFilter<"AGENDAMENTO"> | number
+    status?: IntFilter<"AGENDAMENTO"> | number
+    scheduledFor?: DateTimeFilter<"AGENDAMENTO"> | Date | string
+    createdAt?: DateTimeFilter<"AGENDAMENTO"> | Date | string
+    client?: XOR<UserScalarRelationFilter, userWhereInput>
+    farmer?: XOR<UserScalarRelationFilter, userWhereInput>
+    product?: XOR<PRODUCTScalarRelationFilter, PRODUCTWhereInput>
+  }, "id">
+
+  export type AGENDAMENTOOrderByWithAggregationInput = {
+    id?: SortOrder
+    clientId?: SortOrder
+    farmerId?: SortOrder
+    productId?: SortOrder
+    quantity?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+    scheduledFor?: SortOrder
+    createdAt?: SortOrder
+    _count?: AGENDAMENTOCountOrderByAggregateInput
+    _avg?: AGENDAMENTOAvgOrderByAggregateInput
+    _max?: AGENDAMENTOMaxOrderByAggregateInput
+    _min?: AGENDAMENTOMinOrderByAggregateInput
+    _sum?: AGENDAMENTOSumOrderByAggregateInput
+  }
+
+  export type AGENDAMENTOScalarWhereWithAggregatesInput = {
+    AND?: AGENDAMENTOScalarWhereWithAggregatesInput | AGENDAMENTOScalarWhereWithAggregatesInput[]
+    OR?: AGENDAMENTOScalarWhereWithAggregatesInput[]
+    NOT?: AGENDAMENTOScalarWhereWithAggregatesInput | AGENDAMENTOScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AGENDAMENTO"> | string
+    clientId?: StringWithAggregatesFilter<"AGENDAMENTO"> | string
+    farmerId?: StringWithAggregatesFilter<"AGENDAMENTO"> | string
+    productId?: StringWithAggregatesFilter<"AGENDAMENTO"> | string
+    quantity?: IntWithAggregatesFilter<"AGENDAMENTO"> | number
+    totalPrice?: FloatWithAggregatesFilter<"AGENDAMENTO"> | number
+    status?: IntWithAggregatesFilter<"AGENDAMENTO"> | number
+    scheduledFor?: DateTimeWithAggregatesFilter<"AGENDAMENTO"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"AGENDAMENTO"> | Date | string
+  }
+
   export type userCreateInput = {
     id?: string
     name: string
@@ -5820,12 +7495,15 @@ export namespace Prisma {
     email: string
     password: string
     userType: number
-    createDate: Date | string
+    createDate?: Date | string
     sellings: number
     rate: number
     imgUrl: string
     contact: string
     contactType: number
+    products?: PRODUCTCreateNestedManyWithoutOwnerInput
+    agendamentosCliente?: AGENDAMENTOCreateNestedManyWithoutClientInput
+    agendamentosAgricultor?: AGENDAMENTOCreateNestedManyWithoutFarmerInput
   }
 
   export type userUncheckedCreateInput = {
@@ -5835,12 +7513,15 @@ export namespace Prisma {
     email: string
     password: string
     userType: number
-    createDate: Date | string
+    createDate?: Date | string
     sellings: number
     rate: number
     imgUrl: string
     contact: string
     contactType: number
+    products?: PRODUCTUncheckedCreateNestedManyWithoutOwnerInput
+    agendamentosCliente?: AGENDAMENTOUncheckedCreateNestedManyWithoutClientInput
+    agendamentosAgricultor?: AGENDAMENTOUncheckedCreateNestedManyWithoutFarmerInput
   }
 
   export type userUpdateInput = {
@@ -5856,6 +7537,9 @@ export namespace Prisma {
     imgUrl?: StringFieldUpdateOperationsInput | string
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
+    products?: PRODUCTUpdateManyWithoutOwnerNestedInput
+    agendamentosCliente?: AGENDAMENTOUpdateManyWithoutClientNestedInput
+    agendamentosAgricultor?: AGENDAMENTOUpdateManyWithoutFarmerNestedInput
   }
 
   export type userUncheckedUpdateInput = {
@@ -5871,6 +7555,9 @@ export namespace Prisma {
     imgUrl?: StringFieldUpdateOperationsInput | string
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
+    products?: PRODUCTUncheckedUpdateManyWithoutOwnerNestedInput
+    agendamentosCliente?: AGENDAMENTOUncheckedUpdateManyWithoutClientNestedInput
+    agendamentosAgricultor?: AGENDAMENTOUncheckedUpdateManyWithoutFarmerNestedInput
   }
 
   export type userCreateManyInput = {
@@ -5880,7 +7567,7 @@ export namespace Prisma {
     email: string
     password: string
     userType: number
-    createDate: Date | string
+    createDate?: Date | string
     sellings: number
     rate: number
     imgUrl: string
@@ -6029,13 +7716,14 @@ export namespace Prisma {
     price: number
     imgUrl: string
     quantity: number
-    ownerId: string
     type: number
     harvestDate: Date | string
     harvestType: number
     productState: boolean
     harvest: string
     unityType: number
+    owner: userCreateNestedOneWithoutProductsInput
+    agendamentos?: AGENDAMENTOCreateNestedManyWithoutProductInput
   }
 
   export type PRODUCTUncheckedCreateInput = {
@@ -6051,6 +7739,7 @@ export namespace Prisma {
     productState: boolean
     harvest: string
     unityType: number
+    agendamentos?: AGENDAMENTOUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type PRODUCTUpdateInput = {
@@ -6059,13 +7748,14 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    ownerId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
     harvestType?: IntFieldUpdateOperationsInput | number
     productState?: BoolFieldUpdateOperationsInput | boolean
     harvest?: StringFieldUpdateOperationsInput | string
     unityType?: IntFieldUpdateOperationsInput | number
+    owner?: userUpdateOneRequiredWithoutProductsNestedInput
+    agendamentos?: AGENDAMENTOUpdateManyWithoutProductNestedInput
   }
 
   export type PRODUCTUncheckedUpdateInput = {
@@ -6081,6 +7771,7 @@ export namespace Prisma {
     productState?: BoolFieldUpdateOperationsInput | boolean
     harvest?: StringFieldUpdateOperationsInput | string
     unityType?: IntFieldUpdateOperationsInput | number
+    agendamentos?: AGENDAMENTOUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type PRODUCTCreateManyInput = {
@@ -6104,7 +7795,6 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    ownerId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
     harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
     harvestType?: IntFieldUpdateOperationsInput | number
@@ -6126,6 +7816,87 @@ export namespace Prisma {
     productState?: BoolFieldUpdateOperationsInput | boolean
     harvest?: StringFieldUpdateOperationsInput | string
     unityType?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AGENDAMENTOCreateInput = {
+    id?: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+    client: userCreateNestedOneWithoutAgendamentosClienteInput
+    farmer: userCreateNestedOneWithoutAgendamentosAgricultorInput
+    product: PRODUCTCreateNestedOneWithoutAgendamentosInput
+  }
+
+  export type AGENDAMENTOUncheckedCreateInput = {
+    id?: string
+    clientId: string
+    farmerId: string
+    productId: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AGENDAMENTOUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: userUpdateOneRequiredWithoutAgendamentosClienteNestedInput
+    farmer?: userUpdateOneRequiredWithoutAgendamentosAgricultorNestedInput
+    product?: PRODUCTUpdateOneRequiredWithoutAgendamentosNestedInput
+  }
+
+  export type AGENDAMENTOUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    farmerId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AGENDAMENTOCreateManyInput = {
+    id?: string
+    clientId: string
+    farmerId: string
+    productId: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AGENDAMENTOUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AGENDAMENTOUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    farmerId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6174,6 +7945,26 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type PRODUCTListRelationFilter = {
+    every?: PRODUCTWhereInput
+    some?: PRODUCTWhereInput
+    none?: PRODUCTWhereInput
+  }
+
+  export type AGENDAMENTOListRelationFilter = {
+    every?: AGENDAMENTOWhereInput
+    some?: AGENDAMENTOWhereInput
+    none?: AGENDAMENTOWhereInput
+  }
+
+  export type PRODUCTOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AGENDAMENTOOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type userCountOrderByAggregateInput = {
@@ -6349,6 +8140,11 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type UserScalarRelationFilter = {
+    is?: userWhereInput
+    isNot?: userWhereInput
+  }
+
   export type PRODUCTCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -6418,6 +8214,101 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type PRODUCTScalarRelationFilter = {
+    is?: PRODUCTWhereInput
+    isNot?: PRODUCTWhereInput
+  }
+
+  export type AGENDAMENTOCountOrderByAggregateInput = {
+    id?: SortOrder
+    clientId?: SortOrder
+    farmerId?: SortOrder
+    productId?: SortOrder
+    quantity?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+    scheduledFor?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AGENDAMENTOAvgOrderByAggregateInput = {
+    quantity?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+  }
+
+  export type AGENDAMENTOMaxOrderByAggregateInput = {
+    id?: SortOrder
+    clientId?: SortOrder
+    farmerId?: SortOrder
+    productId?: SortOrder
+    quantity?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+    scheduledFor?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AGENDAMENTOMinOrderByAggregateInput = {
+    id?: SortOrder
+    clientId?: SortOrder
+    farmerId?: SortOrder
+    productId?: SortOrder
+    quantity?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+    scheduledFor?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AGENDAMENTOSumOrderByAggregateInput = {
+    quantity?: SortOrder
+    totalPrice?: SortOrder
+    status?: SortOrder
+  }
+
+  export type PRODUCTCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<PRODUCTCreateWithoutOwnerInput, PRODUCTUncheckedCreateWithoutOwnerInput> | PRODUCTCreateWithoutOwnerInput[] | PRODUCTUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: PRODUCTCreateOrConnectWithoutOwnerInput | PRODUCTCreateOrConnectWithoutOwnerInput[]
+    createMany?: PRODUCTCreateManyOwnerInputEnvelope
+    connect?: PRODUCTWhereUniqueInput | PRODUCTWhereUniqueInput[]
+  }
+
+  export type AGENDAMENTOCreateNestedManyWithoutClientInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutClientInput, AGENDAMENTOUncheckedCreateWithoutClientInput> | AGENDAMENTOCreateWithoutClientInput[] | AGENDAMENTOUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutClientInput | AGENDAMENTOCreateOrConnectWithoutClientInput[]
+    createMany?: AGENDAMENTOCreateManyClientInputEnvelope
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+  }
+
+  export type AGENDAMENTOCreateNestedManyWithoutFarmerInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutFarmerInput, AGENDAMENTOUncheckedCreateWithoutFarmerInput> | AGENDAMENTOCreateWithoutFarmerInput[] | AGENDAMENTOUncheckedCreateWithoutFarmerInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutFarmerInput | AGENDAMENTOCreateOrConnectWithoutFarmerInput[]
+    createMany?: AGENDAMENTOCreateManyFarmerInputEnvelope
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+  }
+
+  export type PRODUCTUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<PRODUCTCreateWithoutOwnerInput, PRODUCTUncheckedCreateWithoutOwnerInput> | PRODUCTCreateWithoutOwnerInput[] | PRODUCTUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: PRODUCTCreateOrConnectWithoutOwnerInput | PRODUCTCreateOrConnectWithoutOwnerInput[]
+    createMany?: PRODUCTCreateManyOwnerInputEnvelope
+    connect?: PRODUCTWhereUniqueInput | PRODUCTWhereUniqueInput[]
+  }
+
+  export type AGENDAMENTOUncheckedCreateNestedManyWithoutClientInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutClientInput, AGENDAMENTOUncheckedCreateWithoutClientInput> | AGENDAMENTOCreateWithoutClientInput[] | AGENDAMENTOUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutClientInput | AGENDAMENTOCreateOrConnectWithoutClientInput[]
+    createMany?: AGENDAMENTOCreateManyClientInputEnvelope
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+  }
+
+  export type AGENDAMENTOUncheckedCreateNestedManyWithoutFarmerInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutFarmerInput, AGENDAMENTOUncheckedCreateWithoutFarmerInput> | AGENDAMENTOCreateWithoutFarmerInput[] | AGENDAMENTOUncheckedCreateWithoutFarmerInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutFarmerInput | AGENDAMENTOCreateOrConnectWithoutFarmerInput[]
+    createMany?: AGENDAMENTOCreateManyFarmerInputEnvelope
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -6442,8 +8333,190 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type PRODUCTUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<PRODUCTCreateWithoutOwnerInput, PRODUCTUncheckedCreateWithoutOwnerInput> | PRODUCTCreateWithoutOwnerInput[] | PRODUCTUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: PRODUCTCreateOrConnectWithoutOwnerInput | PRODUCTCreateOrConnectWithoutOwnerInput[]
+    upsert?: PRODUCTUpsertWithWhereUniqueWithoutOwnerInput | PRODUCTUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: PRODUCTCreateManyOwnerInputEnvelope
+    set?: PRODUCTWhereUniqueInput | PRODUCTWhereUniqueInput[]
+    disconnect?: PRODUCTWhereUniqueInput | PRODUCTWhereUniqueInput[]
+    delete?: PRODUCTWhereUniqueInput | PRODUCTWhereUniqueInput[]
+    connect?: PRODUCTWhereUniqueInput | PRODUCTWhereUniqueInput[]
+    update?: PRODUCTUpdateWithWhereUniqueWithoutOwnerInput | PRODUCTUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: PRODUCTUpdateManyWithWhereWithoutOwnerInput | PRODUCTUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: PRODUCTScalarWhereInput | PRODUCTScalarWhereInput[]
+  }
+
+  export type AGENDAMENTOUpdateManyWithoutClientNestedInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutClientInput, AGENDAMENTOUncheckedCreateWithoutClientInput> | AGENDAMENTOCreateWithoutClientInput[] | AGENDAMENTOUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutClientInput | AGENDAMENTOCreateOrConnectWithoutClientInput[]
+    upsert?: AGENDAMENTOUpsertWithWhereUniqueWithoutClientInput | AGENDAMENTOUpsertWithWhereUniqueWithoutClientInput[]
+    createMany?: AGENDAMENTOCreateManyClientInputEnvelope
+    set?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    disconnect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    delete?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    update?: AGENDAMENTOUpdateWithWhereUniqueWithoutClientInput | AGENDAMENTOUpdateWithWhereUniqueWithoutClientInput[]
+    updateMany?: AGENDAMENTOUpdateManyWithWhereWithoutClientInput | AGENDAMENTOUpdateManyWithWhereWithoutClientInput[]
+    deleteMany?: AGENDAMENTOScalarWhereInput | AGENDAMENTOScalarWhereInput[]
+  }
+
+  export type AGENDAMENTOUpdateManyWithoutFarmerNestedInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutFarmerInput, AGENDAMENTOUncheckedCreateWithoutFarmerInput> | AGENDAMENTOCreateWithoutFarmerInput[] | AGENDAMENTOUncheckedCreateWithoutFarmerInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutFarmerInput | AGENDAMENTOCreateOrConnectWithoutFarmerInput[]
+    upsert?: AGENDAMENTOUpsertWithWhereUniqueWithoutFarmerInput | AGENDAMENTOUpsertWithWhereUniqueWithoutFarmerInput[]
+    createMany?: AGENDAMENTOCreateManyFarmerInputEnvelope
+    set?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    disconnect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    delete?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    update?: AGENDAMENTOUpdateWithWhereUniqueWithoutFarmerInput | AGENDAMENTOUpdateWithWhereUniqueWithoutFarmerInput[]
+    updateMany?: AGENDAMENTOUpdateManyWithWhereWithoutFarmerInput | AGENDAMENTOUpdateManyWithWhereWithoutFarmerInput[]
+    deleteMany?: AGENDAMENTOScalarWhereInput | AGENDAMENTOScalarWhereInput[]
+  }
+
+  export type PRODUCTUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<PRODUCTCreateWithoutOwnerInput, PRODUCTUncheckedCreateWithoutOwnerInput> | PRODUCTCreateWithoutOwnerInput[] | PRODUCTUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: PRODUCTCreateOrConnectWithoutOwnerInput | PRODUCTCreateOrConnectWithoutOwnerInput[]
+    upsert?: PRODUCTUpsertWithWhereUniqueWithoutOwnerInput | PRODUCTUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: PRODUCTCreateManyOwnerInputEnvelope
+    set?: PRODUCTWhereUniqueInput | PRODUCTWhereUniqueInput[]
+    disconnect?: PRODUCTWhereUniqueInput | PRODUCTWhereUniqueInput[]
+    delete?: PRODUCTWhereUniqueInput | PRODUCTWhereUniqueInput[]
+    connect?: PRODUCTWhereUniqueInput | PRODUCTWhereUniqueInput[]
+    update?: PRODUCTUpdateWithWhereUniqueWithoutOwnerInput | PRODUCTUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: PRODUCTUpdateManyWithWhereWithoutOwnerInput | PRODUCTUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: PRODUCTScalarWhereInput | PRODUCTScalarWhereInput[]
+  }
+
+  export type AGENDAMENTOUncheckedUpdateManyWithoutClientNestedInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutClientInput, AGENDAMENTOUncheckedCreateWithoutClientInput> | AGENDAMENTOCreateWithoutClientInput[] | AGENDAMENTOUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutClientInput | AGENDAMENTOCreateOrConnectWithoutClientInput[]
+    upsert?: AGENDAMENTOUpsertWithWhereUniqueWithoutClientInput | AGENDAMENTOUpsertWithWhereUniqueWithoutClientInput[]
+    createMany?: AGENDAMENTOCreateManyClientInputEnvelope
+    set?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    disconnect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    delete?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    update?: AGENDAMENTOUpdateWithWhereUniqueWithoutClientInput | AGENDAMENTOUpdateWithWhereUniqueWithoutClientInput[]
+    updateMany?: AGENDAMENTOUpdateManyWithWhereWithoutClientInput | AGENDAMENTOUpdateManyWithWhereWithoutClientInput[]
+    deleteMany?: AGENDAMENTOScalarWhereInput | AGENDAMENTOScalarWhereInput[]
+  }
+
+  export type AGENDAMENTOUncheckedUpdateManyWithoutFarmerNestedInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutFarmerInput, AGENDAMENTOUncheckedCreateWithoutFarmerInput> | AGENDAMENTOCreateWithoutFarmerInput[] | AGENDAMENTOUncheckedCreateWithoutFarmerInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutFarmerInput | AGENDAMENTOCreateOrConnectWithoutFarmerInput[]
+    upsert?: AGENDAMENTOUpsertWithWhereUniqueWithoutFarmerInput | AGENDAMENTOUpsertWithWhereUniqueWithoutFarmerInput[]
+    createMany?: AGENDAMENTOCreateManyFarmerInputEnvelope
+    set?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    disconnect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    delete?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    update?: AGENDAMENTOUpdateWithWhereUniqueWithoutFarmerInput | AGENDAMENTOUpdateWithWhereUniqueWithoutFarmerInput[]
+    updateMany?: AGENDAMENTOUpdateManyWithWhereWithoutFarmerInput | AGENDAMENTOUpdateManyWithWhereWithoutFarmerInput[]
+    deleteMany?: AGENDAMENTOScalarWhereInput | AGENDAMENTOScalarWhereInput[]
+  }
+
+  export type userCreateNestedOneWithoutProductsInput = {
+    create?: XOR<userCreateWithoutProductsInput, userUncheckedCreateWithoutProductsInput>
+    connectOrCreate?: userCreateOrConnectWithoutProductsInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type AGENDAMENTOCreateNestedManyWithoutProductInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutProductInput, AGENDAMENTOUncheckedCreateWithoutProductInput> | AGENDAMENTOCreateWithoutProductInput[] | AGENDAMENTOUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutProductInput | AGENDAMENTOCreateOrConnectWithoutProductInput[]
+    createMany?: AGENDAMENTOCreateManyProductInputEnvelope
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+  }
+
+  export type AGENDAMENTOUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutProductInput, AGENDAMENTOUncheckedCreateWithoutProductInput> | AGENDAMENTOCreateWithoutProductInput[] | AGENDAMENTOUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutProductInput | AGENDAMENTOCreateOrConnectWithoutProductInput[]
+    createMany?: AGENDAMENTOCreateManyProductInputEnvelope
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type userUpdateOneRequiredWithoutProductsNestedInput = {
+    create?: XOR<userCreateWithoutProductsInput, userUncheckedCreateWithoutProductsInput>
+    connectOrCreate?: userCreateOrConnectWithoutProductsInput
+    upsert?: userUpsertWithoutProductsInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutProductsInput, userUpdateWithoutProductsInput>, userUncheckedUpdateWithoutProductsInput>
+  }
+
+  export type AGENDAMENTOUpdateManyWithoutProductNestedInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutProductInput, AGENDAMENTOUncheckedCreateWithoutProductInput> | AGENDAMENTOCreateWithoutProductInput[] | AGENDAMENTOUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutProductInput | AGENDAMENTOCreateOrConnectWithoutProductInput[]
+    upsert?: AGENDAMENTOUpsertWithWhereUniqueWithoutProductInput | AGENDAMENTOUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: AGENDAMENTOCreateManyProductInputEnvelope
+    set?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    disconnect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    delete?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    update?: AGENDAMENTOUpdateWithWhereUniqueWithoutProductInput | AGENDAMENTOUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: AGENDAMENTOUpdateManyWithWhereWithoutProductInput | AGENDAMENTOUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: AGENDAMENTOScalarWhereInput | AGENDAMENTOScalarWhereInput[]
+  }
+
+  export type AGENDAMENTOUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<AGENDAMENTOCreateWithoutProductInput, AGENDAMENTOUncheckedCreateWithoutProductInput> | AGENDAMENTOCreateWithoutProductInput[] | AGENDAMENTOUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: AGENDAMENTOCreateOrConnectWithoutProductInput | AGENDAMENTOCreateOrConnectWithoutProductInput[]
+    upsert?: AGENDAMENTOUpsertWithWhereUniqueWithoutProductInput | AGENDAMENTOUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: AGENDAMENTOCreateManyProductInputEnvelope
+    set?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    disconnect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    delete?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
+    update?: AGENDAMENTOUpdateWithWhereUniqueWithoutProductInput | AGENDAMENTOUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: AGENDAMENTOUpdateManyWithWhereWithoutProductInput | AGENDAMENTOUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: AGENDAMENTOScalarWhereInput | AGENDAMENTOScalarWhereInput[]
+  }
+
+  export type userCreateNestedOneWithoutAgendamentosClienteInput = {
+    create?: XOR<userCreateWithoutAgendamentosClienteInput, userUncheckedCreateWithoutAgendamentosClienteInput>
+    connectOrCreate?: userCreateOrConnectWithoutAgendamentosClienteInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type userCreateNestedOneWithoutAgendamentosAgricultorInput = {
+    create?: XOR<userCreateWithoutAgendamentosAgricultorInput, userUncheckedCreateWithoutAgendamentosAgricultorInput>
+    connectOrCreate?: userCreateOrConnectWithoutAgendamentosAgricultorInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type PRODUCTCreateNestedOneWithoutAgendamentosInput = {
+    create?: XOR<PRODUCTCreateWithoutAgendamentosInput, PRODUCTUncheckedCreateWithoutAgendamentosInput>
+    connectOrCreate?: PRODUCTCreateOrConnectWithoutAgendamentosInput
+    connect?: PRODUCTWhereUniqueInput
+  }
+
+  export type userUpdateOneRequiredWithoutAgendamentosClienteNestedInput = {
+    create?: XOR<userCreateWithoutAgendamentosClienteInput, userUncheckedCreateWithoutAgendamentosClienteInput>
+    connectOrCreate?: userCreateOrConnectWithoutAgendamentosClienteInput
+    upsert?: userUpsertWithoutAgendamentosClienteInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutAgendamentosClienteInput, userUpdateWithoutAgendamentosClienteInput>, userUncheckedUpdateWithoutAgendamentosClienteInput>
+  }
+
+  export type userUpdateOneRequiredWithoutAgendamentosAgricultorNestedInput = {
+    create?: XOR<userCreateWithoutAgendamentosAgricultorInput, userUncheckedCreateWithoutAgendamentosAgricultorInput>
+    connectOrCreate?: userCreateOrConnectWithoutAgendamentosAgricultorInput
+    upsert?: userUpsertWithoutAgendamentosAgricultorInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutAgendamentosAgricultorInput, userUpdateWithoutAgendamentosAgricultorInput>, userUncheckedUpdateWithoutAgendamentosAgricultorInput>
+  }
+
+  export type PRODUCTUpdateOneRequiredWithoutAgendamentosNestedInput = {
+    create?: XOR<PRODUCTCreateWithoutAgendamentosInput, PRODUCTUncheckedCreateWithoutAgendamentosInput>
+    connectOrCreate?: PRODUCTCreateOrConnectWithoutAgendamentosInput
+    upsert?: PRODUCTUpsertWithoutAgendamentosInput
+    connect?: PRODUCTWhereUniqueInput
+    update?: XOR<XOR<PRODUCTUpdateToOneWithWhereWithoutAgendamentosInput, PRODUCTUpdateWithoutAgendamentosInput>, PRODUCTUncheckedUpdateWithoutAgendamentosInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6567,6 +8640,757 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type PRODUCTCreateWithoutOwnerInput = {
+    id?: string
+    name: string
+    price: number
+    imgUrl: string
+    quantity: number
+    type: number
+    harvestDate: Date | string
+    harvestType: number
+    productState: boolean
+    harvest: string
+    unityType: number
+    agendamentos?: AGENDAMENTOCreateNestedManyWithoutProductInput
+  }
+
+  export type PRODUCTUncheckedCreateWithoutOwnerInput = {
+    id?: string
+    name: string
+    price: number
+    imgUrl: string
+    quantity: number
+    type: number
+    harvestDate: Date | string
+    harvestType: number
+    productState: boolean
+    harvest: string
+    unityType: number
+    agendamentos?: AGENDAMENTOUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type PRODUCTCreateOrConnectWithoutOwnerInput = {
+    where: PRODUCTWhereUniqueInput
+    create: XOR<PRODUCTCreateWithoutOwnerInput, PRODUCTUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type PRODUCTCreateManyOwnerInputEnvelope = {
+    data: PRODUCTCreateManyOwnerInput | PRODUCTCreateManyOwnerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AGENDAMENTOCreateWithoutClientInput = {
+    id?: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+    farmer: userCreateNestedOneWithoutAgendamentosAgricultorInput
+    product: PRODUCTCreateNestedOneWithoutAgendamentosInput
+  }
+
+  export type AGENDAMENTOUncheckedCreateWithoutClientInput = {
+    id?: string
+    farmerId: string
+    productId: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AGENDAMENTOCreateOrConnectWithoutClientInput = {
+    where: AGENDAMENTOWhereUniqueInput
+    create: XOR<AGENDAMENTOCreateWithoutClientInput, AGENDAMENTOUncheckedCreateWithoutClientInput>
+  }
+
+  export type AGENDAMENTOCreateManyClientInputEnvelope = {
+    data: AGENDAMENTOCreateManyClientInput | AGENDAMENTOCreateManyClientInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AGENDAMENTOCreateWithoutFarmerInput = {
+    id?: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+    client: userCreateNestedOneWithoutAgendamentosClienteInput
+    product: PRODUCTCreateNestedOneWithoutAgendamentosInput
+  }
+
+  export type AGENDAMENTOUncheckedCreateWithoutFarmerInput = {
+    id?: string
+    clientId: string
+    productId: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AGENDAMENTOCreateOrConnectWithoutFarmerInput = {
+    where: AGENDAMENTOWhereUniqueInput
+    create: XOR<AGENDAMENTOCreateWithoutFarmerInput, AGENDAMENTOUncheckedCreateWithoutFarmerInput>
+  }
+
+  export type AGENDAMENTOCreateManyFarmerInputEnvelope = {
+    data: AGENDAMENTOCreateManyFarmerInput | AGENDAMENTOCreateManyFarmerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PRODUCTUpsertWithWhereUniqueWithoutOwnerInput = {
+    where: PRODUCTWhereUniqueInput
+    update: XOR<PRODUCTUpdateWithoutOwnerInput, PRODUCTUncheckedUpdateWithoutOwnerInput>
+    create: XOR<PRODUCTCreateWithoutOwnerInput, PRODUCTUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type PRODUCTUpdateWithWhereUniqueWithoutOwnerInput = {
+    where: PRODUCTWhereUniqueInput
+    data: XOR<PRODUCTUpdateWithoutOwnerInput, PRODUCTUncheckedUpdateWithoutOwnerInput>
+  }
+
+  export type PRODUCTUpdateManyWithWhereWithoutOwnerInput = {
+    where: PRODUCTScalarWhereInput
+    data: XOR<PRODUCTUpdateManyMutationInput, PRODUCTUncheckedUpdateManyWithoutOwnerInput>
+  }
+
+  export type PRODUCTScalarWhereInput = {
+    AND?: PRODUCTScalarWhereInput | PRODUCTScalarWhereInput[]
+    OR?: PRODUCTScalarWhereInput[]
+    NOT?: PRODUCTScalarWhereInput | PRODUCTScalarWhereInput[]
+    id?: StringFilter<"PRODUCT"> | string
+    name?: StringFilter<"PRODUCT"> | string
+    price?: FloatFilter<"PRODUCT"> | number
+    imgUrl?: StringFilter<"PRODUCT"> | string
+    quantity?: IntFilter<"PRODUCT"> | number
+    ownerId?: StringFilter<"PRODUCT"> | string
+    type?: IntFilter<"PRODUCT"> | number
+    harvestDate?: DateTimeFilter<"PRODUCT"> | Date | string
+    harvestType?: IntFilter<"PRODUCT"> | number
+    productState?: BoolFilter<"PRODUCT"> | boolean
+    harvest?: StringFilter<"PRODUCT"> | string
+    unityType?: IntFilter<"PRODUCT"> | number
+  }
+
+  export type AGENDAMENTOUpsertWithWhereUniqueWithoutClientInput = {
+    where: AGENDAMENTOWhereUniqueInput
+    update: XOR<AGENDAMENTOUpdateWithoutClientInput, AGENDAMENTOUncheckedUpdateWithoutClientInput>
+    create: XOR<AGENDAMENTOCreateWithoutClientInput, AGENDAMENTOUncheckedCreateWithoutClientInput>
+  }
+
+  export type AGENDAMENTOUpdateWithWhereUniqueWithoutClientInput = {
+    where: AGENDAMENTOWhereUniqueInput
+    data: XOR<AGENDAMENTOUpdateWithoutClientInput, AGENDAMENTOUncheckedUpdateWithoutClientInput>
+  }
+
+  export type AGENDAMENTOUpdateManyWithWhereWithoutClientInput = {
+    where: AGENDAMENTOScalarWhereInput
+    data: XOR<AGENDAMENTOUpdateManyMutationInput, AGENDAMENTOUncheckedUpdateManyWithoutClientInput>
+  }
+
+  export type AGENDAMENTOScalarWhereInput = {
+    AND?: AGENDAMENTOScalarWhereInput | AGENDAMENTOScalarWhereInput[]
+    OR?: AGENDAMENTOScalarWhereInput[]
+    NOT?: AGENDAMENTOScalarWhereInput | AGENDAMENTOScalarWhereInput[]
+    id?: StringFilter<"AGENDAMENTO"> | string
+    clientId?: StringFilter<"AGENDAMENTO"> | string
+    farmerId?: StringFilter<"AGENDAMENTO"> | string
+    productId?: StringFilter<"AGENDAMENTO"> | string
+    quantity?: IntFilter<"AGENDAMENTO"> | number
+    totalPrice?: FloatFilter<"AGENDAMENTO"> | number
+    status?: IntFilter<"AGENDAMENTO"> | number
+    scheduledFor?: DateTimeFilter<"AGENDAMENTO"> | Date | string
+    createdAt?: DateTimeFilter<"AGENDAMENTO"> | Date | string
+  }
+
+  export type AGENDAMENTOUpsertWithWhereUniqueWithoutFarmerInput = {
+    where: AGENDAMENTOWhereUniqueInput
+    update: XOR<AGENDAMENTOUpdateWithoutFarmerInput, AGENDAMENTOUncheckedUpdateWithoutFarmerInput>
+    create: XOR<AGENDAMENTOCreateWithoutFarmerInput, AGENDAMENTOUncheckedCreateWithoutFarmerInput>
+  }
+
+  export type AGENDAMENTOUpdateWithWhereUniqueWithoutFarmerInput = {
+    where: AGENDAMENTOWhereUniqueInput
+    data: XOR<AGENDAMENTOUpdateWithoutFarmerInput, AGENDAMENTOUncheckedUpdateWithoutFarmerInput>
+  }
+
+  export type AGENDAMENTOUpdateManyWithWhereWithoutFarmerInput = {
+    where: AGENDAMENTOScalarWhereInput
+    data: XOR<AGENDAMENTOUpdateManyMutationInput, AGENDAMENTOUncheckedUpdateManyWithoutFarmerInput>
+  }
+
+  export type userCreateWithoutProductsInput = {
+    id?: string
+    name: string
+    cpfcnpj: string
+    email: string
+    password: string
+    userType: number
+    createDate?: Date | string
+    sellings: number
+    rate: number
+    imgUrl: string
+    contact: string
+    contactType: number
+    agendamentosCliente?: AGENDAMENTOCreateNestedManyWithoutClientInput
+    agendamentosAgricultor?: AGENDAMENTOCreateNestedManyWithoutFarmerInput
+  }
+
+  export type userUncheckedCreateWithoutProductsInput = {
+    id?: string
+    name: string
+    cpfcnpj: string
+    email: string
+    password: string
+    userType: number
+    createDate?: Date | string
+    sellings: number
+    rate: number
+    imgUrl: string
+    contact: string
+    contactType: number
+    agendamentosCliente?: AGENDAMENTOUncheckedCreateNestedManyWithoutClientInput
+    agendamentosAgricultor?: AGENDAMENTOUncheckedCreateNestedManyWithoutFarmerInput
+  }
+
+  export type userCreateOrConnectWithoutProductsInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutProductsInput, userUncheckedCreateWithoutProductsInput>
+  }
+
+  export type AGENDAMENTOCreateWithoutProductInput = {
+    id?: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+    client: userCreateNestedOneWithoutAgendamentosClienteInput
+    farmer: userCreateNestedOneWithoutAgendamentosAgricultorInput
+  }
+
+  export type AGENDAMENTOUncheckedCreateWithoutProductInput = {
+    id?: string
+    clientId: string
+    farmerId: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AGENDAMENTOCreateOrConnectWithoutProductInput = {
+    where: AGENDAMENTOWhereUniqueInput
+    create: XOR<AGENDAMENTOCreateWithoutProductInput, AGENDAMENTOUncheckedCreateWithoutProductInput>
+  }
+
+  export type AGENDAMENTOCreateManyProductInputEnvelope = {
+    data: AGENDAMENTOCreateManyProductInput | AGENDAMENTOCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type userUpsertWithoutProductsInput = {
+    update: XOR<userUpdateWithoutProductsInput, userUncheckedUpdateWithoutProductsInput>
+    create: XOR<userCreateWithoutProductsInput, userUncheckedCreateWithoutProductsInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutProductsInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutProductsInput, userUncheckedUpdateWithoutProductsInput>
+  }
+
+  export type userUpdateWithoutProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    cpfcnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userType?: IntFieldUpdateOperationsInput | number
+    createDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    sellings?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: IntFieldUpdateOperationsInput | number
+    agendamentosCliente?: AGENDAMENTOUpdateManyWithoutClientNestedInput
+    agendamentosAgricultor?: AGENDAMENTOUpdateManyWithoutFarmerNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    cpfcnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userType?: IntFieldUpdateOperationsInput | number
+    createDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    sellings?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: IntFieldUpdateOperationsInput | number
+    agendamentosCliente?: AGENDAMENTOUncheckedUpdateManyWithoutClientNestedInput
+    agendamentosAgricultor?: AGENDAMENTOUncheckedUpdateManyWithoutFarmerNestedInput
+  }
+
+  export type AGENDAMENTOUpsertWithWhereUniqueWithoutProductInput = {
+    where: AGENDAMENTOWhereUniqueInput
+    update: XOR<AGENDAMENTOUpdateWithoutProductInput, AGENDAMENTOUncheckedUpdateWithoutProductInput>
+    create: XOR<AGENDAMENTOCreateWithoutProductInput, AGENDAMENTOUncheckedCreateWithoutProductInput>
+  }
+
+  export type AGENDAMENTOUpdateWithWhereUniqueWithoutProductInput = {
+    where: AGENDAMENTOWhereUniqueInput
+    data: XOR<AGENDAMENTOUpdateWithoutProductInput, AGENDAMENTOUncheckedUpdateWithoutProductInput>
+  }
+
+  export type AGENDAMENTOUpdateManyWithWhereWithoutProductInput = {
+    where: AGENDAMENTOScalarWhereInput
+    data: XOR<AGENDAMENTOUpdateManyMutationInput, AGENDAMENTOUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type userCreateWithoutAgendamentosClienteInput = {
+    id?: string
+    name: string
+    cpfcnpj: string
+    email: string
+    password: string
+    userType: number
+    createDate?: Date | string
+    sellings: number
+    rate: number
+    imgUrl: string
+    contact: string
+    contactType: number
+    products?: PRODUCTCreateNestedManyWithoutOwnerInput
+    agendamentosAgricultor?: AGENDAMENTOCreateNestedManyWithoutFarmerInput
+  }
+
+  export type userUncheckedCreateWithoutAgendamentosClienteInput = {
+    id?: string
+    name: string
+    cpfcnpj: string
+    email: string
+    password: string
+    userType: number
+    createDate?: Date | string
+    sellings: number
+    rate: number
+    imgUrl: string
+    contact: string
+    contactType: number
+    products?: PRODUCTUncheckedCreateNestedManyWithoutOwnerInput
+    agendamentosAgricultor?: AGENDAMENTOUncheckedCreateNestedManyWithoutFarmerInput
+  }
+
+  export type userCreateOrConnectWithoutAgendamentosClienteInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutAgendamentosClienteInput, userUncheckedCreateWithoutAgendamentosClienteInput>
+  }
+
+  export type userCreateWithoutAgendamentosAgricultorInput = {
+    id?: string
+    name: string
+    cpfcnpj: string
+    email: string
+    password: string
+    userType: number
+    createDate?: Date | string
+    sellings: number
+    rate: number
+    imgUrl: string
+    contact: string
+    contactType: number
+    products?: PRODUCTCreateNestedManyWithoutOwnerInput
+    agendamentosCliente?: AGENDAMENTOCreateNestedManyWithoutClientInput
+  }
+
+  export type userUncheckedCreateWithoutAgendamentosAgricultorInput = {
+    id?: string
+    name: string
+    cpfcnpj: string
+    email: string
+    password: string
+    userType: number
+    createDate?: Date | string
+    sellings: number
+    rate: number
+    imgUrl: string
+    contact: string
+    contactType: number
+    products?: PRODUCTUncheckedCreateNestedManyWithoutOwnerInput
+    agendamentosCliente?: AGENDAMENTOUncheckedCreateNestedManyWithoutClientInput
+  }
+
+  export type userCreateOrConnectWithoutAgendamentosAgricultorInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutAgendamentosAgricultorInput, userUncheckedCreateWithoutAgendamentosAgricultorInput>
+  }
+
+  export type PRODUCTCreateWithoutAgendamentosInput = {
+    id?: string
+    name: string
+    price: number
+    imgUrl: string
+    quantity: number
+    type: number
+    harvestDate: Date | string
+    harvestType: number
+    productState: boolean
+    harvest: string
+    unityType: number
+    owner: userCreateNestedOneWithoutProductsInput
+  }
+
+  export type PRODUCTUncheckedCreateWithoutAgendamentosInput = {
+    id?: string
+    name: string
+    price: number
+    imgUrl: string
+    quantity: number
+    ownerId: string
+    type: number
+    harvestDate: Date | string
+    harvestType: number
+    productState: boolean
+    harvest: string
+    unityType: number
+  }
+
+  export type PRODUCTCreateOrConnectWithoutAgendamentosInput = {
+    where: PRODUCTWhereUniqueInput
+    create: XOR<PRODUCTCreateWithoutAgendamentosInput, PRODUCTUncheckedCreateWithoutAgendamentosInput>
+  }
+
+  export type userUpsertWithoutAgendamentosClienteInput = {
+    update: XOR<userUpdateWithoutAgendamentosClienteInput, userUncheckedUpdateWithoutAgendamentosClienteInput>
+    create: XOR<userCreateWithoutAgendamentosClienteInput, userUncheckedCreateWithoutAgendamentosClienteInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutAgendamentosClienteInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutAgendamentosClienteInput, userUncheckedUpdateWithoutAgendamentosClienteInput>
+  }
+
+  export type userUpdateWithoutAgendamentosClienteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    cpfcnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userType?: IntFieldUpdateOperationsInput | number
+    createDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    sellings?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: IntFieldUpdateOperationsInput | number
+    products?: PRODUCTUpdateManyWithoutOwnerNestedInput
+    agendamentosAgricultor?: AGENDAMENTOUpdateManyWithoutFarmerNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutAgendamentosClienteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    cpfcnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userType?: IntFieldUpdateOperationsInput | number
+    createDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    sellings?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: IntFieldUpdateOperationsInput | number
+    products?: PRODUCTUncheckedUpdateManyWithoutOwnerNestedInput
+    agendamentosAgricultor?: AGENDAMENTOUncheckedUpdateManyWithoutFarmerNestedInput
+  }
+
+  export type userUpsertWithoutAgendamentosAgricultorInput = {
+    update: XOR<userUpdateWithoutAgendamentosAgricultorInput, userUncheckedUpdateWithoutAgendamentosAgricultorInput>
+    create: XOR<userCreateWithoutAgendamentosAgricultorInput, userUncheckedCreateWithoutAgendamentosAgricultorInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutAgendamentosAgricultorInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutAgendamentosAgricultorInput, userUncheckedUpdateWithoutAgendamentosAgricultorInput>
+  }
+
+  export type userUpdateWithoutAgendamentosAgricultorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    cpfcnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userType?: IntFieldUpdateOperationsInput | number
+    createDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    sellings?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: IntFieldUpdateOperationsInput | number
+    products?: PRODUCTUpdateManyWithoutOwnerNestedInput
+    agendamentosCliente?: AGENDAMENTOUpdateManyWithoutClientNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutAgendamentosAgricultorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    cpfcnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userType?: IntFieldUpdateOperationsInput | number
+    createDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    sellings?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: IntFieldUpdateOperationsInput | number
+    products?: PRODUCTUncheckedUpdateManyWithoutOwnerNestedInput
+    agendamentosCliente?: AGENDAMENTOUncheckedUpdateManyWithoutClientNestedInput
+  }
+
+  export type PRODUCTUpsertWithoutAgendamentosInput = {
+    update: XOR<PRODUCTUpdateWithoutAgendamentosInput, PRODUCTUncheckedUpdateWithoutAgendamentosInput>
+    create: XOR<PRODUCTCreateWithoutAgendamentosInput, PRODUCTUncheckedCreateWithoutAgendamentosInput>
+    where?: PRODUCTWhereInput
+  }
+
+  export type PRODUCTUpdateToOneWithWhereWithoutAgendamentosInput = {
+    where?: PRODUCTWhereInput
+    data: XOR<PRODUCTUpdateWithoutAgendamentosInput, PRODUCTUncheckedUpdateWithoutAgendamentosInput>
+  }
+
+  export type PRODUCTUpdateWithoutAgendamentosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    harvestType?: IntFieldUpdateOperationsInput | number
+    productState?: BoolFieldUpdateOperationsInput | boolean
+    harvest?: StringFieldUpdateOperationsInput | string
+    unityType?: IntFieldUpdateOperationsInput | number
+    owner?: userUpdateOneRequiredWithoutProductsNestedInput
+  }
+
+  export type PRODUCTUncheckedUpdateWithoutAgendamentosInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    ownerId?: StringFieldUpdateOperationsInput | string
+    type?: IntFieldUpdateOperationsInput | number
+    harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    harvestType?: IntFieldUpdateOperationsInput | number
+    productState?: BoolFieldUpdateOperationsInput | boolean
+    harvest?: StringFieldUpdateOperationsInput | string
+    unityType?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PRODUCTCreateManyOwnerInput = {
+    id?: string
+    name: string
+    price: number
+    imgUrl: string
+    quantity: number
+    type: number
+    harvestDate: Date | string
+    harvestType: number
+    productState: boolean
+    harvest: string
+    unityType: number
+  }
+
+  export type AGENDAMENTOCreateManyClientInput = {
+    id?: string
+    farmerId: string
+    productId: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AGENDAMENTOCreateManyFarmerInput = {
+    id?: string
+    clientId: string
+    productId: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+  }
+
+  export type PRODUCTUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    harvestType?: IntFieldUpdateOperationsInput | number
+    productState?: BoolFieldUpdateOperationsInput | boolean
+    harvest?: StringFieldUpdateOperationsInput | string
+    unityType?: IntFieldUpdateOperationsInput | number
+    agendamentos?: AGENDAMENTOUpdateManyWithoutProductNestedInput
+  }
+
+  export type PRODUCTUncheckedUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    harvestType?: IntFieldUpdateOperationsInput | number
+    productState?: BoolFieldUpdateOperationsInput | boolean
+    harvest?: StringFieldUpdateOperationsInput | string
+    unityType?: IntFieldUpdateOperationsInput | number
+    agendamentos?: AGENDAMENTOUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type PRODUCTUncheckedUpdateManyWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    harvestType?: IntFieldUpdateOperationsInput | number
+    productState?: BoolFieldUpdateOperationsInput | boolean
+    harvest?: StringFieldUpdateOperationsInput | string
+    unityType?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type AGENDAMENTOUpdateWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    farmer?: userUpdateOneRequiredWithoutAgendamentosAgricultorNestedInput
+    product?: PRODUCTUpdateOneRequiredWithoutAgendamentosNestedInput
+  }
+
+  export type AGENDAMENTOUncheckedUpdateWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    farmerId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AGENDAMENTOUncheckedUpdateManyWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    farmerId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AGENDAMENTOUpdateWithoutFarmerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: userUpdateOneRequiredWithoutAgendamentosClienteNestedInput
+    product?: PRODUCTUpdateOneRequiredWithoutAgendamentosNestedInput
+  }
+
+  export type AGENDAMENTOUncheckedUpdateWithoutFarmerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AGENDAMENTOUncheckedUpdateManyWithoutFarmerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AGENDAMENTOCreateManyProductInput = {
+    id?: string
+    clientId: string
+    farmerId: string
+    quantity: number
+    totalPrice: number
+    status: number
+    scheduledFor: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AGENDAMENTOUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: userUpdateOneRequiredWithoutAgendamentosClienteNestedInput
+    farmer?: userUpdateOneRequiredWithoutAgendamentosAgricultorNestedInput
+  }
+
+  export type AGENDAMENTOUncheckedUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    farmerId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AGENDAMENTOUncheckedUpdateManyWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    farmerId?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

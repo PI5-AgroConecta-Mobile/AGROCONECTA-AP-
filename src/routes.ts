@@ -12,10 +12,15 @@ import { ListProducts } from './controllers/products/ListProducts'
 import { UpdateProduct } from './controllers/products/UpdateProduct'
 import { GetProductById } from './controllers/products/GetProductById'
 import { DeleteProduct } from './controllers/products/DeleteProduct';
+import { ListMyProducts } from './controllers/products/ListMyProducts';
+
+// Importações de Agendamento
+import { CreateAgendamento } from './controllers/Agendamentos/CreateAgendamento';
+import { ListAgendamentosCliente } from './controllers/Agendamentos/ListAgendamentosCliente';
+import { ListAgendamentosFarmer } from './controllers/Agendamentos/ListAgendamentosFarmer';
+import { UpdateAgendamentoStatus } from './controllers/Agendamentos/UpdateAgendamentoStatus'; // <-- ADICIONADO
 
 import midAthorization from './middleware/Authorization';
-
-
 
 const router: Router = Router()
 
@@ -32,6 +37,13 @@ const listProducts = new ListProducts()
 const updateProduct = new UpdateProduct()
 const getProductById = new GetProductById()
 const deleteProduct = new DeleteProduct()
+const listMyProducts = new ListMyProducts()
+
+// Instâncias de Agendamento
+const createAgendamento = new CreateAgendamento();
+const listAgendamentosCliente = new ListAgendamentosCliente();
+const listAgendamentosFarmer = new ListAgendamentosFarmer();
+const updateAgendamentoStatus = new UpdateAgendamentoStatus(); 
 
 router.post('/login', login.handle)
 router.post('/createUser', createUser.handle)
@@ -43,9 +55,15 @@ router.put('/updatePassword', updatePassword.handle)
 
 router.post('/createProduct', midAthorization, createProductt.handle)
 router.get('/listProduct', listProducts.handle)
+router.get('/myproducts', midAthorization, listMyProducts.handle) 
 router.put('/updateProduct', midAthorization, updateProduct.handle)
 router.get('/getProductById/:productId', getProductById.handle)
 router.delete('/deleteProduct/:productId', midAthorization, deleteProduct.handle)
 
+// Rotas de Agendamento
+router.post('/createAgendamento', midAthorization, createAgendamento.handle) 
+router.get('/myagendamentos/cliente', midAthorization, listAgendamentosCliente.handle) 
+router.get('/myagendamentos/farmer', midAthorization, listAgendamentosFarmer.handle) // Agricultor
+router.put('/updateAgendamentoStatus/:agendamentoId', midAthorization, updateAgendamentoStatus.handle) 
 
 export {router}

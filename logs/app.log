@@ -1,0 +1,117 @@
+[2025-10-28T15:39:37.368Z] error: Error listing products by user: undefined
+[2025-10-28T15:42:42.727Z] error: Error listing products: 
+Invalid `prisma.pRODUCT.findMany()` invocation in
+C:\Users\Samer\AGROCONECTA-AP-\src\controllers\products\ListProducts.ts:8:58
+
+  5 export class ListProducts {
+  6     async handle (req: Request, res: Response){
+  7         try{
+→ 8             const listAllProducts = await prisma.pRODUCT.findMany(
+The table `public.PRODUCT` does not exist in the current database.
+[2025-10-28T15:45:59.182Z] error: Error listing products: 
+Invalid `prisma.pRODUCT.findMany()` invocation in
+C:\Users\Samer\AGROCONECTA-AP-\src\controllers\products\ListProducts.ts:9:58
+
+  6 async handle (req: Request, res: Response){
+  7     try{
+  8         // CORREÇÃO: Usando .pRODUCT (maiúsculo) como o erro sugeriu
+→ 9         const listAllProducts = await prisma.pRODUCT.findMany(
+The table `public.PRODUCT` does not exist in the current database.
+[2025-10-28T15:48:34.382Z] info: All products listed successfully.
+[2025-10-28T16:08:18.486Z] warn: Login attempt for non-existent user: samerhalat2005@gmail.com
+[2025-10-28T16:09:07.897Z] info: New user created: 4e34705f-0256-45ba-8555-9951b7ef800f - samerhalat2005@gmail.com
+[2025-10-28T16:10:22.981Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T16:11:51.637Z] warn: Invalid login attempt for user: samerhalat2005@gmail.com
+[2025-10-28T16:12:02.867Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T16:29:37.798Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T16:49:55.285Z] warn: Attempt to create user with existing email: samerhalat2005@gmail.com
+[2025-10-28T16:50:06.165Z] info: New user created: 69796cdd-5c74-46a1-a3dd-839d4c3f017d - samer.halat@fatec.sp.gov.br
+[2025-10-28T16:50:19.783Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T16:52:36.617Z] info: New product created: ec228c42-5e43-46ae-a7f6-df4d01d0827a by user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T16:53:04.571Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T16:53:06.591Z] info: All products listed successfully.
+[2025-10-28T16:58:47.705Z] info: All products listed successfully.
+[2025-10-28T16:59:02.877Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T16:59:04.952Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T16:59:06.724Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T16:59:15.813Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T17:04:12.553Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T17:11:52.123Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T17:12:03.195Z] info: Product ec228c42-5e43-46ae-a7f6-df4d01d0827a updated by user 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T17:12:05.161Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T17:12:24.329Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T17:12:26.861Z] info: All products listed successfully.
+[2025-10-28T18:17:27.883Z] info: All products listed successfully.
+[2025-10-28T18:17:29.522Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:28:49.743Z] info: All products listed successfully.
+[2025-10-28T18:28:51.163Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:28:53.461Z] info: New agendamento a52c1923-af2d-4e95-9228-8d891c95af72 created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:29:45.641Z] info: New agendamento 00fc9140-40c9-4286-bd46-a6ddcd92f159 created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:30:01.160Z] error: Error creating agendamento for user 4e34705f-0256-45ba-8555-9951b7ef800f: Quantidade insuficiente em stock.
+[2025-10-28T18:31:37.642Z] error: Error creating agendamento for user 4e34705f-0256-45ba-8555-9951b7ef800f: Quantidade insuficiente em stock.
+[2025-10-28T18:31:46.282Z] info: New agendamento 1ce1d65a-856a-436f-99b8-052e780341ca created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:32:24.008Z] info: All products listed successfully.
+[2025-10-28T18:32:25.693Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:32:44.117Z] info: New agendamento 73e4ede2-5cd3-4b18-b2e4-f901b794e45b created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:33:15.482Z] info: New agendamento 0ca51393-a66d-4c04-a037-ac69b994453e created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:33:30.688Z] info: All products listed successfully.
+[2025-10-28T18:33:32.038Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:35:10.484Z] info: New agendamento cac3b52c-d866-434e-9396-71654edaa81d created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:35:26.425Z] error: Error creating agendamento for user 4e34705f-0256-45ba-8555-9951b7ef800f: Quantidade insuficiente em stock.
+[2025-10-28T18:38:10.810Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:38:55.307Z] info: All products listed successfully.
+[2025-10-28T18:38:57.092Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:39:07.272Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:39:08.809Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:41:44.752Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T18:41:46.949Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:42:18.471Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:43:16.982Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:47:40.829Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:47:40.863Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:15.288Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:16.596Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:19.756Z] info: Agendamento a52c1923-af2d-4e95-9228-8d891c95af72 updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:21.963Z] info: Agendamento 00fc9140-40c9-4286-bd46-a6ddcd92f159 updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:25.032Z] info: Agendamento 1ce1d65a-856a-436f-99b8-052e780341ca updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:26.985Z] info: Agendamento cac3b52c-d866-434e-9396-71654edaa81d updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:30.416Z] info: Agendamento 73e4ede2-5cd3-4b18-b2e4-f901b794e45b updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:32.169Z] info: Agendamento 0ca51393-a66d-4c04-a037-ac69b994453e updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:50.141Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T18:48:51.950Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:48:54.539Z] info: All products listed successfully.
+[2025-10-28T18:48:55.214Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:51:12.914Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:51:16.405Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:51:37.308Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T18:51:39.224Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:51:41.053Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T19:10:41.389Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T19:11:14.951Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T19:12:10.916Z] info: All products listed successfully.
+[2025-10-28T19:12:11.947Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T19:15:38.575Z] warn: Product not found: 1
+[2025-10-28T19:15:41.284Z] warn: Product not found: 2
+[2025-10-28T19:41:34.564Z] info: User avatar updated: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T19:41:39.002Z] info: User updated: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T19:44:29.055Z] info: All products listed successfully.
+[2025-10-28T19:44:30.404Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T19:44:39.922Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T19:44:41.979Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T19:45:32.455Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T19:46:21.867Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T19:46:23.628Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T19:46:32.573Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T19:46:35.148Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T20:08:44.147Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T20:11:05.754Z] info: New product created: 114fc5f6-6794-4642-bcba-ba2c3fcb9389 by user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T20:11:12.795Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T20:11:31.161Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T20:11:34.825Z] info: All products listed successfully.
+[2025-10-28T20:11:36.465Z] info: Product retrieved: 114fc5f6-6794-4642-bcba-ba2c3fcb9389
+[2025-10-28T20:12:10.497Z] info: New agendamento 8482b197-29b8-401a-bfa5-dc60d7f56ebb created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product 114fc5f6-6794-4642-bcba-ba2c3fcb9389
+[2025-10-28T20:12:12.175Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T20:12:48.547Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T20:12:50.461Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T20:12:51.873Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T20:12:57.609Z] info: Agendamento 8482b197-29b8-401a-bfa5-dc60d7f56ebb updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d

@@ -15,18 +15,21 @@ datasource db {
 }
 
 model user {
-  id          String   @id @default(uuid())
-  name        String
-  cpfcnpj     String
-  email       String   @unique
-  password    String
-  userType    Int
-  createDate  DateTime
-  sellings    Int
-  rate        Float
-  imgUrl      String
-  contact     String
-  contactType Int
+  id                     String        @id @default(uuid())
+  name                   String
+  cpfcnpj                String
+  email                  String        @unique
+  password               String
+  userType               Int
+  createDate             DateTime      @default(now())
+  sellings               Int
+  rate                   Float
+  imgUrl                 String
+  contact                String
+  contactType            Int
+  products               PRODUCT[]
+  agendamentosCliente    AGENDAMENTO[] @relation("AgendamentosCliente")
+  agendamentosAgricultor AGENDAMENTO[] @relation("AgendamentosAgricultor")
 }
 
 model HARVEST {
@@ -45,7 +48,7 @@ model ADDRESS {
 }
 
 model PRODUCT {
-  id           String   @id @default(uuid())
+  id           String        @id @default(uuid())
   name         String
   price        Float
   imgUrl       String
@@ -57,4 +60,22 @@ model PRODUCT {
   productState Boolean
   harvest      String
   unityType    Int
+  owner        user          @relation(fields: [ownerId], references: [id])
+  agendamentos AGENDAMENTO[]
+}
+
+model AGENDAMENTO {
+  id           String   @id @default(uuid())
+  clientId     String // ID do cliente que comprou
+  farmerId     String // ID do agricultor que vendeu
+  productId    String // ID do produto
+  quantity     Int // Quantidade comprada
+  totalPrice   Float // Preço total
+  status       Int // 0: Pendente, 1: Confirmado, 2: Cancelado
+  scheduledFor DateTime // Data/Hora da retirada
+  createdAt    DateTime @default(now())
+
+  client  user    @relation("AgendamentosCliente", fields: [clientId], references: [id])
+  farmer  user    @relation("AgendamentosAgricultor", fields: [farmerId], references: [id])
+  product PRODUCT @relation(fields: [productId], references: [id])
 }
