@@ -132,7 +132,8 @@ exports.Prisma.UserScalarFieldEnum = {
   rate: 'rate',
   imgUrl: 'imgUrl',
   contact: 'contact',
-  contactType: 'contactType'
+  contactType: 'contactType',
+  revenue: 'revenue'
 };
 
 exports.Prisma.HARVESTScalarFieldEnum = {
@@ -165,6 +166,34 @@ exports.Prisma.PRODUCTScalarFieldEnum = {
   unityType: 'unityType'
 };
 
+exports.Prisma.AGENDAMENTOScalarFieldEnum = {
+  id: 'id',
+  clientId: 'clientId',
+  farmerId: 'farmerId',
+  productId: 'productId',
+  quantity: 'quantity',
+  totalPrice: 'totalPrice',
+  status: 'status',
+  scheduledFor: 'scheduledFor',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CONVERSATIONScalarFieldEnum = {
+  id: 'id',
+  participantAId: 'participantAId',
+  participantBId: 'participantBId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.MESSAGEScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  senderId: 'senderId',
+  content: 'content',
+  createdAt: 'createdAt',
+  readAt: 'readAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -175,12 +204,20 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   user: 'user',
   HARVEST: 'HARVEST',
   ADDRESS: 'ADDRESS',
-  PRODUCT: 'PRODUCT'
+  PRODUCT: 'PRODUCT',
+  AGENDAMENTO: 'AGENDAMENTO',
+  CONVERSATION: 'CONVERSATION',
+  MESSAGE: 'MESSAGE'
 };
 
 /**

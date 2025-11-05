@@ -1,0 +1,241 @@
+[2025-10-28T15:39:37.368Z] error: Error listing products by user: undefined
+[2025-10-28T15:42:42.727Z] error: Error listing products: 
+Invalid `prisma.pRODUCT.findMany()` invocation in
+C:\Users\Samer\AGROCONECTA-AP-\src\controllers\products\ListProducts.ts:8:58
+
+  5 export class ListProducts {
+  6     async handle (req: Request, res: Response){
+  7         try{
+→ 8             const listAllProducts = await prisma.pRODUCT.findMany(
+The table `public.PRODUCT` does not exist in the current database.
+[2025-10-28T15:45:59.182Z] error: Error listing products: 
+Invalid `prisma.pRODUCT.findMany()` invocation in
+C:\Users\Samer\AGROCONECTA-AP-\src\controllers\products\ListProducts.ts:9:58
+
+  6 async handle (req: Request, res: Response){
+  7     try{
+  8         // CORREÇÃO: Usando .pRODUCT (maiúsculo) como o erro sugeriu
+→ 9         const listAllProducts = await prisma.pRODUCT.findMany(
+The table `public.PRODUCT` does not exist in the current database.
+[2025-10-28T15:48:34.382Z] info: All products listed successfully.
+[2025-10-28T16:08:18.486Z] warn: Login attempt for non-existent user: samerhalat2005@gmail.com
+[2025-10-28T16:09:07.897Z] info: New user created: 4e34705f-0256-45ba-8555-9951b7ef800f - samerhalat2005@gmail.com
+[2025-10-28T16:10:22.981Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T16:11:51.637Z] warn: Invalid login attempt for user: samerhalat2005@gmail.com
+[2025-10-28T16:12:02.867Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T16:29:37.798Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T16:49:55.285Z] warn: Attempt to create user with existing email: samerhalat2005@gmail.com
+[2025-10-28T16:50:06.165Z] info: New user created: 69796cdd-5c74-46a1-a3dd-839d4c3f017d - samer.halat@fatec.sp.gov.br
+[2025-10-28T16:50:19.783Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T16:52:36.617Z] info: New product created: ec228c42-5e43-46ae-a7f6-df4d01d0827a by user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T16:53:04.571Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T16:53:06.591Z] info: All products listed successfully.
+[2025-10-28T16:58:47.705Z] info: All products listed successfully.
+[2025-10-28T16:59:02.877Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T16:59:04.952Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T16:59:06.724Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T16:59:15.813Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T17:04:12.553Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T17:11:52.123Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T17:12:03.195Z] info: Product ec228c42-5e43-46ae-a7f6-df4d01d0827a updated by user 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T17:12:05.161Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T17:12:24.329Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T17:12:26.861Z] info: All products listed successfully.
+[2025-10-28T18:17:27.883Z] info: All products listed successfully.
+[2025-10-28T18:17:29.522Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:28:49.743Z] info: All products listed successfully.
+[2025-10-28T18:28:51.163Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:28:53.461Z] info: New agendamento a52c1923-af2d-4e95-9228-8d891c95af72 created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:29:45.641Z] info: New agendamento 00fc9140-40c9-4286-bd46-a6ddcd92f159 created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:30:01.160Z] error: Error creating agendamento for user 4e34705f-0256-45ba-8555-9951b7ef800f: Quantidade insuficiente em stock.
+[2025-10-28T18:31:37.642Z] error: Error creating agendamento for user 4e34705f-0256-45ba-8555-9951b7ef800f: Quantidade insuficiente em stock.
+[2025-10-28T18:31:46.282Z] info: New agendamento 1ce1d65a-856a-436f-99b8-052e780341ca created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:32:24.008Z] info: All products listed successfully.
+[2025-10-28T18:32:25.693Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:32:44.117Z] info: New agendamento 73e4ede2-5cd3-4b18-b2e4-f901b794e45b created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:33:15.482Z] info: New agendamento 0ca51393-a66d-4c04-a037-ac69b994453e created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:33:30.688Z] info: All products listed successfully.
+[2025-10-28T18:33:32.038Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:35:10.484Z] info: New agendamento cac3b52c-d866-434e-9396-71654edaa81d created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T18:35:26.425Z] error: Error creating agendamento for user 4e34705f-0256-45ba-8555-9951b7ef800f: Quantidade insuficiente em stock.
+[2025-10-28T18:38:10.810Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:38:55.307Z] info: All products listed successfully.
+[2025-10-28T18:38:57.092Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:39:07.272Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:39:08.809Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:41:44.752Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T18:41:46.949Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:42:18.471Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:43:16.982Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:47:40.829Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:47:40.863Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:15.288Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:16.596Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:19.756Z] info: Agendamento a52c1923-af2d-4e95-9228-8d891c95af72 updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:21.963Z] info: Agendamento 00fc9140-40c9-4286-bd46-a6ddcd92f159 updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:25.032Z] info: Agendamento 1ce1d65a-856a-436f-99b8-052e780341ca updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:26.985Z] info: Agendamento cac3b52c-d866-434e-9396-71654edaa81d updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:30.416Z] info: Agendamento 73e4ede2-5cd3-4b18-b2e4-f901b794e45b updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:32.169Z] info: Agendamento 0ca51393-a66d-4c04-a037-ac69b994453e updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:48:50.141Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T18:48:51.950Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:48:54.539Z] info: All products listed successfully.
+[2025-10-28T18:48:55.214Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:51:12.914Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:51:16.405Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T18:51:37.308Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T18:51:39.224Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T18:51:41.053Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T19:10:41.389Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T19:11:14.951Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T19:12:10.916Z] info: All products listed successfully.
+[2025-10-28T19:12:11.947Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T19:15:38.575Z] warn: Product not found: 1
+[2025-10-28T19:15:41.284Z] warn: Product not found: 2
+[2025-10-28T19:41:34.564Z] info: User avatar updated: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T19:41:39.002Z] info: User updated: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T19:44:29.055Z] info: All products listed successfully.
+[2025-10-28T19:44:30.404Z] info: Product retrieved: ec228c42-5e43-46ae-a7f6-df4d01d0827a
+[2025-10-28T19:44:39.922Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T19:44:41.979Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T19:45:32.455Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T19:46:21.867Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T19:46:23.628Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T19:46:32.573Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T19:46:35.148Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T20:08:44.147Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T20:11:05.754Z] info: New product created: 114fc5f6-6794-4642-bcba-ba2c3fcb9389 by user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T20:11:12.795Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T20:11:31.161Z] info: User logged in: samerhalat2005@gmail.com
+[2025-10-28T20:11:34.825Z] info: All products listed successfully.
+[2025-10-28T20:11:36.465Z] info: Product retrieved: 114fc5f6-6794-4642-bcba-ba2c3fcb9389
+[2025-10-28T20:12:10.497Z] info: New agendamento 8482b197-29b8-401a-bfa5-dc60d7f56ebb created by user 4e34705f-0256-45ba-8555-9951b7ef800f for product 114fc5f6-6794-4642-bcba-ba2c3fcb9389
+[2025-10-28T20:12:12.175Z] info: Listed all agendamentos for client: 4e34705f-0256-45ba-8555-9951b7ef800f
+[2025-10-28T20:12:48.547Z] info: User logged in: samer.halat@fatec.sp.gov.br
+[2025-10-28T20:12:50.461Z] info: Listed all products for user: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T20:12:51.873Z] info: Listed all agendamentos for farmer: 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-10-28T20:12:57.609Z] info: Agendamento 8482b197-29b8-401a-bfa5-dc60d7f56ebb updated to status 1 by farmer 69796cdd-5c74-46a1-a3dd-839d4c3f017d
+[2025-11-05T12:08:20.051Z] error: Error creating user: 
+Invalid `prisma.user.create()` invocation in
+C:\Users\dti\Desktop\AGROCONECTA-AP--samer\src\controllers\users\CreateUser.ts:23:44
+
+  20     return res.status(400).json({ err: "Este email já está em uso." })
+  21 }
+  22 const passwordHashed = await hash(password, 8)
+→ 23 const user = await prisma.user.create({
+       data: {
+         name: "kawia",
+         email: "kawai",
+         password: "$2b$08$PzQozGhR8BGJ8hqnKDuzHO/3xTgno7y7hHu8dzrK7DW2HOczUTw/m",
+         cpfcnpj: "kawasi",
+         userType: "kawasi",
+                   ~~~~~~~~
+         sellings: 0,
+         rate: 0,
+         imgUrl: "",
+         contact: "",
+         contactType: 0
+       }
+     })
+
+Argument `userType`: Invalid value provided. Expected Int, provided String.
+[2025-11-05T12:09:57.658Z] info: New user created: bb598a97-1d81-4a88-9f8f-d439f767fede - kawai
+[2025-11-05T12:17:43.056Z] info: New user created: 7c41884a-e34d-40c0-9778-31b5bc3e7572 - ncjfj
+[2025-11-05T12:19:50.555Z] info: New user created: 13a56ecb-df61-433f-9411-3a66f1ee4a12 - vitinhoadias@gmail.com
+[2025-11-05T12:20:09.967Z] info: User logged in: vitinhoadias@gmail.com
+[2025-11-05T12:23:38.356Z] warn: Attempt to create user with existing email: kawai
+[2025-11-05T12:24:01.540Z] info: New user created: c4859126-29b5-499d-9226-b6ddf2d1e7d2 - kauan
+[2025-11-05T12:24:14.060Z] info: User logged in: kauan
+[2025-11-05T12:24:32.341Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T12:24:32.650Z] info: All products listed successfully.
+[2025-11-05T12:25:37.247Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T12:25:52.662Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:27:39.975Z] info: New product created: 9feea253-09f8-4020-aa5a-8c1df227220d by user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:27:41.908Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:27:50.462Z] info: All products listed successfully.
+[2025-11-05T12:27:58.484Z] info: Product retrieved: 9feea253-09f8-4020-aa5a-8c1df227220d
+[2025-11-05T12:28:12.682Z] info: New agendamento fa018bd3-a995-438b-934f-665f8dbe955d created by user 13a56ecb-df61-433f-9411-3a66f1ee4a12 for product 9feea253-09f8-4020-aa5a-8c1df227220d
+[2025-11-05T12:28:15.216Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T12:28:17.856Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:28:21.274Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:28:33.307Z] info: Agendamento fa018bd3-a995-438b-934f-665f8dbe955d updated to status 1 by farmer c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:28:35.425Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T12:28:56.731Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:29:10.146Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:29:10.913Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:29:18.379Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:30:17.615Z] info: Product 9feea253-09f8-4020-aa5a-8c1df227220d updated by user c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:30:19.757Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:30:21.517Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:30:39.285Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:31:05.967Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:31:05.971Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:31:22.776Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:31:51.209Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T12:31:54.723Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:17:09.382Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:22:03.358Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:23:07.565Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=5WhedE1SnOTKnMUSAAAB
+[2025-11-05T13:23:10.935Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=1741QJN8AS1k6gCBAAAD
+[2025-11-05T13:25:13.435Z] info: Listed all products for user: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:25:13.682Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:25:13.791Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:25:29.034Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:25:47.100Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:25:55.617Z] info: Socket disconnected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=1741QJN8AS1k6gCBAAAD
+[2025-11-05T13:27:25.136Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=CXZy5OS7bxGLR3TQAAAB
+[2025-11-05T13:27:43.557Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T13:27:44.071Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T13:28:06.024Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T13:28:10.560Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=MkXFLSop_d8V0KFbAAAD
+[2025-11-05T13:28:48.153Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=AfMATRn6BWZj0eZKAAAB
+[2025-11-05T13:28:48.906Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=NUEpQe7CPURiTZO2AAAD
+[2025-11-05T13:28:58.055Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T13:29:10.467Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:29:37.195Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=d6UHxHw1BJq74OlJAAAB
+[2025-11-05T13:29:37.888Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=Txq8uh0kcHgUF49gAAAD
+[2025-11-05T13:29:46.038Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:30:06.591Z] info: Socket disconnected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=Txq8uh0kcHgUF49gAAAD
+[2025-11-05T13:30:12.344Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=XFfyHvYrapNh7TBXAAAB
+[2025-11-05T13:30:31.841Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=ijKoY6Iw4zW4fJrLAAAB
+[2025-11-05T13:31:02.950Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=2d42dBxNWoRTbIUKAAAB
+[2025-11-05T13:31:10.405Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=bbr6R9U_LVvH2UBIAAAB
+[2025-11-05T13:31:31.435Z] info: Socket disconnected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=bbr6R9U_LVvH2UBIAAAB
+[2025-11-05T13:31:36.328Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=8buGsckOcnYVbGAsAAAD
+[2025-11-05T13:32:37.265Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T13:32:47.112Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=6lOmBtNiupY_GBWuAAAB
+[2025-11-05T13:33:21.560Z] info: Socket disconnected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=6lOmBtNiupY_GBWuAAAB
+[2025-11-05T13:33:30.622Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=0y4GL3zJRZoN1ZiQAAAD
+[2025-11-05T13:34:49.031Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T13:35:48.417Z] info: All products listed successfully.
+[2025-11-05T13:35:48.856Z] info: Listed all agendamentos for client: 13a56ecb-df61-433f-9411-3a66f1ee4a12
+[2025-11-05T13:37:32.705Z] info: Socket disconnected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=0y4GL3zJRZoN1ZiQAAAD
+[2025-11-05T13:38:15.690Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=GlilLVehwA6EwSCBAAAF
+[2025-11-05T13:39:23.222Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=toWuTpWHCbiJM7vrAAAH
+[2025-11-05T13:39:29.417Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:39:30.916Z] info: Socket disconnected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=toWuTpWHCbiJM7vrAAAH
+[2025-11-05T13:40:14.671Z] info: Socket disconnected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=GlilLVehwA6EwSCBAAAF
+[2025-11-05T13:40:41.594Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=QgzOev44YxMmqYnZAAAJ
+[2025-11-05T13:44:11.697Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=zt2hyZiWmModA8KaAAAB
+[2025-11-05T13:44:27.724Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=-7GZA2vyI9nDOr8fAAAB
+[2025-11-05T13:46:17.799Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=M13N9lEVhtLJ-fzYAAAB
+[2025-11-05T13:46:20.025Z] info: Socket disconnected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=M13N9lEVhtLJ-fzYAAAB
+[2025-11-05T13:47:08.583Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=bGRfPydO0jW5ujnDAAAD
+[2025-11-05T13:47:10.920Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=rsaEah91v3pMZvX0AAAF
+[2025-11-05T13:50:35.415Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=ezFknXYFLfa0TjOWAAAC
+[2025-11-05T13:51:55.950Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=uKgskDJfE6FPXddeAAAE
+[2025-11-05T13:52:53.395Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=nOAoE2e-oEqfouCDAAAB
+[2025-11-05T13:52:54.609Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=6hLGgymXrY-aIvU7AAAD
+[2025-11-05T13:53:02.557Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=a6WyeE9e1PtCbrwUAAAB
+[2025-11-05T13:53:02.764Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=1QCms42DkfkhYq-1AAAD
+[2025-11-05T13:53:15.000Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=2joa4LSF_FIJ3287AAAC
+[2025-11-05T13:53:15.039Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=hjhWwpDp9tkzvmfCAAAD
+[2025-11-05T13:53:23.193Z] info: Listed all agendamentos for farmer: c4859126-29b5-499d-9226-b6ddf2d1e7d2
+[2025-11-05T13:53:52.865Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=khCvAIR4awg_QKPBAAAB
+[2025-11-05T13:53:53.010Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=UpOQLJZna03oWjqqAAAD
+[2025-11-05T13:54:01.452Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=icCCV-6efKm4Kcz2AAAB
+[2025-11-05T13:54:02.109Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=eNGWqbo1hL8-ouOLAAAD
+[2025-11-05T13:55:37.515Z] info: Socket connected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=AnWjZiAzsvA9SWcTAAAB
+[2025-11-05T13:55:37.909Z] info: Socket connected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=5aIbC-HYGpwMpVwqAAAD
+[2025-11-05T13:56:44.471Z] info: Socket disconnected: user=13a56ecb-df61-433f-9411-3a66f1ee4a12 id=5aIbC-HYGpwMpVwqAAAD
+[2025-11-05T13:59:08.648Z] info: Socket disconnected: user=c4859126-29b5-499d-9226-b6ddf2d1e7d2 id=AnWjZiAzsvA9SWcTAAAB

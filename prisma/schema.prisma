@@ -5,56 +5,105 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model user {
-  id        String      @id @default(uuid())
-  name      String
-  cpfcnpj   String
-  email     String      @unique
-  password  String
-  userType  Int
-  createDate DateTime @default(now())
-  sellings  Int
-  rate      Float
-  imgUrl    String
-  contact   String
-  contactType Int
+  id        String      @id @default(uuid())
+  name      String
+  cpfcnpj   String
+  email     String      @unique
+  password  String
+  userType  Int
+  createDate DateTime @default(now())
+  sellings  Int
+  rate      Float
+  imgUrl    String
+  contact   String
+  contactType Int
+  revenue Float @default(0)
+  products  PRODUCT[]
+  agendamentosCliente    AGENDAMENTO[] @relation("AgendamentosCliente")
+  agendamentosAgricultor AGENDAMENTO[] @relation("AgendamentosAgricultor")
 }
 
+
 model HARVEST{
-  id        String     @id @default(uuid())
-  ownerId   String
-  name      String
-  description String
-  harvestDate DateTime
+  id        String     @id @default(uuid())
+  ownerId   String
+  name      String
+  description String
+  harvestDate DateTime
 }
 
 model ADDRESS{
-  id        String    @id @default(uuid())
-  userId    String
-  cep       String
-  city      String
+  id        String    @id @default(uuid())
+  userId    String
+  cep       String
+  city      String
 }
 
 model PRODUCT{
-  id        String @id @default(uuid())
-  name      String
-  price     Float
-  imgUrl    String
-  quantity  Int
-  ownerId   String
-  type      Int
-  harvestDate DateTime
-  harvestType Int
-  productState Boolean
-  harvest   String
-  unityType Int
+  id        String @id @default(uuid())
+  name      String
+  price     Float
+  imgUrl    String
+  quantity  Int
+  ownerId   String
+  type      Int
+  harvestDate DateTime
+  harvestType Int
+  productState Boolean
+  harvest   String
+  unityType Int
+  owner     user      @relation(fields: [ownerId], references: [id])
+  agendamentos AGENDAMENTO[]
+}
+
+model AGENDAMENTO {
+  id          String   @id @default(uuid())
+  clientId    String   // ID do cliente que comprou
+  farmerId    String   // ID do agricultor que vendeu
+  productId   String   // ID do produto
+  quantity    Int      // Quantidade comprada
+  totalPrice  Float    // Preço total
+  status      Int      // 0: Pendente, 1: Confirmado, 2: Cancelado
+  scheduledFor DateTime // Data/Hora da retirada
+  createdAt   DateTime @default(now())
+
+  client   user    @relation("AgendamentosCliente", fields: [clientId], references: [id])
+  farmer   user    @relation("AgendamentosAgricultor", fields: [farmerId], references: [id])
+  product  PRODUCT @relation(fields: [productId], references: [id])
+}
+
+/// Chat models
+model CONVERSATION {
+  id            String   @id @default(uuid())
+  participantAId String
+  participantBId String
+  createdAt     DateTime @default(now())
+
+  messages      MESSAGE[]
+
+  /// Ensure a user pair has at most one conversation
+  @@unique([participantAId, participantBId])
+}
+
+model MESSAGE {
+  id             String   @id @default(uuid())
+  conversationId String
+  senderId       String
+  content        String
+  createdAt      DateTime @default(now())
+  readAt         DateTime?
+
+  conversation   CONVERSATION @relation(fields: [conversationId], references: [id])
+
+  @@index([conversationId])
 }

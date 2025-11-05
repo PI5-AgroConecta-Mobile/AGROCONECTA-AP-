@@ -104,7 +104,8 @@ exports.Prisma.UserScalarFieldEnum = {
   rate: 'rate',
   imgUrl: 'imgUrl',
   contact: 'contact',
-  contactType: 'contactType'
+  contactType: 'contactType',
+  revenue: 'revenue'
 };
 
 exports.Prisma.HARVESTScalarFieldEnum = {
@@ -137,6 +138,34 @@ exports.Prisma.PRODUCTScalarFieldEnum = {
   unityType: 'unityType'
 };
 
+exports.Prisma.AGENDAMENTOScalarFieldEnum = {
+  id: 'id',
+  clientId: 'clientId',
+  farmerId: 'farmerId',
+  productId: 'productId',
+  quantity: 'quantity',
+  totalPrice: 'totalPrice',
+  status: 'status',
+  scheduledFor: 'scheduledFor',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CONVERSATIONScalarFieldEnum = {
+  id: 'id',
+  participantAId: 'participantAId',
+  participantBId: 'participantBId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.MESSAGEScalarFieldEnum = {
+  id: 'id',
+  conversationId: 'conversationId',
+  senderId: 'senderId',
+  content: 'content',
+  createdAt: 'createdAt',
+  readAt: 'readAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -147,12 +176,20 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   user: 'user',
   HARVEST: 'HARVEST',
   ADDRESS: 'ADDRESS',
-  PRODUCT: 'PRODUCT'
+  PRODUCT: 'PRODUCT',
+  AGENDAMENTO: 'AGENDAMENTO',
+  CONVERSATION: 'CONVERSATION',
+  MESSAGE: 'MESSAGE'
 };
 /**
  * Create the Client
@@ -165,7 +202,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\dti\\Downloads\\AgroConecta-API-main\\AgroConecta-API-main\\src\\generated\\prisma",
+      "value": "C:\\Users\\dti\\Desktop\\AGROCONECTA-AP--samer\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -179,7 +216,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\dti\\Downloads\\AgroConecta-API-main\\AgroConecta-API-main\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\dti\\Desktop\\AGROCONECTA-AP--samer\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -201,13 +238,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel user {\n  id          String   @id @default(uuid())\n  name        String\n  cpfcnpj     String\n  email       String   @unique\n  password    String\n  userType    Int\n  createDate  DateTime\n  sellings    Int\n  rate        Float\n  imgUrl      String\n  contact     String\n  contactType Int\n}\n\nmodel HARVEST {\n  id          String   @id @default(uuid())\n  ownerId     String\n  name        String\n  description String\n  harvestDate DateTime\n}\n\nmodel ADDRESS {\n  id     String @id @default(uuid())\n  userId String\n  cep    String\n  city   String\n}\n\nmodel PRODUCT {\n  id           String   @id @default(uuid())\n  name         String\n  price        Float\n  imgUrl       String\n  quantity     Int\n  ownerId      String\n  type         Int\n  harvestDate  DateTime\n  harvestType  Int\n  productState Boolean\n  harvest      String\n  unityType    Int\n}\n",
-  "inlineSchemaHash": "7e304cc4e9554e378ee4823c74541f2882f19f85e3052e857cdc3ef5167e9496",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel user {\n  id                     String        @id @default(uuid())\n  name                   String\n  cpfcnpj                String\n  email                  String        @unique\n  password               String\n  userType               Int\n  createDate             DateTime      @default(now())\n  sellings               Int\n  rate                   Float\n  imgUrl                 String\n  contact                String\n  contactType            Int\n  revenue                Float         @default(0)\n  products               PRODUCT[]\n  agendamentosCliente    AGENDAMENTO[] @relation(\"AgendamentosCliente\")\n  agendamentosAgricultor AGENDAMENTO[] @relation(\"AgendamentosAgricultor\")\n}\n\nmodel HARVEST {\n  id          String   @id @default(uuid())\n  ownerId     String\n  name        String\n  description String\n  harvestDate DateTime\n}\n\nmodel ADDRESS {\n  id     String @id @default(uuid())\n  userId String\n  cep    String\n  city   String\n}\n\nmodel PRODUCT {\n  id           String        @id @default(uuid())\n  name         String\n  price        Float\n  imgUrl       String\n  quantity     Int\n  ownerId      String\n  type         Int\n  harvestDate  DateTime\n  harvestType  Int\n  productState Boolean\n  harvest      String\n  unityType    Int\n  owner        user          @relation(fields: [ownerId], references: [id])\n  agendamentos AGENDAMENTO[]\n}\n\nmodel AGENDAMENTO {\n  id           String   @id @default(uuid())\n  clientId     String // ID do cliente que comprou\n  farmerId     String // ID do agricultor que vendeu\n  productId    String // ID do produto\n  quantity     Int // Quantidade comprada\n  totalPrice   Float // Preço total\n  status       Int // 0: Pendente, 1: Confirmado, 2: Cancelado\n  scheduledFor DateTime // Data/Hora da retirada\n  createdAt    DateTime @default(now())\n\n  client  user    @relation(\"AgendamentosCliente\", fields: [clientId], references: [id])\n  farmer  user    @relation(\"AgendamentosAgricultor\", fields: [farmerId], references: [id])\n  product PRODUCT @relation(fields: [productId], references: [id])\n}\n\n/// Chat models\nmodel CONVERSATION {\n  id             String   @id @default(uuid())\n  participantAId String\n  participantBId String\n  createdAt      DateTime @default(now())\n\n  messages MESSAGE[]\n\n  /// Ensure a user pair has at most one conversation\n  @@unique([participantAId, participantBId])\n}\n\nmodel MESSAGE {\n  id             String    @id @default(uuid())\n  conversationId String\n  senderId       String\n  content        String\n  createdAt      DateTime  @default(now())\n  readAt         DateTime?\n\n  conversation CONVERSATION @relation(fields: [conversationId], references: [id])\n\n  @@index([conversationId])\n}\n",
+  "inlineSchemaHash": "6dbed93151cb8f849011049adca0d9d50e0d75f22b57b19a80ddc1cc836865e8",
   "copyEngine": false
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"user\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cpfcnpj\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userType\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"sellings\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"rate\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"imgUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contact\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contactType\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null},\"HARVEST\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"harvestDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"ADDRESS\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cep\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"city\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"PRODUCT\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"imgUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"quantity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"harvestDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"harvestType\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"productState\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"harvest\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"unityType\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"user\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cpfcnpj\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userType\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"sellings\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"rate\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"imgUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contact\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"contactType\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"revenue\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"products\",\"kind\":\"object\",\"type\":\"PRODUCT\",\"relationName\":\"PRODUCTTouser\"},{\"name\":\"agendamentosCliente\",\"kind\":\"object\",\"type\":\"AGENDAMENTO\",\"relationName\":\"AgendamentosCliente\"},{\"name\":\"agendamentosAgricultor\",\"kind\":\"object\",\"type\":\"AGENDAMENTO\",\"relationName\":\"AgendamentosAgricultor\"}],\"dbName\":null},\"HARVEST\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"harvestDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"ADDRESS\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cep\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"city\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null},\"PRODUCT\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"imgUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"quantity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"ownerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"harvestDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"harvestType\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"productState\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"harvest\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"unityType\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"owner\",\"kind\":\"object\",\"type\":\"user\",\"relationName\":\"PRODUCTTouser\"},{\"name\":\"agendamentos\",\"kind\":\"object\",\"type\":\"AGENDAMENTO\",\"relationName\":\"AGENDAMENTOToPRODUCT\"}],\"dbName\":null},\"AGENDAMENTO\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"clientId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"farmerId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"productId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"quantity\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"totalPrice\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"scheduledFor\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"client\",\"kind\":\"object\",\"type\":\"user\",\"relationName\":\"AgendamentosCliente\"},{\"name\":\"farmer\",\"kind\":\"object\",\"type\":\"user\",\"relationName\":\"AgendamentosAgricultor\"},{\"name\":\"product\",\"kind\":\"object\",\"type\":\"PRODUCT\",\"relationName\":\"AGENDAMENTOToPRODUCT\"}],\"dbName\":null},\"CONVERSATION\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"participantAId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"participantBId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"messages\",\"kind\":\"object\",\"type\":\"MESSAGE\",\"relationName\":\"CONVERSATIONToMESSAGE\"}],\"dbName\":null},\"MESSAGE\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"conversationId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"senderId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"readAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"conversation\",\"kind\":\"object\",\"type\":\"CONVERSATION\",\"relationName\":\"CONVERSATIONToMESSAGE\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = undefined
 config.compilerWasm = undefined

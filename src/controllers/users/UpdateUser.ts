@@ -1,42 +1,71 @@
-import { Request, Response } from 'express'
-import { prisma } from '../../database/index'
-import logger from '../../utils/logger'
-
-
+import { Request, Response } from 'express';
+import { prisma } from '../../database/index';
+import logger from '../../utils/logger';
+import { hash } from 'bcryptjs';
 
 export class UpdateUser {
-    async handle(req: Request, res: Response){
-        try{
-            const {name, email, password, imgUrl, contact, contactType} = req.body
+    async handle(req: Request, res: Response) {
+        const { name, email, password, imgUrl, contact, contactType } = req.body;
+        const userId = req.userId;
 
-            const userVerify = await prisma.user.findUnique({
-                where:{
-                    id: req.userId
-                }
-            })
+        try {
+            const userExists = await prisma.user.findUnique({
+                where: { id: userId },
+            });
 
-            if(!userVerify){
-                return res.status(400).send({err: "Error updating user! User not found"})
+            if (!userExists) {
+                logger.warn(`User update attempt failed: User not found [ID: ${userId}]`);
+                return res.status(404).json({ err: 'User not found' });
             }
 
-            const updateUser = await prisma.user.update({
-                where:{
-                    id: req.userId
-                },
-                data: {
-                    name: name ? name : userVerify.name,
-                    email: email ? email : userVerify.email,
-                    password: password ? password : userVerify.password,
-                    imgUrl: imgUrl ? imgUrl : userVerify.imgUrl,
-                    contact: contact ? contact : userVerify.contact,
-                    contactType: contactType ? contactType : userVerify.contactType
+            if (email && email !== userExists.email) {
+                const emailInUse = await prisma.user.findUnique({
+                    where: { email },
+                });
+
+                if (emailInUse) {
+                    return res.status(400).json({ err: 'This email is already in use.' });
                 }
-            })
-            logger.info(`User updated: ${req.userId}`);
-            return res.status(200).json(updateUser)
-        }catch{
-            logger.error(`Error updating user: ${req.userId}`)
-            return res.status(500).send({err: "Error updating user"})
+            }
+
+            const dataToUpdate: any = {};
+            if (name) dataToUpdate.name = name;
+            if (email) dataToUpdate.email = email;
+            if (imgUrl) dataToUpdate.imgUrl = imgUrl;
+            if (contact) dataToUpdate.contact = contact;
+            if (contactType) dataToUpdate.contactType = contactType;
+
+            if (password) {
+                dataToUpdate.password = await hash(password, 8);
+            }
+
+            const updatedUser = await prisma.user.update({
+                where: {
+                    id: userId,
+                },
+                data: dataToUpdate,
+                select: { 
+                    id: true,
+                    name: true,
+                    email: true,
+                    imgUrl: true,
+                    contact: true,
+                    contactType: true,
+                    createDate: true 
+                }
+            });
+
+            logger.info(`User updated: ${userId}`);
+            return res.status(200).json(updatedUser);
+
+        } catch (err) {
+            let errorMessage = 'Internal server error while updating user';
+            if (err instanceof Error) {
+                errorMessage = err.message; 
+            }
+            
+            logger.error(`Error updating user [ID: ${userId}]: ${errorMessage}`);
+            return res.status(500).json({ err: errorMessage });
         }
     }
 }
