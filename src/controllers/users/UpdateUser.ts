@@ -5,7 +5,7 @@ import { hash } from 'bcryptjs';
 
 export class UpdateUser {
     async handle(req: Request, res: Response) {
-        const { name, email, password, imgUrl, contact, contactType } = req.body;
+        const { name, email, password, imgUrl, contact, contactType, farmName, latitude, longitude } = req.body;
         const userId = req.userId;
 
         try {
@@ -34,6 +34,11 @@ export class UpdateUser {
             if (imgUrl) dataToUpdate.imgUrl = imgUrl;
             if (contact) dataToUpdate.contact = contact;
             if (contactType) dataToUpdate.contactType = contactType;
+            
+            // Novos campos
+            if (farmName) dataToUpdate.farmName = farmName;
+            if (latitude !== undefined) dataToUpdate.latitude = parseFloat(latitude);
+            if (longitude !== undefined) dataToUpdate.longitude = parseFloat(longitude);
 
             if (password) {
                 dataToUpdate.password = await hash(password, 8);
@@ -51,7 +56,10 @@ export class UpdateUser {
                     imgUrl: true,
                     contact: true,
                     contactType: true,
-                    createDate: true 
+                    createDate: true,
+                    farmName: true,
+                    latitude: true,
+                    longitude: true
                 }
             });
 

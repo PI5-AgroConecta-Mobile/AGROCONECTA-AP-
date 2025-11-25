@@ -133,7 +133,10 @@ exports.Prisma.UserScalarFieldEnum = {
   imgUrl: 'imgUrl',
   contact: 'contact',
   contactType: 'contactType',
-  revenue: 'revenue'
+  revenue: 'revenue',
+  farmName: 'farmName',
+  latitude: 'latitude',
+  longitude: 'longitude'
 };
 
 exports.Prisma.HARVESTScalarFieldEnum = {

@@ -19,6 +19,17 @@ export class CreateUser {
                 logger.warn(`Attempt to create user with existing email: ${email}`);
                 return res.status(400).json({ err: "Este email já está em uso." })
             }
+
+            const cpfAlreadyExists = await prisma.user.findUnique({
+                where: { cpfcnpj: cpfcnpj }
+            })
+
+            if (cpfAlreadyExists) {
+                logger.warn(`Attempt to create user with existing CPF/CNPJ: ${cpfcnpj}`);
+                return res.status(400).json({ err: "Este CPF/CNPJ já está cadastrado." })
+            }
+            // ---------------------------------------------------
+
             const passwordHashed = await hash(password, 8)
             const user = await prisma.user.create({
                 data: {

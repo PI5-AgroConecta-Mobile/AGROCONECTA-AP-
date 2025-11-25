@@ -40,7 +40,7 @@ export type PRODUCT = $Result.DefaultSelection<Prisma.$PRODUCTPayload>
 export type AGENDAMENTO = $Result.DefaultSelection<Prisma.$AGENDAMENTOPayload>
 /**
  * Model CONVERSATION
- * Chat models
+ * 
  */
 export type CONVERSATION = $Result.DefaultSelection<Prisma.$CONVERSATIONPayload>
 /**
@@ -1409,12 +1409,16 @@ export namespace Prisma {
     products: number
     agendamentosCliente: number
     agendamentosAgricultor: number
+    harvests: number
+    addresses: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | UserCountOutputTypeCountProductsArgs
     agendamentosCliente?: boolean | UserCountOutputTypeCountAgendamentosClienteArgs
     agendamentosAgricultor?: boolean | UserCountOutputTypeCountAgendamentosAgricultorArgs
+    harvests?: boolean | UserCountOutputTypeCountHarvestsArgs
+    addresses?: boolean | UserCountOutputTypeCountAddressesArgs
   }
 
   // Custom InputTypes
@@ -1447,6 +1451,20 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountAgendamentosAgricultorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AGENDAMENTOWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountHarvestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HARVESTWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAddressesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ADDRESSWhereInput
   }
 
 
@@ -1534,6 +1552,8 @@ export namespace Prisma {
     rate: number | null
     contactType: number | null
     revenue: number | null
+    latitude: number | null
+    longitude: number | null
   }
 
   export type UserSumAggregateOutputType = {
@@ -1542,6 +1562,8 @@ export namespace Prisma {
     rate: number | null
     contactType: number | null
     revenue: number | null
+    latitude: number | null
+    longitude: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -1558,6 +1580,9 @@ export namespace Prisma {
     contact: string | null
     contactType: number | null
     revenue: number | null
+    farmName: string | null
+    latitude: number | null
+    longitude: number | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1574,6 +1599,9 @@ export namespace Prisma {
     contact: string | null
     contactType: number | null
     revenue: number | null
+    farmName: string | null
+    latitude: number | null
+    longitude: number | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1590,6 +1618,9 @@ export namespace Prisma {
     contact: number
     contactType: number
     revenue: number
+    farmName: number
+    latitude: number
+    longitude: number
     _all: number
   }
 
@@ -1600,6 +1631,8 @@ export namespace Prisma {
     rate?: true
     contactType?: true
     revenue?: true
+    latitude?: true
+    longitude?: true
   }
 
   export type UserSumAggregateInputType = {
@@ -1608,6 +1641,8 @@ export namespace Prisma {
     rate?: true
     contactType?: true
     revenue?: true
+    latitude?: true
+    longitude?: true
   }
 
   export type UserMinAggregateInputType = {
@@ -1624,6 +1659,9 @@ export namespace Prisma {
     contact?: true
     contactType?: true
     revenue?: true
+    farmName?: true
+    latitude?: true
+    longitude?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1640,6 +1678,9 @@ export namespace Prisma {
     contact?: true
     contactType?: true
     revenue?: true
+    farmName?: true
+    latitude?: true
+    longitude?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1656,6 +1697,9 @@ export namespace Prisma {
     contact?: true
     contactType?: true
     revenue?: true
+    farmName?: true
+    latitude?: true
+    longitude?: true
     _all?: true
   }
 
@@ -1759,6 +1803,9 @@ export namespace Prisma {
     contact: string
     contactType: number
     revenue: number
+    farmName: string | null
+    latitude: number | null
+    longitude: number | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1794,9 +1841,14 @@ export namespace Prisma {
     contact?: boolean
     contactType?: boolean
     revenue?: boolean
+    farmName?: boolean
+    latitude?: boolean
+    longitude?: boolean
     products?: boolean | user$productsArgs<ExtArgs>
     agendamentosCliente?: boolean | user$agendamentosClienteArgs<ExtArgs>
     agendamentosAgricultor?: boolean | user$agendamentosAgricultorArgs<ExtArgs>
+    harvests?: boolean | user$harvestsArgs<ExtArgs>
+    addresses?: boolean | user$addressesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1814,6 +1866,9 @@ export namespace Prisma {
     contact?: boolean
     contactType?: boolean
     revenue?: boolean
+    farmName?: boolean
+    latitude?: boolean
+    longitude?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type userSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1830,6 +1885,9 @@ export namespace Prisma {
     contact?: boolean
     contactType?: boolean
     revenue?: boolean
+    farmName?: boolean
+    latitude?: boolean
+    longitude?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type userSelectScalar = {
@@ -1846,13 +1904,18 @@ export namespace Prisma {
     contact?: boolean
     contactType?: boolean
     revenue?: boolean
+    farmName?: boolean
+    latitude?: boolean
+    longitude?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "cpfcnpj" | "email" | "password" | "userType" | "createDate" | "sellings" | "rate" | "imgUrl" | "contact" | "contactType" | "revenue", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "cpfcnpj" | "email" | "password" | "userType" | "createDate" | "sellings" | "rate" | "imgUrl" | "contact" | "contactType" | "revenue" | "farmName" | "latitude" | "longitude", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | user$productsArgs<ExtArgs>
     agendamentosCliente?: boolean | user$agendamentosClienteArgs<ExtArgs>
     agendamentosAgricultor?: boolean | user$agendamentosAgricultorArgs<ExtArgs>
+    harvests?: boolean | user$harvestsArgs<ExtArgs>
+    addresses?: boolean | user$addressesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type userIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1864,6 +1927,8 @@ export namespace Prisma {
       products: Prisma.$PRODUCTPayload<ExtArgs>[]
       agendamentosCliente: Prisma.$AGENDAMENTOPayload<ExtArgs>[]
       agendamentosAgricultor: Prisma.$AGENDAMENTOPayload<ExtArgs>[]
+      harvests: Prisma.$HARVESTPayload<ExtArgs>[]
+      addresses: Prisma.$ADDRESSPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1879,6 +1944,9 @@ export namespace Prisma {
       contact: string
       contactType: number
       revenue: number
+      farmName: string | null
+      latitude: number | null
+      longitude: number | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2276,6 +2344,8 @@ export namespace Prisma {
     products<T extends user$productsArgs<ExtArgs> = {}>(args?: Subset<T, user$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PRODUCTPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     agendamentosCliente<T extends user$agendamentosClienteArgs<ExtArgs> = {}>(args?: Subset<T, user$agendamentosClienteArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     agendamentosAgricultor<T extends user$agendamentosAgricultorArgs<ExtArgs> = {}>(args?: Subset<T, user$agendamentosAgricultorArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AGENDAMENTOPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    harvests<T extends user$harvestsArgs<ExtArgs> = {}>(args?: Subset<T, user$harvestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HARVESTPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    addresses<T extends user$addressesArgs<ExtArgs> = {}>(args?: Subset<T, user$addressesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ADDRESSPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2318,6 +2388,9 @@ export namespace Prisma {
     readonly contact: FieldRef<"user", 'String'>
     readonly contactType: FieldRef<"user", 'Int'>
     readonly revenue: FieldRef<"user", 'Float'>
+    readonly farmName: FieldRef<"user", 'String'>
+    readonly latitude: FieldRef<"user", 'Float'>
+    readonly longitude: FieldRef<"user", 'Float'>
   }
     
 
@@ -2778,6 +2851,54 @@ export namespace Prisma {
   }
 
   /**
+   * user.harvests
+   */
+  export type user$harvestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HARVEST
+     */
+    select?: HARVESTSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HARVEST
+     */
+    omit?: HARVESTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
+    where?: HARVESTWhereInput
+    orderBy?: HARVESTOrderByWithRelationInput | HARVESTOrderByWithRelationInput[]
+    cursor?: HARVESTWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HARVESTScalarFieldEnum | HARVESTScalarFieldEnum[]
+  }
+
+  /**
+   * user.addresses
+   */
+  export type user$addressesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ADDRESS
+     */
+    select?: ADDRESSSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ADDRESS
+     */
+    omit?: ADDRESSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
+    where?: ADDRESSWhereInput
+    orderBy?: ADDRESSOrderByWithRelationInput | ADDRESSOrderByWithRelationInput[]
+    cursor?: ADDRESSWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ADDRESSScalarFieldEnum | ADDRESSScalarFieldEnum[]
+  }
+
+  /**
    * user without action
    */
   export type userDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2960,6 +3081,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     harvestDate?: boolean
+    owner?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hARVEST"]>
 
   export type HARVESTSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2968,6 +3090,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     harvestDate?: boolean
+    owner?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hARVEST"]>
 
   export type HARVESTSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2976,6 +3099,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     harvestDate?: boolean
+    owner?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["hARVEST"]>
 
   export type HARVESTSelectScalar = {
@@ -2987,10 +3111,21 @@ export namespace Prisma {
   }
 
   export type HARVESTOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerId" | "name" | "description" | "harvestDate", ExtArgs["result"]["hARVEST"]>
+  export type HARVESTInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type HARVESTIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type HARVESTIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    owner?: boolean | userDefaultArgs<ExtArgs>
+  }
 
   export type $HARVESTPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "HARVEST"
-    objects: {}
+    objects: {
+      owner: Prisma.$userPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       ownerId: string
@@ -3391,6 +3526,7 @@ export namespace Prisma {
    */
   export interface Prisma__HARVESTClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    owner<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3442,6 +3578,10 @@ export namespace Prisma {
      */
     omit?: HARVESTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
+    /**
      * Filter, which HARVEST to fetch.
      */
     where: HARVESTWhereUniqueInput
@@ -3460,6 +3600,10 @@ export namespace Prisma {
      */
     omit?: HARVESTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
+    /**
      * Filter, which HARVEST to fetch.
      */
     where: HARVESTWhereUniqueInput
@@ -3477,6 +3621,10 @@ export namespace Prisma {
      * Omit specific fields from the HARVEST
      */
     omit?: HARVESTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
     /**
      * Filter, which HARVEST to fetch.
      */
@@ -3526,6 +3674,10 @@ export namespace Prisma {
      */
     omit?: HARVESTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
+    /**
      * Filter, which HARVEST to fetch.
      */
     where?: HARVESTWhereInput
@@ -3574,6 +3726,10 @@ export namespace Prisma {
      */
     omit?: HARVESTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
+    /**
      * Filter, which HARVESTS to fetch.
      */
     where?: HARVESTWhereInput
@@ -3617,6 +3773,10 @@ export namespace Prisma {
      */
     omit?: HARVESTOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
+    /**
      * The data needed to create a HARVEST.
      */
     data: XOR<HARVESTCreateInput, HARVESTUncheckedCreateInput>
@@ -3650,6 +3810,10 @@ export namespace Prisma {
      */
     data: HARVESTCreateManyInput | HARVESTCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3664,6 +3828,10 @@ export namespace Prisma {
      * Omit specific fields from the HARVEST
      */
     omit?: HARVESTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
     /**
      * The data needed to update a HARVEST.
      */
@@ -3716,6 +3884,10 @@ export namespace Prisma {
      * Limit how many HARVESTS to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3730,6 +3902,10 @@ export namespace Prisma {
      * Omit specific fields from the HARVEST
      */
     omit?: HARVESTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
     /**
      * The filter to search for the HARVEST to update in case it exists.
      */
@@ -3756,6 +3932,10 @@ export namespace Prisma {
      * Omit specific fields from the HARVEST
      */
     omit?: HARVESTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
     /**
      * Filter which HARVEST to delete.
      */
@@ -3788,6 +3968,10 @@ export namespace Prisma {
      * Omit specific fields from the HARVEST
      */
     omit?: HARVESTOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HARVESTInclude<ExtArgs> | null
   }
 
 
@@ -3947,6 +4131,7 @@ export namespace Prisma {
     userId?: boolean
     cep?: boolean
     city?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["aDDRESS"]>
 
   export type ADDRESSSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3954,6 +4139,7 @@ export namespace Prisma {
     userId?: boolean
     cep?: boolean
     city?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["aDDRESS"]>
 
   export type ADDRESSSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3961,6 +4147,7 @@ export namespace Prisma {
     userId?: boolean
     cep?: boolean
     city?: boolean
+    user?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["aDDRESS"]>
 
   export type ADDRESSSelectScalar = {
@@ -3971,10 +4158,21 @@ export namespace Prisma {
   }
 
   export type ADDRESSOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "cep" | "city", ExtArgs["result"]["aDDRESS"]>
+  export type ADDRESSInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type ADDRESSIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }
+  export type ADDRESSIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | userDefaultArgs<ExtArgs>
+  }
 
   export type $ADDRESSPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ADDRESS"
-    objects: {}
+    objects: {
+      user: Prisma.$userPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
@@ -4374,6 +4572,7 @@ export namespace Prisma {
    */
   export interface Prisma__ADDRESSClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4424,6 +4623,10 @@ export namespace Prisma {
      */
     omit?: ADDRESSOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
+    /**
      * Filter, which ADDRESS to fetch.
      */
     where: ADDRESSWhereUniqueInput
@@ -4442,6 +4645,10 @@ export namespace Prisma {
      */
     omit?: ADDRESSOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
+    /**
      * Filter, which ADDRESS to fetch.
      */
     where: ADDRESSWhereUniqueInput
@@ -4459,6 +4666,10 @@ export namespace Prisma {
      * Omit specific fields from the ADDRESS
      */
     omit?: ADDRESSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
     /**
      * Filter, which ADDRESS to fetch.
      */
@@ -4508,6 +4719,10 @@ export namespace Prisma {
      */
     omit?: ADDRESSOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
+    /**
      * Filter, which ADDRESS to fetch.
      */
     where?: ADDRESSWhereInput
@@ -4556,6 +4771,10 @@ export namespace Prisma {
      */
     omit?: ADDRESSOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
+    /**
      * Filter, which ADDRESSES to fetch.
      */
     where?: ADDRESSWhereInput
@@ -4599,6 +4818,10 @@ export namespace Prisma {
      */
     omit?: ADDRESSOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
+    /**
      * The data needed to create a ADDRESS.
      */
     data: XOR<ADDRESSCreateInput, ADDRESSUncheckedCreateInput>
@@ -4632,6 +4855,10 @@ export namespace Prisma {
      */
     data: ADDRESSCreateManyInput | ADDRESSCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4646,6 +4873,10 @@ export namespace Prisma {
      * Omit specific fields from the ADDRESS
      */
     omit?: ADDRESSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
     /**
      * The data needed to update a ADDRESS.
      */
@@ -4698,6 +4929,10 @@ export namespace Prisma {
      * Limit how many ADDRESSES to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4712,6 +4947,10 @@ export namespace Prisma {
      * Omit specific fields from the ADDRESS
      */
     omit?: ADDRESSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
     /**
      * The filter to search for the ADDRESS to update in case it exists.
      */
@@ -4738,6 +4977,10 @@ export namespace Prisma {
      * Omit specific fields from the ADDRESS
      */
     omit?: ADDRESSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
     /**
      * Filter which ADDRESS to delete.
      */
@@ -4770,6 +5013,10 @@ export namespace Prisma {
      * Omit specific fields from the ADDRESS
      */
     omit?: ADDRESSOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ADDRESSInclude<ExtArgs> | null
   }
 
 
@@ -9325,7 +9572,10 @@ export namespace Prisma {
     imgUrl: 'imgUrl',
     contact: 'contact',
     contactType: 'contactType',
-    revenue: 'revenue'
+    revenue: 'revenue',
+    farmName: 'farmName',
+    latitude: 'latitude',
+    longitude: 'longitude'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -9519,9 +9769,14 @@ export namespace Prisma {
     contact?: StringFilter<"user"> | string
     contactType?: IntFilter<"user"> | number
     revenue?: FloatFilter<"user"> | number
+    farmName?: StringNullableFilter<"user"> | string | null
+    latitude?: FloatNullableFilter<"user"> | number | null
+    longitude?: FloatNullableFilter<"user"> | number | null
     products?: PRODUCTListRelationFilter
     agendamentosCliente?: AGENDAMENTOListRelationFilter
     agendamentosAgricultor?: AGENDAMENTOListRelationFilter
+    harvests?: HARVESTListRelationFilter
+    addresses?: ADDRESSListRelationFilter
   }
 
   export type userOrderByWithRelationInput = {
@@ -9538,19 +9793,24 @@ export namespace Prisma {
     contact?: SortOrder
     contactType?: SortOrder
     revenue?: SortOrder
+    farmName?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
     products?: PRODUCTOrderByRelationAggregateInput
     agendamentosCliente?: AGENDAMENTOOrderByRelationAggregateInput
     agendamentosAgricultor?: AGENDAMENTOOrderByRelationAggregateInput
+    harvests?: HARVESTOrderByRelationAggregateInput
+    addresses?: ADDRESSOrderByRelationAggregateInput
   }
 
   export type userWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    cpfcnpj?: string
     email?: string
     AND?: userWhereInput | userWhereInput[]
     OR?: userWhereInput[]
     NOT?: userWhereInput | userWhereInput[]
     name?: StringFilter<"user"> | string
-    cpfcnpj?: StringFilter<"user"> | string
     password?: StringFilter<"user"> | string
     userType?: IntFilter<"user"> | number
     createDate?: DateTimeFilter<"user"> | Date | string
@@ -9560,10 +9820,15 @@ export namespace Prisma {
     contact?: StringFilter<"user"> | string
     contactType?: IntFilter<"user"> | number
     revenue?: FloatFilter<"user"> | number
+    farmName?: StringNullableFilter<"user"> | string | null
+    latitude?: FloatNullableFilter<"user"> | number | null
+    longitude?: FloatNullableFilter<"user"> | number | null
     products?: PRODUCTListRelationFilter
     agendamentosCliente?: AGENDAMENTOListRelationFilter
     agendamentosAgricultor?: AGENDAMENTOListRelationFilter
-  }, "id" | "email">
+    harvests?: HARVESTListRelationFilter
+    addresses?: ADDRESSListRelationFilter
+  }, "id" | "cpfcnpj" | "email">
 
   export type userOrderByWithAggregationInput = {
     id?: SortOrder
@@ -9579,6 +9844,9 @@ export namespace Prisma {
     contact?: SortOrder
     contactType?: SortOrder
     revenue?: SortOrder
+    farmName?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
     _count?: userCountOrderByAggregateInput
     _avg?: userAvgOrderByAggregateInput
     _max?: userMaxOrderByAggregateInput
@@ -9603,6 +9871,9 @@ export namespace Prisma {
     contact?: StringWithAggregatesFilter<"user"> | string
     contactType?: IntWithAggregatesFilter<"user"> | number
     revenue?: FloatWithAggregatesFilter<"user"> | number
+    farmName?: StringNullableWithAggregatesFilter<"user"> | string | null
+    latitude?: FloatNullableWithAggregatesFilter<"user"> | number | null
+    longitude?: FloatNullableWithAggregatesFilter<"user"> | number | null
   }
 
   export type HARVESTWhereInput = {
@@ -9614,6 +9885,7 @@ export namespace Prisma {
     name?: StringFilter<"HARVEST"> | string
     description?: StringFilter<"HARVEST"> | string
     harvestDate?: DateTimeFilter<"HARVEST"> | Date | string
+    owner?: XOR<UserScalarRelationFilter, userWhereInput>
   }
 
   export type HARVESTOrderByWithRelationInput = {
@@ -9622,6 +9894,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     harvestDate?: SortOrder
+    owner?: userOrderByWithRelationInput
   }
 
   export type HARVESTWhereUniqueInput = Prisma.AtLeast<{
@@ -9633,6 +9906,7 @@ export namespace Prisma {
     name?: StringFilter<"HARVEST"> | string
     description?: StringFilter<"HARVEST"> | string
     harvestDate?: DateTimeFilter<"HARVEST"> | Date | string
+    owner?: XOR<UserScalarRelationFilter, userWhereInput>
   }, "id">
 
   export type HARVESTOrderByWithAggregationInput = {
@@ -9665,6 +9939,7 @@ export namespace Prisma {
     userId?: StringFilter<"ADDRESS"> | string
     cep?: StringFilter<"ADDRESS"> | string
     city?: StringFilter<"ADDRESS"> | string
+    user?: XOR<UserScalarRelationFilter, userWhereInput>
   }
 
   export type ADDRESSOrderByWithRelationInput = {
@@ -9672,6 +9947,7 @@ export namespace Prisma {
     userId?: SortOrder
     cep?: SortOrder
     city?: SortOrder
+    user?: userOrderByWithRelationInput
   }
 
   export type ADDRESSWhereUniqueInput = Prisma.AtLeast<{
@@ -9682,6 +9958,7 @@ export namespace Prisma {
     userId?: StringFilter<"ADDRESS"> | string
     cep?: StringFilter<"ADDRESS"> | string
     city?: StringFilter<"ADDRESS"> | string
+    user?: XOR<UserScalarRelationFilter, userWhereInput>
   }, "id">
 
   export type ADDRESSOrderByWithAggregationInput = {
@@ -10007,9 +10284,14 @@ export namespace Prisma {
     contact: string
     contactType: number
     revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
     products?: PRODUCTCreateNestedManyWithoutOwnerInput
     agendamentosCliente?: AGENDAMENTOCreateNestedManyWithoutClientInput
     agendamentosAgricultor?: AGENDAMENTOCreateNestedManyWithoutFarmerInput
+    harvests?: HARVESTCreateNestedManyWithoutOwnerInput
+    addresses?: ADDRESSCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateInput = {
@@ -10026,9 +10308,14 @@ export namespace Prisma {
     contact: string
     contactType: number
     revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
     products?: PRODUCTUncheckedCreateNestedManyWithoutOwnerInput
     agendamentosCliente?: AGENDAMENTOUncheckedCreateNestedManyWithoutClientInput
     agendamentosAgricultor?: AGENDAMENTOUncheckedCreateNestedManyWithoutFarmerInput
+    harvests?: HARVESTUncheckedCreateNestedManyWithoutOwnerInput
+    addresses?: ADDRESSUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userUpdateInput = {
@@ -10045,9 +10332,14 @@ export namespace Prisma {
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
     revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     products?: PRODUCTUpdateManyWithoutOwnerNestedInput
     agendamentosCliente?: AGENDAMENTOUpdateManyWithoutClientNestedInput
     agendamentosAgricultor?: AGENDAMENTOUpdateManyWithoutFarmerNestedInput
+    harvests?: HARVESTUpdateManyWithoutOwnerNestedInput
+    addresses?: ADDRESSUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateInput = {
@@ -10064,9 +10356,14 @@ export namespace Prisma {
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
     revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     products?: PRODUCTUncheckedUpdateManyWithoutOwnerNestedInput
     agendamentosCliente?: AGENDAMENTOUncheckedUpdateManyWithoutClientNestedInput
     agendamentosAgricultor?: AGENDAMENTOUncheckedUpdateManyWithoutFarmerNestedInput
+    harvests?: HARVESTUncheckedUpdateManyWithoutOwnerNestedInput
+    addresses?: ADDRESSUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type userCreateManyInput = {
@@ -10083,6 +10380,9 @@ export namespace Prisma {
     contact: string
     contactType: number
     revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
   }
 
   export type userUpdateManyMutationInput = {
@@ -10099,6 +10399,9 @@ export namespace Prisma {
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
     revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type userUncheckedUpdateManyInput = {
@@ -10115,14 +10418,17 @@ export namespace Prisma {
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
     revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type HARVESTCreateInput = {
     id?: string
-    ownerId: string
     name: string
     description: string
     harvestDate: Date | string
+    owner: userCreateNestedOneWithoutHarvestsInput
   }
 
   export type HARVESTUncheckedCreateInput = {
@@ -10135,10 +10441,10 @@ export namespace Prisma {
 
   export type HARVESTUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ownerId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    owner?: userUpdateOneRequiredWithoutHarvestsNestedInput
   }
 
   export type HARVESTUncheckedUpdateInput = {
@@ -10159,7 +10465,6 @@ export namespace Prisma {
 
   export type HARVESTUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    ownerId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10175,9 +10480,9 @@ export namespace Prisma {
 
   export type ADDRESSCreateInput = {
     id?: string
-    userId: string
     cep: string
     city: string
+    user: userCreateNestedOneWithoutAddressesInput
   }
 
   export type ADDRESSUncheckedCreateInput = {
@@ -10189,9 +10494,9 @@ export namespace Prisma {
 
   export type ADDRESSUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
     cep?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
+    user?: userUpdateOneRequiredWithoutAddressesNestedInput
   }
 
   export type ADDRESSUncheckedUpdateInput = {
@@ -10210,7 +10515,6 @@ export namespace Prisma {
 
   export type ADDRESSUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
     cep?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
   }
@@ -10574,6 +10878,32 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type PRODUCTListRelationFilter = {
     every?: PRODUCTWhereInput
     some?: PRODUCTWhereInput
@@ -10586,11 +10916,36 @@ export namespace Prisma {
     none?: AGENDAMENTOWhereInput
   }
 
+  export type HARVESTListRelationFilter = {
+    every?: HARVESTWhereInput
+    some?: HARVESTWhereInput
+    none?: HARVESTWhereInput
+  }
+
+  export type ADDRESSListRelationFilter = {
+    every?: ADDRESSWhereInput
+    some?: ADDRESSWhereInput
+    none?: ADDRESSWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type PRODUCTOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type AGENDAMENTOOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type HARVESTOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ADDRESSOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10608,6 +10963,9 @@ export namespace Prisma {
     contact?: SortOrder
     contactType?: SortOrder
     revenue?: SortOrder
+    farmName?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type userAvgOrderByAggregateInput = {
@@ -10616,6 +10974,8 @@ export namespace Prisma {
     rate?: SortOrder
     contactType?: SortOrder
     revenue?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type userMaxOrderByAggregateInput = {
@@ -10632,6 +10992,9 @@ export namespace Prisma {
     contact?: SortOrder
     contactType?: SortOrder
     revenue?: SortOrder
+    farmName?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type userMinOrderByAggregateInput = {
@@ -10648,6 +11011,9 @@ export namespace Prisma {
     contact?: SortOrder
     contactType?: SortOrder
     revenue?: SortOrder
+    farmName?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type userSumOrderByAggregateInput = {
@@ -10656,6 +11022,8 @@ export namespace Prisma {
     rate?: SortOrder
     contactType?: SortOrder
     revenue?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -10722,6 +11090,45 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: userWhereInput
+    isNot?: userWhereInput
+  }
+
   export type HARVESTCountOrderByAggregateInput = {
     id?: SortOrder
     ownerId?: SortOrder
@@ -10770,11 +11177,6 @@ export namespace Prisma {
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: userWhereInput
-    isNot?: userWhereInput
   }
 
   export type PRODUCTCountOrderByAggregateInput = {
@@ -10951,11 +11353,6 @@ export namespace Prisma {
     isNot?: CONVERSATIONWhereInput
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
   export type MESSAGECountOrderByAggregateInput = {
     id?: SortOrder
     conversationId?: SortOrder
@@ -11018,6 +11415,20 @@ export namespace Prisma {
     connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
   }
 
+  export type HARVESTCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<HARVESTCreateWithoutOwnerInput, HARVESTUncheckedCreateWithoutOwnerInput> | HARVESTCreateWithoutOwnerInput[] | HARVESTUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: HARVESTCreateOrConnectWithoutOwnerInput | HARVESTCreateOrConnectWithoutOwnerInput[]
+    createMany?: HARVESTCreateManyOwnerInputEnvelope
+    connect?: HARVESTWhereUniqueInput | HARVESTWhereUniqueInput[]
+  }
+
+  export type ADDRESSCreateNestedManyWithoutUserInput = {
+    create?: XOR<ADDRESSCreateWithoutUserInput, ADDRESSUncheckedCreateWithoutUserInput> | ADDRESSCreateWithoutUserInput[] | ADDRESSUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ADDRESSCreateOrConnectWithoutUserInput | ADDRESSCreateOrConnectWithoutUserInput[]
+    createMany?: ADDRESSCreateManyUserInputEnvelope
+    connect?: ADDRESSWhereUniqueInput | ADDRESSWhereUniqueInput[]
+  }
+
   export type PRODUCTUncheckedCreateNestedManyWithoutOwnerInput = {
     create?: XOR<PRODUCTCreateWithoutOwnerInput, PRODUCTUncheckedCreateWithoutOwnerInput> | PRODUCTCreateWithoutOwnerInput[] | PRODUCTUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: PRODUCTCreateOrConnectWithoutOwnerInput | PRODUCTCreateOrConnectWithoutOwnerInput[]
@@ -11039,6 +11450,20 @@ export namespace Prisma {
     connect?: AGENDAMENTOWhereUniqueInput | AGENDAMENTOWhereUniqueInput[]
   }
 
+  export type HARVESTUncheckedCreateNestedManyWithoutOwnerInput = {
+    create?: XOR<HARVESTCreateWithoutOwnerInput, HARVESTUncheckedCreateWithoutOwnerInput> | HARVESTCreateWithoutOwnerInput[] | HARVESTUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: HARVESTCreateOrConnectWithoutOwnerInput | HARVESTCreateOrConnectWithoutOwnerInput[]
+    createMany?: HARVESTCreateManyOwnerInputEnvelope
+    connect?: HARVESTWhereUniqueInput | HARVESTWhereUniqueInput[]
+  }
+
+  export type ADDRESSUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ADDRESSCreateWithoutUserInput, ADDRESSUncheckedCreateWithoutUserInput> | ADDRESSCreateWithoutUserInput[] | ADDRESSUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ADDRESSCreateOrConnectWithoutUserInput | ADDRESSCreateOrConnectWithoutUserInput[]
+    createMany?: ADDRESSCreateManyUserInputEnvelope
+    connect?: ADDRESSWhereUniqueInput | ADDRESSWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -11057,6 +11482,18 @@ export namespace Prisma {
 
   export type FloatFieldUpdateOperationsInput = {
     set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
@@ -11105,6 +11542,34 @@ export namespace Prisma {
     deleteMany?: AGENDAMENTOScalarWhereInput | AGENDAMENTOScalarWhereInput[]
   }
 
+  export type HARVESTUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<HARVESTCreateWithoutOwnerInput, HARVESTUncheckedCreateWithoutOwnerInput> | HARVESTCreateWithoutOwnerInput[] | HARVESTUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: HARVESTCreateOrConnectWithoutOwnerInput | HARVESTCreateOrConnectWithoutOwnerInput[]
+    upsert?: HARVESTUpsertWithWhereUniqueWithoutOwnerInput | HARVESTUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: HARVESTCreateManyOwnerInputEnvelope
+    set?: HARVESTWhereUniqueInput | HARVESTWhereUniqueInput[]
+    disconnect?: HARVESTWhereUniqueInput | HARVESTWhereUniqueInput[]
+    delete?: HARVESTWhereUniqueInput | HARVESTWhereUniqueInput[]
+    connect?: HARVESTWhereUniqueInput | HARVESTWhereUniqueInput[]
+    update?: HARVESTUpdateWithWhereUniqueWithoutOwnerInput | HARVESTUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: HARVESTUpdateManyWithWhereWithoutOwnerInput | HARVESTUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: HARVESTScalarWhereInput | HARVESTScalarWhereInput[]
+  }
+
+  export type ADDRESSUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ADDRESSCreateWithoutUserInput, ADDRESSUncheckedCreateWithoutUserInput> | ADDRESSCreateWithoutUserInput[] | ADDRESSUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ADDRESSCreateOrConnectWithoutUserInput | ADDRESSCreateOrConnectWithoutUserInput[]
+    upsert?: ADDRESSUpsertWithWhereUniqueWithoutUserInput | ADDRESSUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ADDRESSCreateManyUserInputEnvelope
+    set?: ADDRESSWhereUniqueInput | ADDRESSWhereUniqueInput[]
+    disconnect?: ADDRESSWhereUniqueInput | ADDRESSWhereUniqueInput[]
+    delete?: ADDRESSWhereUniqueInput | ADDRESSWhereUniqueInput[]
+    connect?: ADDRESSWhereUniqueInput | ADDRESSWhereUniqueInput[]
+    update?: ADDRESSUpdateWithWhereUniqueWithoutUserInput | ADDRESSUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ADDRESSUpdateManyWithWhereWithoutUserInput | ADDRESSUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ADDRESSScalarWhereInput | ADDRESSScalarWhereInput[]
+  }
+
   export type PRODUCTUncheckedUpdateManyWithoutOwnerNestedInput = {
     create?: XOR<PRODUCTCreateWithoutOwnerInput, PRODUCTUncheckedCreateWithoutOwnerInput> | PRODUCTCreateWithoutOwnerInput[] | PRODUCTUncheckedCreateWithoutOwnerInput[]
     connectOrCreate?: PRODUCTCreateOrConnectWithoutOwnerInput | PRODUCTCreateOrConnectWithoutOwnerInput[]
@@ -11145,6 +11610,62 @@ export namespace Prisma {
     update?: AGENDAMENTOUpdateWithWhereUniqueWithoutFarmerInput | AGENDAMENTOUpdateWithWhereUniqueWithoutFarmerInput[]
     updateMany?: AGENDAMENTOUpdateManyWithWhereWithoutFarmerInput | AGENDAMENTOUpdateManyWithWhereWithoutFarmerInput[]
     deleteMany?: AGENDAMENTOScalarWhereInput | AGENDAMENTOScalarWhereInput[]
+  }
+
+  export type HARVESTUncheckedUpdateManyWithoutOwnerNestedInput = {
+    create?: XOR<HARVESTCreateWithoutOwnerInput, HARVESTUncheckedCreateWithoutOwnerInput> | HARVESTCreateWithoutOwnerInput[] | HARVESTUncheckedCreateWithoutOwnerInput[]
+    connectOrCreate?: HARVESTCreateOrConnectWithoutOwnerInput | HARVESTCreateOrConnectWithoutOwnerInput[]
+    upsert?: HARVESTUpsertWithWhereUniqueWithoutOwnerInput | HARVESTUpsertWithWhereUniqueWithoutOwnerInput[]
+    createMany?: HARVESTCreateManyOwnerInputEnvelope
+    set?: HARVESTWhereUniqueInput | HARVESTWhereUniqueInput[]
+    disconnect?: HARVESTWhereUniqueInput | HARVESTWhereUniqueInput[]
+    delete?: HARVESTWhereUniqueInput | HARVESTWhereUniqueInput[]
+    connect?: HARVESTWhereUniqueInput | HARVESTWhereUniqueInput[]
+    update?: HARVESTUpdateWithWhereUniqueWithoutOwnerInput | HARVESTUpdateWithWhereUniqueWithoutOwnerInput[]
+    updateMany?: HARVESTUpdateManyWithWhereWithoutOwnerInput | HARVESTUpdateManyWithWhereWithoutOwnerInput[]
+    deleteMany?: HARVESTScalarWhereInput | HARVESTScalarWhereInput[]
+  }
+
+  export type ADDRESSUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ADDRESSCreateWithoutUserInput, ADDRESSUncheckedCreateWithoutUserInput> | ADDRESSCreateWithoutUserInput[] | ADDRESSUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ADDRESSCreateOrConnectWithoutUserInput | ADDRESSCreateOrConnectWithoutUserInput[]
+    upsert?: ADDRESSUpsertWithWhereUniqueWithoutUserInput | ADDRESSUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ADDRESSCreateManyUserInputEnvelope
+    set?: ADDRESSWhereUniqueInput | ADDRESSWhereUniqueInput[]
+    disconnect?: ADDRESSWhereUniqueInput | ADDRESSWhereUniqueInput[]
+    delete?: ADDRESSWhereUniqueInput | ADDRESSWhereUniqueInput[]
+    connect?: ADDRESSWhereUniqueInput | ADDRESSWhereUniqueInput[]
+    update?: ADDRESSUpdateWithWhereUniqueWithoutUserInput | ADDRESSUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ADDRESSUpdateManyWithWhereWithoutUserInput | ADDRESSUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ADDRESSScalarWhereInput | ADDRESSScalarWhereInput[]
+  }
+
+  export type userCreateNestedOneWithoutHarvestsInput = {
+    create?: XOR<userCreateWithoutHarvestsInput, userUncheckedCreateWithoutHarvestsInput>
+    connectOrCreate?: userCreateOrConnectWithoutHarvestsInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type userUpdateOneRequiredWithoutHarvestsNestedInput = {
+    create?: XOR<userCreateWithoutHarvestsInput, userUncheckedCreateWithoutHarvestsInput>
+    connectOrCreate?: userCreateOrConnectWithoutHarvestsInput
+    upsert?: userUpsertWithoutHarvestsInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutHarvestsInput, userUpdateWithoutHarvestsInput>, userUncheckedUpdateWithoutHarvestsInput>
+  }
+
+  export type userCreateNestedOneWithoutAddressesInput = {
+    create?: XOR<userCreateWithoutAddressesInput, userUncheckedCreateWithoutAddressesInput>
+    connectOrCreate?: userCreateOrConnectWithoutAddressesInput
+    connect?: userWhereUniqueInput
+  }
+
+  export type userUpdateOneRequiredWithoutAddressesNestedInput = {
+    create?: XOR<userCreateWithoutAddressesInput, userUncheckedCreateWithoutAddressesInput>
+    connectOrCreate?: userCreateOrConnectWithoutAddressesInput
+    upsert?: userUpsertWithoutAddressesInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutAddressesInput, userUpdateWithoutAddressesInput>, userUncheckedUpdateWithoutAddressesInput>
   }
 
   export type userCreateNestedOneWithoutProductsInput = {
@@ -11356,6 +11877,31 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -11419,6 +11965,50 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -11455,17 +12045,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type PRODUCTCreateWithoutOwnerInput = {
@@ -11572,6 +12151,52 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type HARVESTCreateWithoutOwnerInput = {
+    id?: string
+    name: string
+    description: string
+    harvestDate: Date | string
+  }
+
+  export type HARVESTUncheckedCreateWithoutOwnerInput = {
+    id?: string
+    name: string
+    description: string
+    harvestDate: Date | string
+  }
+
+  export type HARVESTCreateOrConnectWithoutOwnerInput = {
+    where: HARVESTWhereUniqueInput
+    create: XOR<HARVESTCreateWithoutOwnerInput, HARVESTUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type HARVESTCreateManyOwnerInputEnvelope = {
+    data: HARVESTCreateManyOwnerInput | HARVESTCreateManyOwnerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ADDRESSCreateWithoutUserInput = {
+    id?: string
+    cep: string
+    city: string
+  }
+
+  export type ADDRESSUncheckedCreateWithoutUserInput = {
+    id?: string
+    cep: string
+    city: string
+  }
+
+  export type ADDRESSCreateOrConnectWithoutUserInput = {
+    where: ADDRESSWhereUniqueInput
+    create: XOR<ADDRESSCreateWithoutUserInput, ADDRESSUncheckedCreateWithoutUserInput>
+  }
+
+  export type ADDRESSCreateManyUserInputEnvelope = {
+    data: ADDRESSCreateManyUserInput | ADDRESSCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type PRODUCTUpsertWithWhereUniqueWithoutOwnerInput = {
     where: PRODUCTWhereUniqueInput
     update: XOR<PRODUCTUpdateWithoutOwnerInput, PRODUCTUncheckedUpdateWithoutOwnerInput>
@@ -11653,6 +12278,275 @@ export namespace Prisma {
     data: XOR<AGENDAMENTOUpdateManyMutationInput, AGENDAMENTOUncheckedUpdateManyWithoutFarmerInput>
   }
 
+  export type HARVESTUpsertWithWhereUniqueWithoutOwnerInput = {
+    where: HARVESTWhereUniqueInput
+    update: XOR<HARVESTUpdateWithoutOwnerInput, HARVESTUncheckedUpdateWithoutOwnerInput>
+    create: XOR<HARVESTCreateWithoutOwnerInput, HARVESTUncheckedCreateWithoutOwnerInput>
+  }
+
+  export type HARVESTUpdateWithWhereUniqueWithoutOwnerInput = {
+    where: HARVESTWhereUniqueInput
+    data: XOR<HARVESTUpdateWithoutOwnerInput, HARVESTUncheckedUpdateWithoutOwnerInput>
+  }
+
+  export type HARVESTUpdateManyWithWhereWithoutOwnerInput = {
+    where: HARVESTScalarWhereInput
+    data: XOR<HARVESTUpdateManyMutationInput, HARVESTUncheckedUpdateManyWithoutOwnerInput>
+  }
+
+  export type HARVESTScalarWhereInput = {
+    AND?: HARVESTScalarWhereInput | HARVESTScalarWhereInput[]
+    OR?: HARVESTScalarWhereInput[]
+    NOT?: HARVESTScalarWhereInput | HARVESTScalarWhereInput[]
+    id?: StringFilter<"HARVEST"> | string
+    ownerId?: StringFilter<"HARVEST"> | string
+    name?: StringFilter<"HARVEST"> | string
+    description?: StringFilter<"HARVEST"> | string
+    harvestDate?: DateTimeFilter<"HARVEST"> | Date | string
+  }
+
+  export type ADDRESSUpsertWithWhereUniqueWithoutUserInput = {
+    where: ADDRESSWhereUniqueInput
+    update: XOR<ADDRESSUpdateWithoutUserInput, ADDRESSUncheckedUpdateWithoutUserInput>
+    create: XOR<ADDRESSCreateWithoutUserInput, ADDRESSUncheckedCreateWithoutUserInput>
+  }
+
+  export type ADDRESSUpdateWithWhereUniqueWithoutUserInput = {
+    where: ADDRESSWhereUniqueInput
+    data: XOR<ADDRESSUpdateWithoutUserInput, ADDRESSUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ADDRESSUpdateManyWithWhereWithoutUserInput = {
+    where: ADDRESSScalarWhereInput
+    data: XOR<ADDRESSUpdateManyMutationInput, ADDRESSUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ADDRESSScalarWhereInput = {
+    AND?: ADDRESSScalarWhereInput | ADDRESSScalarWhereInput[]
+    OR?: ADDRESSScalarWhereInput[]
+    NOT?: ADDRESSScalarWhereInput | ADDRESSScalarWhereInput[]
+    id?: StringFilter<"ADDRESS"> | string
+    userId?: StringFilter<"ADDRESS"> | string
+    cep?: StringFilter<"ADDRESS"> | string
+    city?: StringFilter<"ADDRESS"> | string
+  }
+
+  export type userCreateWithoutHarvestsInput = {
+    id?: string
+    name: string
+    cpfcnpj: string
+    email: string
+    password: string
+    userType: number
+    createDate?: Date | string
+    sellings: number
+    rate: number
+    imgUrl: string
+    contact: string
+    contactType: number
+    revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    products?: PRODUCTCreateNestedManyWithoutOwnerInput
+    agendamentosCliente?: AGENDAMENTOCreateNestedManyWithoutClientInput
+    agendamentosAgricultor?: AGENDAMENTOCreateNestedManyWithoutFarmerInput
+    addresses?: ADDRESSCreateNestedManyWithoutUserInput
+  }
+
+  export type userUncheckedCreateWithoutHarvestsInput = {
+    id?: string
+    name: string
+    cpfcnpj: string
+    email: string
+    password: string
+    userType: number
+    createDate?: Date | string
+    sellings: number
+    rate: number
+    imgUrl: string
+    contact: string
+    contactType: number
+    revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    products?: PRODUCTUncheckedCreateNestedManyWithoutOwnerInput
+    agendamentosCliente?: AGENDAMENTOUncheckedCreateNestedManyWithoutClientInput
+    agendamentosAgricultor?: AGENDAMENTOUncheckedCreateNestedManyWithoutFarmerInput
+    addresses?: ADDRESSUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type userCreateOrConnectWithoutHarvestsInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutHarvestsInput, userUncheckedCreateWithoutHarvestsInput>
+  }
+
+  export type userUpsertWithoutHarvestsInput = {
+    update: XOR<userUpdateWithoutHarvestsInput, userUncheckedUpdateWithoutHarvestsInput>
+    create: XOR<userCreateWithoutHarvestsInput, userUncheckedCreateWithoutHarvestsInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutHarvestsInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutHarvestsInput, userUncheckedUpdateWithoutHarvestsInput>
+  }
+
+  export type userUpdateWithoutHarvestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    cpfcnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userType?: IntFieldUpdateOperationsInput | number
+    createDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    sellings?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: IntFieldUpdateOperationsInput | number
+    revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    products?: PRODUCTUpdateManyWithoutOwnerNestedInput
+    agendamentosCliente?: AGENDAMENTOUpdateManyWithoutClientNestedInput
+    agendamentosAgricultor?: AGENDAMENTOUpdateManyWithoutFarmerNestedInput
+    addresses?: ADDRESSUpdateManyWithoutUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutHarvestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    cpfcnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userType?: IntFieldUpdateOperationsInput | number
+    createDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    sellings?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: IntFieldUpdateOperationsInput | number
+    revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    products?: PRODUCTUncheckedUpdateManyWithoutOwnerNestedInput
+    agendamentosCliente?: AGENDAMENTOUncheckedUpdateManyWithoutClientNestedInput
+    agendamentosAgricultor?: AGENDAMENTOUncheckedUpdateManyWithoutFarmerNestedInput
+    addresses?: ADDRESSUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type userCreateWithoutAddressesInput = {
+    id?: string
+    name: string
+    cpfcnpj: string
+    email: string
+    password: string
+    userType: number
+    createDate?: Date | string
+    sellings: number
+    rate: number
+    imgUrl: string
+    contact: string
+    contactType: number
+    revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    products?: PRODUCTCreateNestedManyWithoutOwnerInput
+    agendamentosCliente?: AGENDAMENTOCreateNestedManyWithoutClientInput
+    agendamentosAgricultor?: AGENDAMENTOCreateNestedManyWithoutFarmerInput
+    harvests?: HARVESTCreateNestedManyWithoutOwnerInput
+  }
+
+  export type userUncheckedCreateWithoutAddressesInput = {
+    id?: string
+    name: string
+    cpfcnpj: string
+    email: string
+    password: string
+    userType: number
+    createDate?: Date | string
+    sellings: number
+    rate: number
+    imgUrl: string
+    contact: string
+    contactType: number
+    revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    products?: PRODUCTUncheckedCreateNestedManyWithoutOwnerInput
+    agendamentosCliente?: AGENDAMENTOUncheckedCreateNestedManyWithoutClientInput
+    agendamentosAgricultor?: AGENDAMENTOUncheckedCreateNestedManyWithoutFarmerInput
+    harvests?: HARVESTUncheckedCreateNestedManyWithoutOwnerInput
+  }
+
+  export type userCreateOrConnectWithoutAddressesInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutAddressesInput, userUncheckedCreateWithoutAddressesInput>
+  }
+
+  export type userUpsertWithoutAddressesInput = {
+    update: XOR<userUpdateWithoutAddressesInput, userUncheckedUpdateWithoutAddressesInput>
+    create: XOR<userCreateWithoutAddressesInput, userUncheckedCreateWithoutAddressesInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutAddressesInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutAddressesInput, userUncheckedUpdateWithoutAddressesInput>
+  }
+
+  export type userUpdateWithoutAddressesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    cpfcnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userType?: IntFieldUpdateOperationsInput | number
+    createDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    sellings?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: IntFieldUpdateOperationsInput | number
+    revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    products?: PRODUCTUpdateManyWithoutOwnerNestedInput
+    agendamentosCliente?: AGENDAMENTOUpdateManyWithoutClientNestedInput
+    agendamentosAgricultor?: AGENDAMENTOUpdateManyWithoutFarmerNestedInput
+    harvests?: HARVESTUpdateManyWithoutOwnerNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutAddressesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    cpfcnpj?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    userType?: IntFieldUpdateOperationsInput | number
+    createDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    sellings?: IntFieldUpdateOperationsInput | number
+    rate?: FloatFieldUpdateOperationsInput | number
+    imgUrl?: StringFieldUpdateOperationsInput | string
+    contact?: StringFieldUpdateOperationsInput | string
+    contactType?: IntFieldUpdateOperationsInput | number
+    revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    products?: PRODUCTUncheckedUpdateManyWithoutOwnerNestedInput
+    agendamentosCliente?: AGENDAMENTOUncheckedUpdateManyWithoutClientNestedInput
+    agendamentosAgricultor?: AGENDAMENTOUncheckedUpdateManyWithoutFarmerNestedInput
+    harvests?: HARVESTUncheckedUpdateManyWithoutOwnerNestedInput
+  }
+
   export type userCreateWithoutProductsInput = {
     id?: string
     name: string
@@ -11667,8 +12561,13 @@ export namespace Prisma {
     contact: string
     contactType: number
     revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
     agendamentosCliente?: AGENDAMENTOCreateNestedManyWithoutClientInput
     agendamentosAgricultor?: AGENDAMENTOCreateNestedManyWithoutFarmerInput
+    harvests?: HARVESTCreateNestedManyWithoutOwnerInput
+    addresses?: ADDRESSCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateWithoutProductsInput = {
@@ -11685,8 +12584,13 @@ export namespace Prisma {
     contact: string
     contactType: number
     revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
     agendamentosCliente?: AGENDAMENTOUncheckedCreateNestedManyWithoutClientInput
     agendamentosAgricultor?: AGENDAMENTOUncheckedCreateNestedManyWithoutFarmerInput
+    harvests?: HARVESTUncheckedCreateNestedManyWithoutOwnerInput
+    addresses?: ADDRESSUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userCreateOrConnectWithoutProductsInput = {
@@ -11751,8 +12655,13 @@ export namespace Prisma {
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
     revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     agendamentosCliente?: AGENDAMENTOUpdateManyWithoutClientNestedInput
     agendamentosAgricultor?: AGENDAMENTOUpdateManyWithoutFarmerNestedInput
+    harvests?: HARVESTUpdateManyWithoutOwnerNestedInput
+    addresses?: ADDRESSUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutProductsInput = {
@@ -11769,8 +12678,13 @@ export namespace Prisma {
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
     revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     agendamentosCliente?: AGENDAMENTOUncheckedUpdateManyWithoutClientNestedInput
     agendamentosAgricultor?: AGENDAMENTOUncheckedUpdateManyWithoutFarmerNestedInput
+    harvests?: HARVESTUncheckedUpdateManyWithoutOwnerNestedInput
+    addresses?: ADDRESSUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type AGENDAMENTOUpsertWithWhereUniqueWithoutProductInput = {
@@ -11803,8 +12717,13 @@ export namespace Prisma {
     contact: string
     contactType: number
     revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
     products?: PRODUCTCreateNestedManyWithoutOwnerInput
     agendamentosAgricultor?: AGENDAMENTOCreateNestedManyWithoutFarmerInput
+    harvests?: HARVESTCreateNestedManyWithoutOwnerInput
+    addresses?: ADDRESSCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateWithoutAgendamentosClienteInput = {
@@ -11821,8 +12740,13 @@ export namespace Prisma {
     contact: string
     contactType: number
     revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
     products?: PRODUCTUncheckedCreateNestedManyWithoutOwnerInput
     agendamentosAgricultor?: AGENDAMENTOUncheckedCreateNestedManyWithoutFarmerInput
+    harvests?: HARVESTUncheckedCreateNestedManyWithoutOwnerInput
+    addresses?: ADDRESSUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userCreateOrConnectWithoutAgendamentosClienteInput = {
@@ -11844,8 +12768,13 @@ export namespace Prisma {
     contact: string
     contactType: number
     revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
     products?: PRODUCTCreateNestedManyWithoutOwnerInput
     agendamentosCliente?: AGENDAMENTOCreateNestedManyWithoutClientInput
+    harvests?: HARVESTCreateNestedManyWithoutOwnerInput
+    addresses?: ADDRESSCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateWithoutAgendamentosAgricultorInput = {
@@ -11862,8 +12791,13 @@ export namespace Prisma {
     contact: string
     contactType: number
     revenue?: number
+    farmName?: string | null
+    latitude?: number | null
+    longitude?: number | null
     products?: PRODUCTUncheckedCreateNestedManyWithoutOwnerInput
     agendamentosCliente?: AGENDAMENTOUncheckedCreateNestedManyWithoutClientInput
+    harvests?: HARVESTUncheckedCreateNestedManyWithoutOwnerInput
+    addresses?: ADDRESSUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userCreateOrConnectWithoutAgendamentosAgricultorInput = {
@@ -11931,8 +12865,13 @@ export namespace Prisma {
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
     revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     products?: PRODUCTUpdateManyWithoutOwnerNestedInput
     agendamentosAgricultor?: AGENDAMENTOUpdateManyWithoutFarmerNestedInput
+    harvests?: HARVESTUpdateManyWithoutOwnerNestedInput
+    addresses?: ADDRESSUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutAgendamentosClienteInput = {
@@ -11949,8 +12888,13 @@ export namespace Prisma {
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
     revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     products?: PRODUCTUncheckedUpdateManyWithoutOwnerNestedInput
     agendamentosAgricultor?: AGENDAMENTOUncheckedUpdateManyWithoutFarmerNestedInput
+    harvests?: HARVESTUncheckedUpdateManyWithoutOwnerNestedInput
+    addresses?: ADDRESSUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type userUpsertWithoutAgendamentosAgricultorInput = {
@@ -11978,8 +12922,13 @@ export namespace Prisma {
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
     revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     products?: PRODUCTUpdateManyWithoutOwnerNestedInput
     agendamentosCliente?: AGENDAMENTOUpdateManyWithoutClientNestedInput
+    harvests?: HARVESTUpdateManyWithoutOwnerNestedInput
+    addresses?: ADDRESSUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutAgendamentosAgricultorInput = {
@@ -11996,8 +12945,13 @@ export namespace Prisma {
     contact?: StringFieldUpdateOperationsInput | string
     contactType?: IntFieldUpdateOperationsInput | number
     revenue?: FloatFieldUpdateOperationsInput | number
+    farmName?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     products?: PRODUCTUncheckedUpdateManyWithoutOwnerNestedInput
     agendamentosCliente?: AGENDAMENTOUncheckedUpdateManyWithoutClientNestedInput
+    harvests?: HARVESTUncheckedUpdateManyWithoutOwnerNestedInput
+    addresses?: ADDRESSUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PRODUCTUpsertWithoutAgendamentosInput = {
@@ -12175,6 +13129,19 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type HARVESTCreateManyOwnerInput = {
+    id?: string
+    name: string
+    description: string
+    harvestDate: Date | string
+  }
+
+  export type ADDRESSCreateManyUserInput = {
+    id?: string
+    cep: string
+    city: string
+  }
+
   export type PRODUCTUpdateWithoutOwnerInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -12283,6 +13250,45 @@ export namespace Prisma {
     status?: IntFieldUpdateOperationsInput | number
     scheduledFor?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HARVESTUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HARVESTUncheckedUpdateWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HARVESTUncheckedUpdateManyWithoutOwnerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ADDRESSUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cep?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ADDRESSUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cep?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ADDRESSUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cep?: StringFieldUpdateOperationsInput | string
+    city?: StringFieldUpdateOperationsInput | string
   }
 
   export type AGENDAMENTOCreateManyProductInput = {

@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -15,22 +9,33 @@ datasource db {
 }
 
 model user {
-  id                     String        @id @default(uuid())
-  name                   String
-  cpfcnpj                String
-  email                  String        @unique
-  password               String
-  userType               Int
-  createDate             DateTime      @default(now())
-  sellings               Int
-  rate                   Float
-  imgUrl                 String
-  contact                String
-  contactType            Int
-  revenue                Float         @default(0)
+  id          String   @id @default(uuid())
+  name        String
+  cpfcnpj     String   @unique // Adicionado @unique
+  email       String   @unique
+  password    String
+  userType    Int
+  createDate  DateTime @default(now())
+  sellings    Int
+  rate        Float
+  imgUrl      String
+  contact     String
+  contactType Int
+  revenue     Float    @default(0)
+
+  // Campos de Mapa
+  farmName  String?
+  latitude  Float?
+  longitude Float?
+
+  // Relacionamentos
   products               PRODUCT[]
   agendamentosCliente    AGENDAMENTO[] @relation("AgendamentosCliente")
   agendamentosAgricultor AGENDAMENTO[] @relation("AgendamentosAgricultor")
+
+  // Novos relacionamentos adicionados
+  harvests  HARVEST[]
+  addresses ADDRESS[]
 }
 
 model HARVEST {
@@ -39,6 +44,9 @@ model HARVEST {
   name        String
   description String
   harvestDate DateTime
+
+  // Relacionamento configurado
+  owner user @relation(fields: [ownerId], references: [id])
 }
 
 model ADDRESS {
@@ -46,6 +54,9 @@ model ADDRESS {
   userId String
   cep    String
   city   String
+
+  // Relacionamento configurado
+  user user @relation(fields: [userId], references: [id])
 }
 
 model PRODUCT {
@@ -67,13 +78,13 @@ model PRODUCT {
 
 model AGENDAMENTO {
   id           String   @id @default(uuid())
-  clientId     String // ID do cliente que comprou
-  farmerId     String // ID do agricultor que vendeu
-  productId    String // ID do produto
-  quantity     Int // Quantidade comprada
-  totalPrice   Float // Preço total
-  status       Int // 0: Pendente, 1: Confirmado, 2: Cancelado
-  scheduledFor DateTime // Data/Hora da retirada
+  clientId     String
+  farmerId     String
+  productId    String
+  quantity     Int
+  totalPrice   Float
+  status       Int
+  scheduledFor DateTime
   createdAt    DateTime @default(now())
 
   client  user    @relation("AgendamentosCliente", fields: [clientId], references: [id])
@@ -81,28 +92,24 @@ model AGENDAMENTO {
   product PRODUCT @relation(fields: [productId], references: [id])
 }
 
-/// Chat models
 model CONVERSATION {
-  id             String   @id @default(uuid())
+  id             String    @id @default(uuid())
   participantAId String
   participantBId String
-  createdAt      DateTime @default(now())
+  createdAt      DateTime  @default(now())
+  messages       MESSAGE[]
 
-  messages MESSAGE[]
-
-  /// Ensure a user pair has at most one conversation
   @@unique([participantAId, participantBId])
 }
 
 model MESSAGE {
-  id             String    @id @default(uuid())
+  id             String       @id @default(uuid())
   conversationId String
   senderId       String
   content        String
-  createdAt      DateTime  @default(now())
+  createdAt      DateTime     @default(now())
   readAt         DateTime?
-
-  conversation CONVERSATION @relation(fields: [conversationId], references: [id])
+  conversation   CONVERSATION @relation(fields: [conversationId], references: [id])
 
   @@index([conversationId])
 }

@@ -1,4 +1,8 @@
 import { Router } from 'express';
+import multer from 'multer';
+import multerConfig from './config/multer';
+import { prisma } from './database'; // Necessário para salvar a URL da foto no banco
+
 import { Login } from './controllers/users/Longinho';
 import { CreateUser } from './controllers/users/CreateUser'
 import { UpdateUser } from './controllers/users/UpdateUser';
@@ -18,14 +22,18 @@ import { ListMyProducts } from './controllers/products/ListMyProducts';
 import { CreateAgendamento } from './controllers/Agendamentos/CreateAgendamento';
 import { ListAgendamentosCliente } from './controllers/Agendamentos/ListAgendamentosCliente';
 import { ListAgendamentosFarmer } from './controllers/Agendamentos/ListAgendamentosFarmer';
-import { UpdateAgendamentoStatus } from './controllers/Agendamentos/UpdateAgendamentoStatus'; // <-- ADICIONADO
+import { UpdateAgendamentoStatus } from './controllers/Agendamentos/UpdateAgendamentoStatus';
 
-import midAthorization from './middleware/Authorization';
+// Importação do Middleware
+import midAthorization from './middleware/Authorization'; 
+
 import { ListConversations } from './controllers/chat/ListConversations';
 import { ListMessages } from './controllers/chat/ListMessages';
 import { GetOrCreateConversationWithUser } from './controllers/chat/GetOrCreateConversationWithUser';
+import { ListFarms } from "./controllers/users/ListFarms"; 
 
 const router: Router = Router()
+const upload = multer(multerConfig); // Inicializa o upload
 
 const login = new Login()
 const createUser = new CreateUser()
@@ -61,7 +69,33 @@ router.delete('/deleteUser/:id', midAthorization, deleteUser.handle)
 router.get('/getUser/:id', getUser.handle)
 router.put('/updatePassword', updatePassword.handle)
 
+// --- NOVA ROTA DE UPLOAD DE FOTO DE PERFIL ---
+router.patch('/user/avatar', midAthorization, upload.single('avatar'), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ err: 'Nenhuma imagem enviada.' });
+        }
+        
+        // Salva apenas o nome do arquivo no banco. 
+        // O front-end concatenará com a URL base (ex: http://ip:3333/nome.jpg)
+        const fileName = req.file.filename; 
+        
+        const updatedUser = await prisma.user.update({
+            where: { id: req.userId },
+            data: { imgUrl: fileName },
+            select: { id: true, name: true, email: true, imgUrl: true, userType: true }
+        });
+
+        return res.json(updatedUser);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ err: "Erro ao atualizar foto de perfil" });
+    }
+});
+// ---------------------------------------------
+
 router.post('/createProduct', midAthorization, createProductt.handle)
+// A rota de listagem já foi atualizada no Controller para aceitar filtros (ownerId, preço, etc)
 router.get('/listProduct', listProducts.handle)
 router.get('/myproducts', midAthorization, listMyProducts.handle) 
 router.put('/updateProduct', midAthorization, updateProduct.handle)
@@ -71,12 +105,14 @@ router.delete('/deleteProduct/:productId', midAthorization, deleteProduct.handle
 // Rotas de Agendamento
 router.post('/createAgendamento', midAthorization, createAgendamento.handle) 
 router.get('/myagendamentos/cliente', midAthorization, listAgendamentosCliente.handle) 
-router.get('/myagendamentos/farmer', midAthorization, listAgendamentosFarmer.handle) // Agricultor
+router.get('/myagendamentos/farmer', midAthorization, listAgendamentosFarmer.handle)
 router.put('/updateAgendamentoStatus/:agendamentoId', midAthorization, updateAgendamentoStatus.handle) 
 
 // Chat
 router.get('/conversations', midAthorization, listConversations.handle)
 router.get('/conversations/:conversationId/messages', midAthorization, listMessages.handle)
 router.get('/conversations/with/:userId', midAthorization, getOrCreateConversationWithUser.handle)
+
+router.get('/farms', midAthorization, new ListFarms().handle); 
 
 export {router}
