@@ -15,7 +15,8 @@ export class UpdateProduct {
             harvestDate, 
             harvestType, 
             unityType, 
-            imgUrl 
+            imgUrl,
+            description 
         } = req.body;
 
         if (!productId) {
@@ -45,6 +46,7 @@ export class UpdateProduct {
                 ...(harvestType !== undefined && { harvestType }),
                 ...(unityType !== undefined && { unityType }),
                 ...(imgUrl && { imgUrl }),
+                ...(description !== undefined && { description }), 
             };
 
             const updatedProduct = await prisma.pRODUCT.update({

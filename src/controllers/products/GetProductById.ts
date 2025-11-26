@@ -22,6 +22,9 @@ export class GetProductById {
                             name: true,
                             rate: true,
                             imgUrl: true,
+                            latitude: true,
+                            longitude: true,
+                            farmName: true,
                         }
                     }
                 }
@@ -34,8 +37,12 @@ export class GetProductById {
 
             const productComAgricultor = {
                 ...product,
-                agricultor: product.owner
+                agricultor: product.owner,
+                latitude: product.owner.latitude,
+                longitude: product.owner.longitude,
+                farmName: product.owner.farmName
             };
+
             // @ts-ignore
             delete productComAgricultor.owner;
             

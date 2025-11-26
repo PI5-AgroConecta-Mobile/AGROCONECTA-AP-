@@ -64,6 +64,7 @@ model PRODUCT {
   name         String
   price        Float
   imgUrl       String
+  description  String?
   quantity     Int
   ownerId      String
   type         Int

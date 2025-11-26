@@ -5053,6 +5053,7 @@ export namespace Prisma {
     name: string | null
     price: number | null
     imgUrl: string | null
+    description: string | null
     quantity: number | null
     ownerId: string | null
     type: number | null
@@ -5068,6 +5069,7 @@ export namespace Prisma {
     name: string | null
     price: number | null
     imgUrl: string | null
+    description: string | null
     quantity: number | null
     ownerId: string | null
     type: number | null
@@ -5083,6 +5085,7 @@ export namespace Prisma {
     name: number
     price: number
     imgUrl: number
+    description: number
     quantity: number
     ownerId: number
     type: number
@@ -5116,6 +5119,7 @@ export namespace Prisma {
     name?: true
     price?: true
     imgUrl?: true
+    description?: true
     quantity?: true
     ownerId?: true
     type?: true
@@ -5131,6 +5135,7 @@ export namespace Prisma {
     name?: true
     price?: true
     imgUrl?: true
+    description?: true
     quantity?: true
     ownerId?: true
     type?: true
@@ -5146,6 +5151,7 @@ export namespace Prisma {
     name?: true
     price?: true
     imgUrl?: true
+    description?: true
     quantity?: true
     ownerId?: true
     type?: true
@@ -5248,6 +5254,7 @@ export namespace Prisma {
     name: string
     price: number
     imgUrl: string
+    description: string | null
     quantity: number
     ownerId: string
     type: number
@@ -5282,6 +5289,7 @@ export namespace Prisma {
     name?: boolean
     price?: boolean
     imgUrl?: boolean
+    description?: boolean
     quantity?: boolean
     ownerId?: boolean
     type?: boolean
@@ -5300,6 +5308,7 @@ export namespace Prisma {
     name?: boolean
     price?: boolean
     imgUrl?: boolean
+    description?: boolean
     quantity?: boolean
     ownerId?: boolean
     type?: boolean
@@ -5316,6 +5325,7 @@ export namespace Prisma {
     name?: boolean
     price?: boolean
     imgUrl?: boolean
+    description?: boolean
     quantity?: boolean
     ownerId?: boolean
     type?: boolean
@@ -5332,6 +5342,7 @@ export namespace Prisma {
     name?: boolean
     price?: boolean
     imgUrl?: boolean
+    description?: boolean
     quantity?: boolean
     ownerId?: boolean
     type?: boolean
@@ -5342,7 +5353,7 @@ export namespace Prisma {
     unityType?: boolean
   }
 
-  export type PRODUCTOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "imgUrl" | "quantity" | "ownerId" | "type" | "harvestDate" | "harvestType" | "productState" | "harvest" | "unityType", ExtArgs["result"]["pRODUCT"]>
+  export type PRODUCTOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "imgUrl" | "description" | "quantity" | "ownerId" | "type" | "harvestDate" | "harvestType" | "productState" | "harvest" | "unityType", ExtArgs["result"]["pRODUCT"]>
   export type PRODUCTInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     owner?: boolean | userDefaultArgs<ExtArgs>
     agendamentos?: boolean | PRODUCT$agendamentosArgs<ExtArgs>
@@ -5366,6 +5377,7 @@ export namespace Prisma {
       name: string
       price: number
       imgUrl: string
+      description: string | null
       quantity: number
       ownerId: string
       type: number
@@ -5803,6 +5815,7 @@ export namespace Prisma {
     readonly name: FieldRef<"PRODUCT", 'String'>
     readonly price: FieldRef<"PRODUCT", 'Float'>
     readonly imgUrl: FieldRef<"PRODUCT", 'String'>
+    readonly description: FieldRef<"PRODUCT", 'String'>
     readonly quantity: FieldRef<"PRODUCT", 'Int'>
     readonly ownerId: FieldRef<"PRODUCT", 'String'>
     readonly type: FieldRef<"PRODUCT", 'Int'>
@@ -9607,6 +9620,7 @@ export namespace Prisma {
     name: 'name',
     price: 'price',
     imgUrl: 'imgUrl',
+    description: 'description',
     quantity: 'quantity',
     ownerId: 'ownerId',
     type: 'type',
@@ -9989,6 +10003,7 @@ export namespace Prisma {
     name?: StringFilter<"PRODUCT"> | string
     price?: FloatFilter<"PRODUCT"> | number
     imgUrl?: StringFilter<"PRODUCT"> | string
+    description?: StringNullableFilter<"PRODUCT"> | string | null
     quantity?: IntFilter<"PRODUCT"> | number
     ownerId?: StringFilter<"PRODUCT"> | string
     type?: IntFilter<"PRODUCT"> | number
@@ -10006,6 +10021,7 @@ export namespace Prisma {
     name?: SortOrder
     price?: SortOrder
     imgUrl?: SortOrder
+    description?: SortOrderInput | SortOrder
     quantity?: SortOrder
     ownerId?: SortOrder
     type?: SortOrder
@@ -10026,6 +10042,7 @@ export namespace Prisma {
     name?: StringFilter<"PRODUCT"> | string
     price?: FloatFilter<"PRODUCT"> | number
     imgUrl?: StringFilter<"PRODUCT"> | string
+    description?: StringNullableFilter<"PRODUCT"> | string | null
     quantity?: IntFilter<"PRODUCT"> | number
     ownerId?: StringFilter<"PRODUCT"> | string
     type?: IntFilter<"PRODUCT"> | number
@@ -10043,6 +10060,7 @@ export namespace Prisma {
     name?: SortOrder
     price?: SortOrder
     imgUrl?: SortOrder
+    description?: SortOrderInput | SortOrder
     quantity?: SortOrder
     ownerId?: SortOrder
     type?: SortOrder
@@ -10066,6 +10084,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"PRODUCT"> | string
     price?: FloatWithAggregatesFilter<"PRODUCT"> | number
     imgUrl?: StringWithAggregatesFilter<"PRODUCT"> | string
+    description?: StringNullableWithAggregatesFilter<"PRODUCT"> | string | null
     quantity?: IntWithAggregatesFilter<"PRODUCT"> | number
     ownerId?: StringWithAggregatesFilter<"PRODUCT"> | string
     type?: IntWithAggregatesFilter<"PRODUCT"> | number
@@ -10531,6 +10550,7 @@ export namespace Prisma {
     name: string
     price: number
     imgUrl: string
+    description?: string | null
     quantity: number
     type: number
     harvestDate: Date | string
@@ -10547,6 +10567,7 @@ export namespace Prisma {
     name: string
     price: number
     imgUrl: string
+    description?: string | null
     quantity: number
     ownerId: string
     type: number
@@ -10563,6 +10584,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
     harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10579,6 +10601,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
     ownerId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
@@ -10595,6 +10618,7 @@ export namespace Prisma {
     name: string
     price: number
     imgUrl: string
+    description?: string | null
     quantity: number
     ownerId: string
     type: number
@@ -10610,6 +10634,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
     harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10624,6 +10649,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
     ownerId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
@@ -11184,6 +11210,7 @@ export namespace Prisma {
     name?: SortOrder
     price?: SortOrder
     imgUrl?: SortOrder
+    description?: SortOrder
     quantity?: SortOrder
     ownerId?: SortOrder
     type?: SortOrder
@@ -11207,6 +11234,7 @@ export namespace Prisma {
     name?: SortOrder
     price?: SortOrder
     imgUrl?: SortOrder
+    description?: SortOrder
     quantity?: SortOrder
     ownerId?: SortOrder
     type?: SortOrder
@@ -11222,6 +11250,7 @@ export namespace Prisma {
     name?: SortOrder
     price?: SortOrder
     imgUrl?: SortOrder
+    description?: SortOrder
     quantity?: SortOrder
     ownerId?: SortOrder
     type?: SortOrder
@@ -12052,6 +12081,7 @@ export namespace Prisma {
     name: string
     price: number
     imgUrl: string
+    description?: string | null
     quantity: number
     type: number
     harvestDate: Date | string
@@ -12067,6 +12097,7 @@ export namespace Prisma {
     name: string
     price: number
     imgUrl: string
+    description?: string | null
     quantity: number
     type: number
     harvestDate: Date | string
@@ -12221,6 +12252,7 @@ export namespace Prisma {
     name?: StringFilter<"PRODUCT"> | string
     price?: FloatFilter<"PRODUCT"> | number
     imgUrl?: StringFilter<"PRODUCT"> | string
+    description?: StringNullableFilter<"PRODUCT"> | string | null
     quantity?: IntFilter<"PRODUCT"> | number
     ownerId?: StringFilter<"PRODUCT"> | string
     type?: IntFilter<"PRODUCT"> | number
@@ -12810,6 +12842,7 @@ export namespace Prisma {
     name: string
     price: number
     imgUrl: string
+    description?: string | null
     quantity: number
     type: number
     harvestDate: Date | string
@@ -12825,6 +12858,7 @@ export namespace Prisma {
     name: string
     price: number
     imgUrl: string
+    description?: string | null
     quantity: number
     ownerId: string
     type: number
@@ -12970,6 +13004,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
     harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12985,6 +13020,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
     ownerId?: StringFieldUpdateOperationsInput | string
     type?: IntFieldUpdateOperationsInput | number
@@ -13098,6 +13134,7 @@ export namespace Prisma {
     name: string
     price: number
     imgUrl: string
+    description?: string | null
     quantity: number
     type: number
     harvestDate: Date | string
@@ -13147,6 +13184,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
     harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13162,6 +13200,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
     harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13177,6 +13216,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     imgUrl?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
     harvestDate?: DateTimeFieldUpdateOperationsInput | Date | string
