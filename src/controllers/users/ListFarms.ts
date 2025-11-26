@@ -1,54 +1,34 @@
 import { Request, Response } from 'express'
 import { prisma } from '../../database/index'
+import logger from '../../utils/logger'
 
 export class ListFarms {
     async handle(req: Request, res: Response) {
         try {
-            const { lat, long } = req.query
             const farms = await prisma.user.findMany({
                 where: {
-                    latitude: { not: null },
-                    longitude: { not: null }
+                    userType: 1, // 1 = Agricultor
+                    // Só traz quem tem nome de fazenda cadastrado
+                    farmName: {
+                        not: null
+                    }
                 },
                 select: {
                     id: true,
                     name: true,
-                    farmName: true,   
+                    email: true,
+                    farmName: true,
                     imgUrl: true,
-                    latitude: true,   
-                    longitude: true,  
-                    rate: true,
+                    latitude: true,  // Importante para o mapa
+                    longitude: true, // Importante para o mapa
                     contact: true
                 }
             })
 
-            if (lat && long) {
-                const userLat = parseFloat(lat as string)
-                const userLon = parseFloat(long as string)
-                const farmsWithDistance = farms.map(farm => {
-                    const farmLat = farm.latitude!
-                    const farmLon = farm.longitude!
-                    
-                    const R = 6371 
-                    const dLat = (farmLat - userLat) * (Math.PI / 180)
-                    const dLon = (farmLon - userLon) * (Math.PI / 180)
-                    const a = 
-                        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                        Math.cos(userLat * (Math.PI / 180)) * Math.cos(farmLat * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2)
-                    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-                    const distance = R * c
-                    return { ...farm, distance }
-                })
-
-                farmsWithDistance.sort((a, b) => a.distance - b.distance)
-                return res.status(200).json(farmsWithDistance)
-            }
-
-            return res.status(200).json(farms)
-
-        } catch (e) {
-            console.error(e);
-            return res.status(500).json({ error: "Error listing farms" })
+            return res.json(farms)
+        } catch (e: any) {
+            logger.error(e.message)
+            return res.status(500).json({ err: "Erro ao listar fazendas" })
         }
     }
 }

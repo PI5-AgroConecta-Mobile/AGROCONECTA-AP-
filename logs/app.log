@@ -565,3 +565,187 @@ Unique constraint failed on the fields: (`cpfcnpj`)
 [2025-11-26T18:09:30.287Z] info: Product retrieved: 0629e18c-1f6d-4c6e-8ea0-d8a80e4e7708
 [2025-11-26T18:11:05.710Z] info: User logged in: samerhalat2005@gmail.com
 [2025-11-26T18:11:26.360Z] error: Error retrieving user data for user ID: undefined
+[2025-11-26T19:01:01.728Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:01:25.667Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:01:59.089Z] info: Conversations listed: count=0 for user=f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:02:00.477Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:02:06.418Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:02:14.822Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:02:20.272Z] info: Product retrieved: 9f4c796d-36ec-48a1-8d28-fef13561c5bf
+[2025-11-26T19:02:25.513Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:02:28.387Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:05:19.379Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:11:20.835Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:21:06.780Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:21:20.611Z] error: Error retrieving user data for user ID: undefined
+[2025-11-26T19:33:24.095Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:33:30.913Z] error: Error retrieving user data for user ID: undefined
+[2025-11-26T19:34:26.124Z] info: Product retrieved: 9f4c796d-36ec-48a1-8d28-fef13561c5bf
+[2025-11-26T19:34:38.828Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:38:14.486Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:38:22.321Z] info: User data retrieved for user ID: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:43:58.058Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:44:05.848Z] info: User data retrieved for user ID: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:46:34.295Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:46:42.246Z] info: User data retrieved for user ID: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:46:44.573Z] info: Product retrieved: 0629e18c-1f6d-4c6e-8ea0-d8a80e4e7708
+[2025-11-26T19:46:52.582Z] info: Conversations listed: count=0 for user=f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:46:53.950Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:47:18.147Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:47:32.536Z] info: User logged in: samerhalat123@gmail.com
+[2025-11-26T19:47:33.292Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:47:33.520Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:48:11.453Z] info: User updated: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:48:14.367Z] info: Conversations listed: count=0 for user=41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:48:14.847Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:48:17.177Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:48:18.282Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:48:20.321Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:48:20.390Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:48:33.814Z] warn: Invalid login attempt for user: samerhalat2005@gmail.com
+[2025-11-26T19:48:43.787Z] warn: Invalid login attempt for user: samerhalat2005@gmail.com
+[2025-11-26T19:49:05.487Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:49:25.531Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:49:33.718Z] info: User data retrieved for user ID: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:49:47.336Z] info: Product retrieved: 9f4c796d-36ec-48a1-8d28-fef13561c5bf
+[2025-11-26T19:51:00.254Z] info: User logged in: samerhalat123@gmail.com
+[2025-11-26T19:51:00.804Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:51:01.012Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:52:22.135Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:52:22.168Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:52:39.697Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:52:43.939Z] info: Product retrieved: 0629e18c-1f6d-4c6e-8ea0-d8a80e4e7708
+[2025-11-26T19:52:50.562Z] info: User data retrieved for user ID: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:53:59.826Z] info: Conversations listed: count=0 for user=f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:54:01.121Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:54:07.082Z] info: Product retrieved: 9f4c796d-36ec-48a1-8d28-fef13561c5bf
+[2025-11-26T19:57:47.683Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T19:58:02.291Z] info: User data retrieved for user ID: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:58:27.862Z] warn: Invalid login attempt for user: samerhalat123@gmail.com
+[2025-11-26T19:58:37.206Z] info: User logged in: samerhalat123@gmail.com
+[2025-11-26T19:58:37.682Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:58:37.945Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:58:40.135Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:58:41.171Z] info: Conversations listed: count=0 for user=41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:58:42.187Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:58:43.363Z] info: Users listed: count=11 by user=41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T19:58:58.808Z] info: Conversation created: id=f5666e1b-0bb8-4441-8cc0-0ccaf865d2e2 between 41d777d8-0513-40f0-b5f2-fee2529a21ed and f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T19:58:59.187Z] info: Socket connected: user=41d777d8-0513-40f0-b5f2-fee2529a21ed id=61csA66wWCSftmiTAAAB
+[2025-11-26T20:00:11.976Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:00:12.093Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:00:20.750Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:00:21.652Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:00:27.493Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:00:30.364Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:00:32.462Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:02:28.093Z] info: User updated: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:02:45.050Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T20:02:51.467Z] info: User data retrieved for user ID: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:04:01.712Z] info: User logged in: samerhalat123@gmail.com
+[2025-11-26T20:04:02.450Z] info: Listed all products for user: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:04:02.654Z] info: Listed all agendamentos for farmer: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:04:39.450Z] info: User updated: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:05:01.938Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T20:05:13.998Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:05:21.073Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:05:23.040Z] info: Conversations listed: count=1 for user=f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:05:26.989Z] info: User data retrieved for user ID: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:05:44.477Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:05:48.585Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:05:49.905Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:05:56.199Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:08:26.847Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T20:08:34.080Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:08:36.210Z] info: Conversations listed: count=1 for user=f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:12:31.353Z] info: Socket disconnected: user=41d777d8-0513-40f0-b5f2-fee2529a21ed id=61csA66wWCSftmiTAAAB
+[2025-11-26T20:13:10.634Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T20:13:16.532Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:13:19.588Z] info: Conversations listed: count=1 for user=f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
+[2025-11-26T20:17:06.879Z] warn: Authorization attempt without token
+[2025-11-26T20:17:13.071Z] warn: Authorization attempt without token
+[2025-11-26T20:17:18.547Z] warn: Authorization attempt without token
+[2025-11-26T20:18:03.942Z] warn: Authorization attempt without token
+[2025-11-26T20:18:31.808Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T20:18:37.886Z] info: User data retrieved for user ID: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:18:49.046Z] warn: Authorization attempt without token
+[2025-11-26T20:18:52.898Z] warn: Authorization attempt without token
+[2025-11-26T20:19:34.696Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T20:19:41.412Z] info: User data retrieved for user ID: 41d777d8-0513-40f0-b5f2-fee2529a21ed
+[2025-11-26T20:25:36.128Z] warn: Login attempt for non-existent user: samerhalat2005@gmail.com
+[2025-11-26T20:26:24.192Z] info: New user created: 8c16a269-83fc-4600-9ab1-a07d7e6409c4 - samerhalat2005@gmail.com
+[2025-11-26T20:27:03.966Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T20:27:08.280Z] info: Conversations listed: count=0 for user=8c16a269-83fc-4600-9ab1-a07d7e6409c4
+[2025-11-26T20:27:09.181Z] info: Listed all agendamentos for client: 8c16a269-83fc-4600-9ab1-a07d7e6409c4
+[2025-11-26T20:28:11.323Z] info: New user created: 8766ec2c-0127-4ae0-ab68-716932ae7bce - samerhalat123@gmail.com
+[2025-11-26T20:28:38.336Z] info: User logged in: samerhalat123@gmail.com
+[2025-11-26T20:28:38.924Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:28:39.154Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:28:40.621Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:30:40.476Z] info: New product created: 05cdcc11-46b9-4808-8009-a6d636c1d7b0 by user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:30:42.106Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:30:43.824Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:31:05.538Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:32:22.448Z] info: New product created: 1fc660ae-24f3-43a9-99f4-c536f1762917 by user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:32:23.686Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:32:57.163Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:34:17.890Z] info: New product created: fed02283-45ae-4fdb-874d-a0824d2270c2 by user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:34:19.469Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:34:26.894Z] info: Product fed02283-45ae-4fdb-874d-a0824d2270c2 updated by user 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:34:27.960Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:34:56.008Z] info: User updated: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:34:59.187Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:34:59.241Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:34:59.628Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:35:00.482Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:35:00.657Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:35:19.680Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T20:35:47.462Z] info: New agendamento f1cf24e3-b1e6-4e36-aec8-9304c73bf78b created by user 8c16a269-83fc-4600-9ab1-a07d7e6409c4 for product 05cdcc11-46b9-4808-8009-a6d636c1d7b0
+[2025-11-26T20:35:49.020Z] info: Listed all agendamentos for client: 8c16a269-83fc-4600-9ab1-a07d7e6409c4
+[2025-11-26T20:36:03.277Z] info: New agendamento 4387e8a2-0bca-4593-8190-c782d3e9294b created by user 8c16a269-83fc-4600-9ab1-a07d7e6409c4 for product 05cdcc11-46b9-4808-8009-a6d636c1d7b0
+[2025-11-26T20:36:04.942Z] info: Listed all agendamentos for client: 8c16a269-83fc-4600-9ab1-a07d7e6409c4
+[2025-11-26T20:36:30.174Z] info: Conversations listed: count=0 for user=8c16a269-83fc-4600-9ab1-a07d7e6409c4
+[2025-11-26T20:36:38.108Z] info: New agendamento a187acc1-7216-4b4f-b1dd-bcef2c77dc77 created by user 8c16a269-83fc-4600-9ab1-a07d7e6409c4 for product 1fc660ae-24f3-43a9-99f4-c536f1762917
+[2025-11-26T20:36:42.877Z] info: Listed all agendamentos for client: 8c16a269-83fc-4600-9ab1-a07d7e6409c4
+[2025-11-26T20:36:47.423Z] info: User data retrieved for user ID: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:38:56.096Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T20:39:15.714Z] info: New agendamento 4bd6593c-3302-4ef2-9b4f-2f1678fa90a9 created by user 8c16a269-83fc-4600-9ab1-a07d7e6409c4 for product fed02283-45ae-4fdb-874d-a0824d2270c2
+[2025-11-26T20:39:17.344Z] info: Listed all agendamentos for client: 8c16a269-83fc-4600-9ab1-a07d7e6409c4
+[2025-11-26T20:39:43.693Z] info: User logged in: samerhalat123@gmail.com
+[2025-11-26T20:39:44.270Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:39:44.520Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:39:47.600Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:39:49.546Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:39:52.664Z] info: Agendamento f1cf24e3-b1e6-4e36-aec8-9304c73bf78b updated to status 1 by farmer 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:39:54.930Z] info: Agendamento 4387e8a2-0bca-4593-8190-c782d3e9294b updated to status 1 by farmer 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:39:57.801Z] info: Stock restored for product fed02283-45ae-4fdb-874d-a0824d2270c2 (+3)
+[2025-11-26T20:39:58.058Z] info: Agendamento 4bd6593c-3302-4ef2-9b4f-2f1678fa90a9 updated to status 2 by farmer 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:00.002Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:00.043Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:11.067Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:12.036Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:13.467Z] info: Conversations listed: count=0 for user=8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:16.694Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:16.853Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:23.160Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:23.643Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:29.578Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:29.880Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:35.120Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:35.164Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:55.172Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:58.655Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:40:59.195Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:41:55.238Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:41:55.820Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:41:57.024Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:41:57.109Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:41:57.808Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:42:02.501Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:42:08.145Z] info: Listed all products for user: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:42:08.210Z] info: Listed all agendamentos for farmer: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:42:30.345Z] warn: Invalid login attempt for user: samerhalat2005@gmail.com
+[2025-11-26T20:42:44.437Z] info: User logged in: samerhalat2005@gmail.com
+[2025-11-26T20:43:01.364Z] info: Conversations listed: count=0 for user=8c16a269-83fc-4600-9ab1-a07d7e6409c4
+[2025-11-26T20:43:02.480Z] info: Listed all agendamentos for client: 8c16a269-83fc-4600-9ab1-a07d7e6409c4
+[2025-11-26T20:43:10.110Z] info: User data retrieved for user ID: 8766ec2c-0127-4ae0-ab68-716932ae7bce
+[2025-11-26T20:43:31.967Z] info: Listed all agendamentos for client: 8c16a269-83fc-4600-9ab1-a07d7e6409c4
