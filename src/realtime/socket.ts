@@ -110,8 +110,14 @@ export function initSocketServer(server: HttpServer) {
             `Message sent: conversation=${conversationId} from=${userId} id=${message.id} content="${payload.content}"`
           )
 
-          // Emit to conversation room
-          io.to(`conversation:${conversationId}`).emit('message:new', message)
+          // Ensure sender is in the conversation room
+          socket.join(`conversation:${conversationId}`)
+
+          // Emit to conversation room, excluding the sender to prevent duplicates
+          socket.to(`conversation:${conversationId}`).emit('message:new', message)
+
+          // Also send to sender separately (so they can see their own message)
+          socket.emit('message:new', message)
 
           // Also notify the recipient's user room so they can fetch/join if not already
           try {
@@ -188,18 +194,10 @@ export function initSocketServer(server: HttpServer) {
             return
           }
 
-          // Special case: global room (no persistence)
+          // Special case: global room (no persistence) - REMOVED: Use private chats instead
+          // Global chat is deprecated in favor of private conversations
           if (r === 'global') {
-            const msg = {
-              id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
-              text,
-              userId,
-              createdAt: new Date().toISOString(),
-              roomId: 'global'
-            }
-            console.log(`console> chat:message broadcast to global from=${userId} text="${text}"`)
-            io.to('global').emit('chat:message', msg)
-            ack?.({ ok: true, id: msg.id, conversationId: 'global' })
+            ack?.({ ok: false, err: 'Global chat is disabled. Use private chat with toUserId instead.' })
             return
           }
 
@@ -236,6 +234,9 @@ export function initSocketServer(server: HttpServer) {
             `console> chat:message received from=${userId} conversation=${conversationId} text="${text}"`
           )
 
+          // Ensure sender is in the conversation room
+          socket.join(`conversation:${conversationId}`)
+
           const saved = await prisma.mESSAGE.create({
             data: { conversationId, senderId: userId, content: text }
           })
@@ -248,12 +249,23 @@ export function initSocketServer(server: HttpServer) {
             roomId: conversationId
           }
 
-          io.to(`conversation:${conversationId}`).emit('chat:message', outgoing)
+          // Emit to conversation room, excluding the sender to prevent duplicates
+          socket.to(`conversation:${conversationId}`).emit('chat:message', outgoing)
+          
+          // Send to sender separately (so they can see their own message)
+          socket.emit('chat:message', outgoing)
 
           try {
             const convo = await prisma.cONVERSATION.findUnique({ where: { id: conversationId } })
             if (convo) {
               const recipientId = convo.participantAId === userId ? convo.participantBId : convo.participantAId
+              // Ensure recipient is also in the conversation room
+              io.sockets.sockets.forEach((s) => {
+                const sUserId = (s as any).userId
+                if (sUserId === recipientId) {
+                  s.join(`conversation:${conversationId}`)
+                }
+              })
               io.to(`user:${recipientId}`).emit('conversation:update', {
                 conversationId,
                 lastMessage: saved
