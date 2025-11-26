@@ -5,10 +5,7 @@ import logger from '../../utils/logger'
 export class GetUser {
     async handle(req: Request, res: Response) {
         try {
-            // 1. Tenta pegar o ID da URL (ex: /getUser/123)
             const { id } = req.params;
-            
-            // 2. Se não tiver ID na URL, tenta pegar do token (caso a rota tenha autenticação)
             const userId = id || (req as any).userId; 
 
             if (!userId) {
@@ -19,8 +16,6 @@ export class GetUser {
                 where: {
                     id: userId
                 },
-                // Selecionamos os campos explicitamente para garantir que dados sensíveis (senha) não vazem
-                // e para garantir que location/farmName venham para o mapa.
                 select: {
                     id: true,
                     name: true,

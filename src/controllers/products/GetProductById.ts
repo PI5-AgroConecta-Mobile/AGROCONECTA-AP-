@@ -21,11 +21,10 @@ export class GetProductById {
                             name: true,
                             rate: true,
                             imgUrl: true,
-                            // Dados de Localização e Contato
                             latitude: true,
                             longitude: true,
                             farmName: true,
-                            contact: true // <--- ADICIONADO: OBRIGATÓRIO PARA O WHATSAPP
+                            contact: true 
                         }
                     }
                 }
@@ -38,7 +37,6 @@ export class GetProductById {
             const productComAgricultor = {
                 ...product,
                 agricultor: product.owner,
-                // Trazendo dados para a raiz do objeto para facilitar o uso no front
                 latitude: product.owner.latitude,
                 longitude: product.owner.longitude,
                 farmName: product.owner.farmName,

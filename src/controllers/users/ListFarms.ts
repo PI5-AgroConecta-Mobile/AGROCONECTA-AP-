@@ -8,7 +8,6 @@ export class ListFarms {
             const farms = await prisma.user.findMany({
                 where: {
                     userType: 1, // 1 = Agricultor
-                    // Só traz quem tem nome de fazenda cadastrado
                     farmName: {
                         not: null
                     }
@@ -19,8 +18,8 @@ export class ListFarms {
                     email: true,
                     farmName: true,
                     imgUrl: true,
-                    latitude: true,  // Importante para o mapa
-                    longitude: true, // Importante para o mapa
+                    latitude: true,  
+                    longitude: true, 
                     contact: true
                 }
             })
