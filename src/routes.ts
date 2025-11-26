@@ -10,6 +10,8 @@ import { ConfirmEmail } from './controllers/users/ConfirmEmail';
 import { DeleteUser } from './controllers/users/DeleteUser';
 import { GetUser } from './controllers/users/GetUser';
 import { UpdatePassword } from './controllers/users/UpdatePassword';
+import { ListUsers } from './controllers/users/ListUsers';
+import { SearchUsers } from './controllers/users/SearchUser';
 
 import { createProduct } from './controllers/products/createProduct'
 import { ListProducts } from './controllers/products/ListProducts'
@@ -42,6 +44,8 @@ const confirmEmail = new ConfirmEmail()
 const deleteUser = new DeleteUser()
 const getUser = new GetUser()
 const updatePassword = new UpdatePassword()
+const listUsers = new ListUsers()
+const searchUsers = new SearchUsers()
 
 const createProductt = new createProduct()
 const listProducts = new ListProducts()
@@ -68,6 +72,8 @@ router.post('/confirmEmail', confirmEmail.handle)
 router.delete('/deleteUser/:id', midAthorization, deleteUser.handle)
 router.get('/getUser/:id', getUser.handle)
 router.put('/updatePassword', updatePassword.handle)
+router.get('/users', midAthorization, listUsers.handle)
+router.get('/users/search', midAthorization, searchUsers.handle)
 
 // --- NOVA ROTA DE UPLOAD DE FOTO DE PERFIL ---
 router.patch('/user/avatar', midAthorization, upload.single('avatar'), async (req, res) => {

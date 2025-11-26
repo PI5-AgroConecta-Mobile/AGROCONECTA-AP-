@@ -394,3 +394,113 @@ Unique constraint failed on the fields: (`cpfcnpj`)
 [2025-11-25T19:51:45.108Z] info: Listed all agendamentos for client: f0f1aea3-e8e4-4c99-985d-6dc11b85db5b
 [2025-11-25T19:53:15.172Z] info: Socket connected: user=f0f1aea3-e8e4-4c99-985d-6dc11b85db5b id=_6Q6lHUeS5Q-ya2UAAAB
 [2025-11-25T19:53:17.661Z] info: Socket connected: user=f0f1aea3-e8e4-4c99-985d-6dc11b85db5b id=Qk-5xJaVMtsaHl25AAAB
+[2025-11-26T01:11:38.075Z] warn: Invalid authorization token received
+[2025-11-26T01:11:38.095Z] warn: Invalid authorization token received
+[2025-11-26T01:12:01.414Z] warn: Invalid authorization token received
+[2025-11-26T01:12:04.551Z] warn: Invalid authorization token received
+[2025-11-26T01:12:26.113Z] warn: Login attempt for non-existent user: kawai
+[2025-11-26T01:16:56.807Z] warn: Login attempt for non-existent user: kauan
+[2025-11-26T01:20:56.872Z] info: New user created: 00c93014-9442-4648-ae90-fbbed0bcf6e7 - ks369985@gmail.com
+[2025-11-26T01:22:59.505Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T01:23:00.113Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:23:00.551Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:23:07.517Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:23:15.566Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:23:22.101Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:23:22.677Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:23:24.842Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:23:25.265Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:23:52.823Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:24:32.572Z] warn: Attempt to create user with existing CPF/CNPJ: 24150044805
+[2025-11-26T01:24:43.121Z] info: New user created: 77940af4-8500-432b-8156-b208b8306a81 - kauansantosoliveira55@gmail.com
+[2025-11-26T01:24:59.287Z] info: User logged in: kauansantosoliveira55@gmail.com
+[2025-11-26T01:25:07.040Z] info: Listed all agendamentos for client: 77940af4-8500-432b-8156-b208b8306a81
+[2025-11-26T01:25:17.263Z] info: Product retrieved: 0629e18c-1f6d-4c6e-8ea0-d8a80e4e7708
+[2025-11-26T01:25:38.166Z] info: Listed all agendamentos for client: 77940af4-8500-432b-8156-b208b8306a81
+[2025-11-26T01:26:00.091Z] info: Listed all agendamentos for client: 77940af4-8500-432b-8156-b208b8306a81
+[2025-11-26T01:33:37.629Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T01:33:38.521Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:33:38.676Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:33:45.570Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:33:46.829Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:33:46.875Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:34:00.725Z] info: User logged in: kauansantosoliveira55@gmail.com
+[2025-11-26T01:34:07.884Z] info: Product retrieved: 0629e18c-1f6d-4c6e-8ea0-d8a80e4e7708
+[2025-11-26T01:45:05.749Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T01:45:06.939Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:45:07.034Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:52:28.202Z] info: User logged in: kauansantosoliveira55@gmail.com
+[2025-11-26T01:52:46.353Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T01:52:46.883Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:52:47.189Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T01:52:54.955Z] error: Error retrieving user data for user ID: undefined
+[2025-11-26T01:52:58.907Z] error: Error retrieving user data for user ID: undefined
+[2025-11-26T01:53:01.496Z] error: Error retrieving user data for user ID: undefined
+[2025-11-26T01:53:02.774Z] error: Error retrieving user data for user ID: undefined
+[2025-11-26T01:53:06.908Z] error: Error retrieving user data for user ID: undefined
+[2025-11-26T02:07:46.039Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:07:46.581Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:12:31.581Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T02:12:32.079Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:12:32.156Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:13:23.769Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T02:13:24.441Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:13:24.490Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:13:29.048Z] info: Users listed: count=3 by user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:13:34.308Z] info: Socket connected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=mTzE3_4xHAEfbGhVAAAB
+[2025-11-26T02:14:06.295Z] info: Socket disconnected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=mTzE3_4xHAEfbGhVAAAB
+[2025-11-26T02:36:20.437Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T02:36:21.138Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:36:21.161Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:36:27.144Z] info: Users listed: count=4 by user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:36:33.636Z] info: Socket connected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=D7ZedWE_izjvvqaxAAAD
+[2025-11-26T02:37:19.348Z] info: User logged in: kauansantosoliveira55@gmail.com
+[2025-11-26T02:37:44.184Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T02:37:44.909Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:37:45.350Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:37:48.598Z] info: Users listed: count=4 by user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:38:05.046Z] info: Socket disconnected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=D7ZedWE_izjvvqaxAAAD
+[2025-11-26T02:40:00.603Z] info: Socket connected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=tUggYuhTpkYg56GIAAAF
+[2025-11-26T02:40:15.850Z] info: User logged in: kauansantosoliveira55@gmail.com
+[2025-11-26T02:40:27.748Z] info: Socket disconnected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=tUggYuhTpkYg56GIAAAF
+[2025-11-26T02:44:17.457Z] info: User logged in: kauansantosoliveira55@gmail.com
+[2025-11-26T02:48:47.011Z] info: New user created: 519e1337-9ea0-4137-8cea-251dd1974b81 - alex.cabral2533@gmail.com
+[2025-11-26T02:53:23.039Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T02:53:23.755Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:53:23.892Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:53:26.574Z] info: Conversations listed: count=1 for user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:53:26.753Z] info: Conversations listed: count=1 for user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:53:29.201Z] info: Conversations listed: count=1 for user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:53:30.550Z] info: Users listed: count=6 by user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:53:47.870Z] info: Socket connected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=F-h8PR4x-3JQIT4uAAAB
+[2025-11-26T02:54:08.060Z] info: Socket disconnected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=F-h8PR4x-3JQIT4uAAAB
+[2025-11-26T02:54:09.573Z] info: Socket connected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=Bcw9mseNxY-EQRA4AAAD
+[2025-11-26T02:54:30.420Z] info: User logged in: kauansantosoliveira55@gmail.com
+[2025-11-26T02:54:33.728Z] info: Conversations listed: count=1 for user=77940af4-8500-432b-8156-b208b8306a81
+[2025-11-26T02:54:33.765Z] info: Conversations listed: count=1 for user=77940af4-8500-432b-8156-b208b8306a81
+[2025-11-26T02:54:41.145Z] info: Socket disconnected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=Bcw9mseNxY-EQRA4AAAD
+[2025-11-26T02:59:14.020Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T02:59:14.806Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T02:59:15.008Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T03:00:21.498Z] info: User logged in: kauansantosoliveira55@gmail.com
+[2025-11-26T03:00:25.311Z] info: Conversations listed: count=1 for user=77940af4-8500-432b-8156-b208b8306a81
+[2025-11-26T03:00:25.380Z] info: Conversations listed: count=1 for user=77940af4-8500-432b-8156-b208b8306a81
+[2025-11-26T03:00:47.770Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T03:00:48.630Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T03:00:49.271Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T03:00:51.899Z] info: Conversations listed: count=1 for user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T03:00:51.932Z] info: Conversations listed: count=1 for user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T03:00:53.187Z] info: Users listed: count=6 by user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T03:00:56.507Z] info: Socket connected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=OzbT1XRQyrWWwlLBAAAB
+[2025-11-26T03:01:21.196Z] info: User logged in: kauansantosoliveira55@gmail.com
+[2025-11-26T03:01:24.570Z] info: Conversations listed: count=1 for user=77940af4-8500-432b-8156-b208b8306a81
+[2025-11-26T03:01:24.815Z] info: Conversations listed: count=1 for user=77940af4-8500-432b-8156-b208b8306a81
+[2025-11-26T03:04:41.985Z] info: Conversations listed: count=1 for user=77940af4-8500-432b-8156-b208b8306a81
+[2025-11-26T03:05:05.610Z] info: Socket disconnected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=OzbT1XRQyrWWwlLBAAAB
+[2025-11-26T03:05:20.951Z] info: User logged in: ks369985@gmail.com
+[2025-11-26T03:05:21.634Z] info: Listed all products for user: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T03:05:22.085Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T03:05:24.101Z] info: Conversations listed: count=1 for user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T03:05:25.239Z] info: Users listed: count=6 by user=00c93014-9442-4648-ae90-fbbed0bcf6e7
+[2025-11-26T03:05:29.958Z] info: Socket connected: user=00c93014-9442-4648-ae90-fbbed0bcf6e7 id=QTxUtoELhCc2glXvAAAD
+[2025-11-26T03:05:48.571Z] info: Listed all agendamentos for farmer: 00c93014-9442-4648-ae90-fbbed0bcf6e7
