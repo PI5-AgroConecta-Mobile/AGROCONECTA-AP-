@@ -36,4 +36,4 @@ Para rodar o servidor em modo de desenvolvimento (com reinicialização automát
 
  ```bash
     npm run dev
-    ```
+ 
