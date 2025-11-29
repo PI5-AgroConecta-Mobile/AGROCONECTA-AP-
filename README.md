@@ -34,6 +34,6 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
 ▶️ Execução
 Para rodar o servidor em modo de desenvolvimento (com reinicialização automática):
 
- ```bash
+  ```bash
     npm run dev
- 
+    ```
